@@ -1,13 +1,13 @@
-# README Donation #
+# README MyRent #
 
 ### What is this repository for? ###
 
-* Quick summary: Play 1.4 app written in java , allows user to sign up and make Donations
-* Version: Iteration_v4
+* Quick summary: Play 1.4 app written in java 
+* Version: Iteration_v0
 * [Live Heroku version](http://donation-austin.herokuapp.com/)
 * Login: homer@simpson.com
 * Password: secret
-![donation.JPG](https://bitbucket.org/repo/7ag6EX/images/656710609-donation.JPG)
+![myrent.JPG](https://bitbucket.org/repo/razGgx/images/2695564384-myrent.JPG)
 
 ### How do I get set up? ###
 
