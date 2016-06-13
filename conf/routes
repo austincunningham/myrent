@@ -9,6 +9,8 @@ GET     /   									Welcome.index
 GET     /Login									Accounts.Login
 GET 	/Logout									Accounts.Logout
 GET		/Signup									Accounts.Signup
+POST    /authenticate                           Accounts.authenticate
+POST    /register                               Accounts.register
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
