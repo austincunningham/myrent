@@ -5,6 +5,11 @@
 # Home Page
 GET     /   									Welcome.index
 
+# Accounts
+GET     /Login									Accounts.Login
+GET 	/Logout									Accounts.Logout
+GET		/Signup									Accounts.Signup
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

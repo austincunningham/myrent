@@ -12,5 +12,17 @@ public class Accounts extends Controller {
     public static void index() {
         render();
     }
+    
+    public static void Signup() {
+        render();
+    }
+    public static void Login() {
+        render();
+    }
+    public static void Logout()
+	  {
+		session.clear();
+	    Welcome.index();
+	  }
 
 }
