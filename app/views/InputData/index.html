@@ -1,0 +1,74 @@
+#{extends 'main.html' /} #{set title:'MyRent' /}
+
+<nav class="ui inverted green menu">
+	<a class="ui item" href="/">Welcome</a> <a class="ui item"
+		href="/Accounts/SignUp">Sign Up</a> <a class="ui item"
+		href="/Accounts/Login">Log In</a> <a class="ui active item"
+		href="/InputData">Input data</a> <a class="ui item" href="report.html">Report</a>
+	<a class="ui item" href="contact.html">Contact</a> <a class="ui item"
+		href="/Logout">Logout</a>
+</nav>
+<div class="ui two colume grid">
+	<div class="eight wide column">
+		<section class="ui form segment">
+			<form action="/TODO" method="POST">
+				<h2 class="ui dividing header">Input Data</h2>
+				<div class="field">
+					<label>Location</label>
+					<div class="field">
+						<input name="location" placeholder="53.347298, -6.268344"
+							type="text">
+					</div>
+					<div class="grouped inline fields">
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input id="Rented" name="TODO" value="Rented" type="radio"
+									checked="checked"> <label for="Rented">Rented</label>
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui radio checkbox">
+								<input id="Vacent" name="TODO" value="Vacent" type="radio">
+								<label for="Vacent">Direct</label>
+							</div>
+						</div>
+					</div>
+					<div class="two fields">
+						<div class="field">
+							<div class="ui left action input">
+								<button class="ui green labeled icon button">
+									<i class="euro icon"></i> Rent
+								</button>
+								<input placeholder="1500" type="text">
+							</div>
+						</div>
+						<div class="field">
+							<div class="ui left action input">
+								<button class="ui green labeled icon button">
+									<i class="bed icon"></i> Checkout
+								</button>
+								<input placeholder="3" type="text">
+							</div>
+						</div>
+					</div>
+					<div class="two fields">
+						<div class="field">
+							<label>Residence type</label> <select class="ui fluid dropdown">
+								<option placeholder="Residence type">Residence type</option>
+								<option value="Appartment">Apartment|Flat</option>
+								<option value="Studio">Studio</option>
+								<option value="House">House</option>
+							</select>
+						</div>
+					</div>
+					<div class="ui green button" tabindex="0">
+						Submit Data <i class="globe icon"></i>
+					</div>
+					<div class="ui error message"></div>
+			</form>
+			</section>
+	</div>
+	<div class="eight wide column">
+		Maps go here
+	</div>
+</div>
