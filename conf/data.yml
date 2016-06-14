@@ -1,0 +1,29 @@
+User(homer):
+    firstName: Homer
+    lastName: Simpson
+    email: homer@simpson.com
+    password: secret
+
+User(marge):
+    firstName: Marge
+    lastName: Simpson
+    email: marge@simpson.com
+    password: secret
+    
+User(bart):
+    firstName: Bart
+    lastName: Simpson
+    email: bart@simpson.com
+    password: secret
+
+User(lisa):
+    firstName: Lisa
+    lastName: Simpson
+    email: lisa@simpson.com
+    password: secret
+    
+User(maggie):
+    firstName: Maggie
+    lastName: Simpson
+    email: maggie@simpson.com
+    password: secret
