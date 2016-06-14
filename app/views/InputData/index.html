@@ -8,10 +8,11 @@
 	<a class="ui item" href="contact.html">Contact</a> <a class="ui item"
 		href="/Logout">Logout</a>
 </nav>
+
 <div class="ui two colume grid">
 	<div class="eight wide column">
 		<section class="ui form segment">
-			<form action="/TODO" method="POST">
+			<form action="/InputData/InputData" method="POST">
 				<h2 class="ui dividing header">Input Data</h2>
 				<div class="field">
 					<label>Location</label>
@@ -22,13 +23,13 @@
 					<div class="grouped inline fields">
 						<div class="field">
 							<div class="ui radio checkbox">
-								<input id="Rented" name="TODO" value="Rented" type="radio"
+								<input id="Rented" name="status" value="Rented" type="radio"
 									checked="checked"> <label for="Rented">Rented</label>
 							</div>
 						</div>
 						<div class="field">
 							<div class="ui radio checkbox">
-								<input id="Vacent" name="TODO" value="Vacent" type="radio">
+								<input id="Vacent" name="status" value="Vacent" type="radio">
 								<label for="Vacent">Direct</label>
 							</div>
 						</div>
@@ -39,7 +40,7 @@
 								<button class="ui green labeled icon button">
 									<i class="euro icon"></i> Rent
 								</button>
-								<input placeholder="1500" type="text">
+								<input placeholder="1500" type="text" name="rent">
 							</div>
 						</div>
 						<div class="field">
@@ -47,18 +48,25 @@
 								<button class="ui green labeled icon button">
 									<i class="bed icon"></i> Checkout
 								</button>
-								<input placeholder="3" type="text">
+								<input placeholder="3" type="text" name="bedrooms">
 							</div>
 						</div>
 					</div>
 					<div class="two fields">
 						<div class="field">
-							<label>Residence type</label> <select class="ui fluid dropdown">
-								<option placeholder="Residence type">Residence type</option>
-								<option value="Appartment">Apartment|Flat</option>
-								<option value="Studio">Studio</option>
-								<option value="House">House</option>
-							</select>
+							<label>Residence type</label>
+							<div class="column">
+								<div class="ui selection dropdown">
+									<input name="type" type="hidden">
+									<div class="default text">Residence type</div>
+									<i class="dropdown icon"></i>
+									<div class="menu">
+										<div class="item" data-value="Flat-Apartment">Flat|Apartment</div>
+										<div class="item" data-value="Studio">Studio</div>
+										<div class="item" data-value="House">House</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="ui green button" tabindex="0">
@@ -66,9 +74,9 @@
 					</div>
 					<div class="ui error message"></div>
 			</form>
-			</section>
+		</section>
 	</div>
-	<div class="eight wide column">
-		Maps go here
-	</div>
+	<div class="eight wide column">Maps go here <div id="map-canvas"/></div>
 </div>
+<script src="@{'/public/javascripts/InputData.js'}"></script>
+<script src="@{'/public/javascripts/map.js'}"></script>

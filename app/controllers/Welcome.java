@@ -7,10 +7,12 @@ import java.util.*;
 
 import models.*;
 
-public class Welcome extends Controller {
+public class Welcome extends Controller
+{
 
-    public static void index() {
-        render();
-    }
+  public static void index()
+  {
+    render();
+  }
 
 }
