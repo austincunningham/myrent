@@ -1,12 +1,13 @@
 #{extends 'main.html' /} #{set title:'MyRent' /}
 
 <nav class="ui inverted green menu">
-	<a class="ui item" href="/">Welcome</a> <a class="ui item"
-		href="/Accounts/SignUp">Sign Up</a> <a class="ui item"
-		href="/Accounts/Login">Log In</a> <a class="ui active item"
-		href="/InputData">Input data</a> <a class="ui item" href="report.html">Report</a>
-	<a class="ui item" href="contact.html">Contact</a> <a class="ui item"
-		href="/Logout">Logout</a>
+	<a class="ui item" href="/">Welcome</a> 
+	<a class="ui item" href="/Accounts/SignUp">Sign Up</a> 
+	<a class="ui item" href="/Accounts/Login">Log In</a> 
+	<a class="ui active item" href="/InputData">Input data</a> 
+	<a class="ui item" href="/Report">Report</a>
+	<a class="ui item" href="contact.html">Contact</a> 
+	<a class="ui item" href="/Logout">Logout</a>
 </nav>
 
 <div class="ui two colume grid">
@@ -74,8 +75,8 @@
 			</form>
 		</section>
 	</div>
-	<div class="eight wide column">
-	<div id="map-canvas"/>
+<div class="eight wide column">
+	<div id="map-canvas">
 	</div>
 </div>
 <script src="@{'/public/javascripts/InputData.js'}"></script>

@@ -14,6 +14,14 @@ public class InputData extends Controller
   {
     render();
   }
+  /**
+   * Data passed from form in InputData\index.html to model Residence to populate DB
+   * @param location
+   * @param rent
+   * @param bedrooms
+   * @param status
+   * @param type
+   */
   public static void InputData(String location, int rent,int bedrooms, String status, String type)
   {
     User user = Accounts.getCurrentUser();

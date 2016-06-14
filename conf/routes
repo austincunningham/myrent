@@ -16,6 +16,9 @@ POST    /register                               Accounts.register
 GET     /InputData								InputData.index
 POST    /InputData/InputData					InputData.InputData
 
+# Report
+GET		/Report		        					Report.index
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

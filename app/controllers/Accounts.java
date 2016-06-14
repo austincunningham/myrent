@@ -24,13 +24,21 @@ public class Accounts extends Controller
   {
     render();
   }
-
+/**
+ * clears the session id
+ */
   public static void Logout()
   {
     session.clear();
     Welcome.index();
   }
-
+/**
+ * parma passed from form in Accounts/signup.html to model User to populate DB
+ * @param firstName
+ * @param lastName
+ * @param email
+ * @param password
+ */
   public static void register(String firstName, String lastName, String email, String password)
   {
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
@@ -39,7 +47,11 @@ public class Accounts extends Controller
     Login();
 
   }
-
+/**
+ * compares param with DB to authenticate
+ * @param email
+ * @param password
+ */
   public static void authenticate(String email, String password)
   {
     Logger.info("Attempting to authenticate with " + email + ":" + password);
@@ -56,7 +68,10 @@ public class Accounts extends Controller
       Login();
     }
   }
-
+/**
+ * Checks session id for current user id
+ * @return
+ */
   public static User getCurrentUser()
   {
     String userId = session.get("logged_in_userid");

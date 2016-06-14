@@ -34,7 +34,10 @@ public class Residence extends Model
     this.status = status;
     formatDate = dateFormatter();
   }
-
+/**
+ * 
+ * @return String with new date format
+ */
   public String dateFormatter()
   {
     Date createOn = new Date();

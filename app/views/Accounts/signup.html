@@ -1,50 +1,50 @@
-#{extends 'main.html' /}
-#{set title:'MyRent' /}
+#{extends 'main.html' /} #{set title:'MyRent' /}
 
 <nav class="ui inverted green menu">
-  <a class="ui item" href="/">Welcome</a>
-  <a class="ui active item" href="/Accounts/Signup">Sign Up</a>
-  <a class="ui item" href="/Accounts/login">Log In</a>
-  <a class="ui item" href="/InputData">Input data</a>
-  <a class="ui item" href="report.html">Report</a>
-  <a class="ui item" href="contact.html">Contact</a>
-  <a class="ui item" href="/Logout">Logout</a>
+	<a class="ui item" href="/">Welcome</a> <a class="ui active item"
+		href="/Accounts/Signup">Sign Up</a> <a class="ui item"
+		href="/Accounts/login">Log In</a> <a class="ui item" href="/InputData">Input
+		data</a> <a class="ui item" href="/Report">Report</a> <a class="ui item"
+		href="contact.html">Contact</a> <a class="ui item" href="/Logout">Logout</a>
 </nav>
 
 <section class="ui segment">
+  <div class="ui grid">
+  <div class="eight wide colume">
 	<h2>Create a MyRent account</h2>
 	<h5>Register using a valid email address</h5>
-	<form action="/Accounts/register" method="POST">
-	  <div class="ui two column grid">
-	  <div class="column">
-	    <div class="ui fluid form segment">
-	      <div class="two fields">
-	        <div class="field">
-	          <input placeholder="First Name" name="firstName" type="text">
-	        </div>
-	        <div class="field">
-	          <input placeholder="Last Name" name="lastName" type="text">
-	        </div>
-	      </div>
-	    <div class="two fields">
-	      <div class="ui left icon input field">
-            <input placeholder="Email" name="email" type="text">
-            <i class="user icon"></i>
-          </div>
-          <div class="ui left icon input field">
-            <input placeholder="Password" type="password" name="password">
-            <i class="lock icon"></i>
-          </div>
-        </div>
-	      <div class="inline field">
-	        <div class="ui checkbox">
-	          <input id="conditions" type="checkbox">
-	          <label for="conditions">I agree to the terms and conditions</label>
-	        </div>
-	      </div>
-	      <button type="submit" class="ui green submit button">Submit</button>
-	    </div>
-	  </div>
+
+	<div class="ui fluid form segment">
+		<form action="/Accounts/register" method="POST">
+			<div class="two fields">
+				<div class="field">
+					<input placeholder="First Name" name="firstName" type="text">
+				</div>
+				<div class="field">
+					<input placeholder="Last Name" name="lastName" type="text">
+				</div>
+			</div>
+			<div class="two fields">
+				<div class="ui left icon input field">
+					<input placeholder="Email" name="email" type="text"> <i
+						class="user icon"></i>
+				</div>
+				<div class="ui left icon input field">
+					<input placeholder="Password" type="password" name="password">
+					<i class="lock icon"></i>
+				</div>
+			</div>
+			<div class="inline field">
+				<div class="ui checkbox">
+					<input id="conditions" type="checkbox"> <label
+						for="conditions">I agree to the terms and conditions</label>
+				</div>
+			</div>
+			<button class="ui green submit button">Submit Data</button>
+			<div class="ui error message"></div>
 	</div>
 	</form>
+	</div>
+	</div>
 </section>
+<script src="@{'/public/javascripts/signup.js'}"></script>
