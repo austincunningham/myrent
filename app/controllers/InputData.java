@@ -14,10 +14,11 @@ public class InputData extends Controller
   {
     render();
   }
-  private static void InputData(String location, int rent,int bedrooms, String status, String type)
+  public static void InputData(String location, int rent,int bedrooms, String status, String type)
   {
     Residence locate = new Residence( location,type ,status, bedrooms,rent);
     locate.save();
+    index();
   }
   
 }

@@ -46,7 +46,7 @@
 						<div class="field">
 							<div class="ui left action input">
 								<button class="ui green labeled icon button">
-									<i class="bed icon"></i> Checkout
+									<i class="bed icon"></i> Bedrooms
 								</button>
 								<input placeholder="3" type="text" name="bedrooms">
 							</div>
@@ -69,14 +69,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="ui green button" tabindex="0">
-						Submit Data <i class="globe icon"></i>
+					<button class="ui green submit button">Submit Data <i class="globe icon"></i></button>
 					</div>
 					<div class="ui error message"></div>
 			</form>
 		</section>
 	</div>
-	<div class="eight wide column">Maps go here <div id="map-canvas"/></div>
+	<div class="eight wide column">
+	<div id="map-canvas"/>
+	</div>
 </div>
 <script src="@{'/public/javascripts/InputData.js'}"></script>
 <script src="@{'/public/javascripts/map.js'}"></script>
