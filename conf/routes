@@ -6,10 +6,10 @@
 GET     /   									Welcome.index
 
 # Accounts
-GET     /Login									Accounts.Login
-GET 	/Logout									Accounts.Logout
-GET		/Signup									Accounts.Signup
-POST    /authenticate                           Accounts.Authenticate
+GET     /Login									Accounts.login
+GET 	/Logout									Accounts.logout
+GET		/Signup									Accounts.signup
+POST    /authenticate                           Accounts.authenticate
 POST    /register                               Accounts.register
 
 # InputData
