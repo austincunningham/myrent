@@ -20,6 +20,10 @@ POST    /InputData/InputData					InputData.InputData
 GET		/Report		        					Report.index
 POST    /Report/generateReport					Report.generateReport
 
+# Contact
+GET 	/Contact								Contact.index
+POST 	/Contact/sendMessage					Contact.sendMessage
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

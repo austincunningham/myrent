@@ -1,0 +1,37 @@
+#{extends 'main.html' /}
+#{set title:'MyRent' /}
+
+<nav class="ui inverted green menu">
+  <a class="ui item" href="/">Welcome</a>
+  <a class="ui item" href="/Accounts/SignUp">Sign Up</a>
+  <a class="ui item" href="/Accounts/Login">Log In</a>
+  <a class="ui item" href="/InputData">Input data</a>
+  <a class="ui item" href="/Report">Report</a>
+  <a class="ui active item" href="/Contact">Contact</a>
+  <a class="ui item" href="/Logout">Logout</a>
+</nav>
+
+<section class="ui green inverted segment">      
+  <h5>We would very much appreciate if you would provide some feedback.</h5>
+	<form action="/Contact/sendMessage" method="POST">
+    <div class="ui input field">
+		  <input placeholder="Your first name" name="user.firstName" type="text">
+    </div>
+	  <div class="ui input field">
+		  <input placeholder="Your last name" name="user.lastName" type="text">
+    </div>
+    <div class="ui divider"></div>
+	    <div class="ui left icon input">
+	      <input placeholder="Your email address" name="email" type="text" size="30">
+	      <i class="user icon"></i>
+	    </div>
+    <div class="ui divider"></div>
+		<div class="ui form">
+		  <div class="field">
+		    <textarea placeholder="Your message" name="messageTxd"></textarea>
+		  </div>
+		</div> 
+    <div class="ui divider"></div>
+     <button type="submit" class="ui inverted submit button">Send Message</button>	  
+  </form>
+</section>  
