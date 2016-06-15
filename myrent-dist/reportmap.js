@@ -10,22 +10,17 @@ function requestReport() {
 }
 
 function initialize() {
-  const center = new google.maps.LatLng(52.2514845,-7.1265728);
+  const center = new google.maps.LatLng(53.347298, -6.268344);
   const initRadius = 10000;
-  
-//  const mapProp = {
-    const mapOptions = {
+  const mapProp = {
     center: center,
     zoom: 7,
-    mapTypeId: google.maps.MapTypeId.ROAD
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
   };
-  
-  //const mapDiv = document.getElementById('map_canvas');
-  //const map = new google.maps.Map(mapDiv, mapProp);
-  const map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  
-  //mapDiv.style.width = '500px';
-  //mapDiv.style.height = '500px';
+  const mapDiv = document.getElementById('map_canvas');
+  const map = new google.maps.Map(mapDiv, mapProp);
+  mapDiv.style.width = '500px';
+  mapDiv.style.height = '500px';
 
   circle = new google.maps.Circle({
     center: center,

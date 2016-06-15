@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 import play.Logger;
 import play.db.jpa.Model;
+import utils.LatLng;
 
 @Entity
 public class Residence extends Model
@@ -47,4 +48,9 @@ public class Residence extends Model
     return df.format(createOn);
 
   }
+public LatLng getGeolocation()
+{
+  // TODO Auto-generated method stub
+  return null;
+}
 }
