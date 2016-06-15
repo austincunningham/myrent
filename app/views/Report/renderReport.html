@@ -12,7 +12,7 @@
 </nav>
 
 <div class="ui grid">
-  <div class="thirteen wide column">
+  <div class="fourteen wide column">
   <section class="ui segment">
     <h4>Report</h4>           
          
@@ -40,6 +40,7 @@
 	<table class="ui inverted green table segment">
 	<thead>
 	  <tr>
+	    <th>Submitted by</th>
 	    <th>Date registered</th>
         <th>Property Geo-location</th>
         <th>How much Rent <i class="euro icon"></i></th>
@@ -51,6 +52,7 @@
 	<tbody>
 	  #{list items:residences, as:'res'}
 	    <tr>
+	      <td><i class="user icon">&nbsp${res.from.firstName}&nbsp${res.from.lastName} </td>
 	      <td><i class="calendar icon"></i>${res.formatDate}</td>
 	      <td><i class="world icon"></i>${res.location}</td>
 	      <td><i class="euro icon"></i> ${res.rent}</td>
