@@ -44,7 +44,7 @@ public class Accounts extends Controller
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
     User user = new User(firstName, lastName, email, password);
     user.save();
-    Login();
+    login();
 
   }
 /**
@@ -65,7 +65,7 @@ public class Accounts extends Controller
     else
     {
       Logger.info("Authentication failed");
-      Login();
+      login();
     }
   }
 /**

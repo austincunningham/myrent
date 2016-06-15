@@ -22,7 +22,7 @@ public class Report extends Controller
   static void checkAuthentification()
   {
     if(session.contains("logged_in_userid") == false)
-      Accounts.Login();
+      Accounts.login();
   }
 
   /**
