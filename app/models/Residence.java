@@ -48,9 +48,4 @@ public class Residence extends Model
     return df.format(createOn);
 
   }
-public LatLng getGeolocation()
-{
-  // TODO Auto-generated method stub
-  return null;
-}
 }

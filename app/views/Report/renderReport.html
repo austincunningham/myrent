@@ -11,3 +11,55 @@
   <a class="ui item" href="/Logout">Logout</a>
 </nav>
 
+<div class="ui grid">
+  <div class="twelve wide column">
+  <section class="ui segment">
+    <h4>Report</h4>           
+         
+        <section class="ui segment">
+            <table class ="ui inverted teal table segment">
+                <thead>
+                    <tr>
+                        <th>Commissioned by</th>
+                        <th>Search: radius(m)</th>
+                        <th>centre(latitude)</th>
+                        <th>centre(longitude)</tdh>
+                    </tr>       
+                </thead>
+                <tbody>           
+                    <tr>
+                      <td>${user.firstName} ${user.lastName}</td>
+                      <td>${circle.radius}</td>
+                      <td>${circle.latcenter}</td>
+                      <td>${circle.lngcenter}</td>
+                    </tr>         
+                </tbody>            
+            </table> 
+
+
+	<table class="ui inverted green table segment">
+	<thead>
+	  <tr>
+	    <th>Date registered</th>
+        <th>Property Geo-location</th>
+        <th>How much Rent <i class="euro icon"></i></th>
+        <th>Rented/Vacant?</th>
+        <th>Type of Dwelling</th>
+        <th>How many Bedrooms</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  #{list items:residences, as:'res'}
+	    <tr>
+	      <td><i class="calendar icon"></i>${res.formatDate}</td>
+	      <td><i class="world icon"></i>${res.location}</td>
+	      <td><i class="euro icon"></i> ${res.rent}</td>
+	      <td><i class="legal icon"></i>${res.status}</td>
+	      <td><i class="home icon"></i>${res.type}</td>
+	      <td><i class="bed icon"></i>${res.bedrooms}</td>
+	    </tr>
+	  #{/list}
+	</tbody>
+	</table>
+  </div>
+</div>
