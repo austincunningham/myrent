@@ -15,19 +15,19 @@ public class Accounts extends Controller
     render();
   }
 
-  public static void Signup()
+  public static void signup()
   {
     render();
   }
 
-  public static void Login()
+  public static void login()
   {
     render();
   }
 /**
  * clears the session id
  */
-  public static void Logout()
+  public static void logout()
   {
     session.clear();
     Welcome.index();
