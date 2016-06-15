@@ -18,6 +18,7 @@ POST    /InputData/InputData					InputData.InputData
 
 # Report
 GET		/Report		        					Report.index
+POST    /Report/generateReport					Report.generateReport
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

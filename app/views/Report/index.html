@@ -12,12 +12,24 @@
 </nav>
 
 
-<H3>Define the region for which you require a report</H3>
 <div class="ui grid">
-   <div class="eight wide column">
-      <div class="ui 4:3 embed" id="map-canvas"></div>
-   </div>   
+ <div class="eight wide column"> 
+<section class="ui segment">      
+  <h4>Define the region for which you require a report</h4>
+  <form action="/Report/generateReport" method="POST">    
+    Size and position circle to select region for report 
+    <div class="ui 4:3 embed" id="map-canvas"></div>
+    <button type="submit" class="ui blue submit button" onclick="requestReport()">Generate Report</button>
+    <div style="visibility: hidden" name="circledata" id="circledata">
+      <input type="text"  id="radius" name="radius">
+      <input type="text"  id="latcenter" name="latcenter">
+      <input type="text"  id="lngcenter" name="lngcenter">
+    </div>
+  </form>
+</section>
 </div>
+</div>
+
 <script src="@{'/public/javascripts/ReportMap.js'}"></script>
 
    
