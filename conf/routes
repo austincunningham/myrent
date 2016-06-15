@@ -9,7 +9,7 @@ GET     /   									Welcome.index
 GET     /Login									Accounts.Login
 GET 	/Logout									Accounts.Logout
 GET		/Signup									Accounts.Signup
-POST    /authenticate                           Accounts.authenticate
+POST    /authenticate                           Accounts.Authenticate
 POST    /register                               Accounts.register
 
 # InputData
