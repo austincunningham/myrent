@@ -20,6 +20,6 @@ public class Contact extends Controller
     User user = Accounts.getCurrentUser();
     ContactModel con = new ContactModel(fName, lName,cEmail ,msgtxt);
     con.save();
-    render("Contact/acknowledge.html");
+    render("Contact/acknowledge.html" ,con);
   }
 }
