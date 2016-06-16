@@ -4,7 +4,7 @@
 
 * Quick summary: Play 1.4 app written in java 
 * Version: Iteration_v0
-* [Live Heroku version](http://donation-austin.herokuapp.com/)
+* [Live Heroku version](http://myrent-austin.herokuapp.com/)
 * Login: homer@simpson.com
 * Password: secret
 ![myrent.JPG](https://bitbucket.org/repo/razGgx/images/2695564384-myrent.JPG)
