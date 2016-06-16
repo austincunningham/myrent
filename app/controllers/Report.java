@@ -18,7 +18,6 @@ public class Report extends Controller
    * Checks that a user has logged in.
    * If no user logged in the user is presented with the log in screen.
    */
-  @Before
   static void checkAuthentification()
   {
     if(session.contains("logged_in_userid") == false)

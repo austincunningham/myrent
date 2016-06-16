@@ -15,4 +15,11 @@ public class Contact extends Controller
     render();
   }
 
+  public static void sendMessage(String fName,String lName,String cEmail,String msgtxt)
+  {
+    User user = Accounts.getCurrentUser();
+    ContactModel con = new ContactModel(fName, lName,cEmail ,msgtxt);
+    con.save();
+    render("Contact/acknowledge.html");
+  }
 }
