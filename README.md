@@ -2,8 +2,8 @@
 
 ### What is this repository for? ###
 
-* Quick summary: Play 1.4 app written in java 
-* Version: Iteration_v0
+* Quick summary: Play 1.4 app written in java,javascript and uses the Google Maps API. App allows user to enter there location and rental details , and compare rental details with other users inputs selected on a map. 
+* Version: Iteration_v3
 * [Live Heroku version](http://myrent-austin.herokuapp.com/)
 * Login: homer@simpson.com
 * Password: secret
