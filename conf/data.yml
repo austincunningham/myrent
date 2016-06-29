@@ -48,7 +48,7 @@ Residence(residence2):
     status: Vacant
     area: 50
     numberBathrooms: 1
-    formatDate: Thur 30/06/16 - 04:17 PM
+    formatDate: Thu 30/06/16 - 04:17 PM
 
 Residence(residence3):
     from: lisa
