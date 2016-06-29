@@ -17,7 +17,7 @@ public class Contact extends Controller
 
   public static void sendMessage(String fName,String lName,String cEmail,String msgtxt)
   {
-    User user = Accounts.getCurrentUser();
+    Landlord user = Landlords.getCurrentUser();
     ContactModel con = new ContactModel(fName, lName,cEmail ,msgtxt);
     con.save();
     render("Contact/acknowledge.html" ,con);

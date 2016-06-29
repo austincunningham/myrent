@@ -1,28 +1,28 @@
-User(homer):
+Landlord(homer):
     firstName: Homer
     lastName: Simpson
     email: homer@simpson.com
     password: secret
 
-User(marge):
+Landlord(marge):
     firstName: Marge
     lastName: Simpson
     email: marge@simpson.com
     password: secret
     
-User(bart):
+Landlord(bart):
     firstName: Bart
     lastName: Simpson
     email: bart@simpson.com
     password: secret
 
-User(lisa):
+Landlord(lisa):
     firstName: Lisa
     lastName: Simpson
     email: lisa@simpson.com
     password: secret
     
-User(maggie):
+Landlord(maggie):
     firstName: Maggie
     lastName: Simpson
     email: maggie@simpson.com

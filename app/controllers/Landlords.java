@@ -7,7 +7,7 @@ import java.util.*;
 
 import models.*;
 
-public class Accounts extends Controller
+public class Landlords extends Controller
 {
 
   public static void index()
@@ -42,7 +42,7 @@ public class Accounts extends Controller
   public static void register(String firstName, String lastName, String email, String password)
   {
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
-    User user = new User(firstName, lastName, email, password);
+    Landlord user = new Landlord(firstName, lastName, email, password);
     user.save();
     login();
 
@@ -55,7 +55,7 @@ public class Accounts extends Controller
   public static void authenticate(String email, String password)
   {
     Logger.info("Attempting to authenticate with " + email + ":" + password);
-    User user = User.findByEmail(email);
+    Landlord user = Landlord.findByEmail(email);
     if ((user != null) && (user.checkPassword(password) == true))
     {
       Logger.info("Authentication successful");
@@ -72,14 +72,14 @@ public class Accounts extends Controller
  * Checks session id for current user id
  * @return
  */
-  public static User getCurrentUser()
+  public static Landlord getCurrentUser()
   {
     String userId = session.get("logged_in_userid");
     if (userId == null)
     {
       return null;
     }
-    User logged_in_user = User.findById(Long.parseLong(userId));
+    Landlord logged_in_user = Landlord.findById(Long.parseLong(userId));
     Logger.info("Logged in User: " + logged_in_user.firstName);
     return logged_in_user;
   }

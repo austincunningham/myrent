@@ -25,9 +25,9 @@ public class Residence extends Model
   public int area;
   public int numberBathrooms;
   @ManyToOne
-  public User from;
+  public Landlord from;
 
-  public Residence(User from, String location, String type, String status, int bedrooms, int rent, int area,int numberBathrooms)
+  public Residence(Landlord from, String location, String type, String status, int bedrooms, int rent, int area,int numberBathrooms)
   {
     this.from = from;
     this.location = location;

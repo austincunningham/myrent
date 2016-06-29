@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Residence;
-import models.User;
+import models.Landlord;
 import play.mvc.Before;
 import play.mvc.Controller;
 import utils.Circle;
@@ -22,7 +22,7 @@ public class Report extends Controller
   static void checkAuthentification()
   {
     if(session.contains("logged_in_userid") == false)
-      Accounts.login();
+      Landlords.login();
   }
 
   /**
@@ -35,7 +35,7 @@ public class Report extends Controller
   {
     // All reported residences will fall within this circle
     Circle circle = new Circle(latcenter, lngcenter, radius);
-    User user = Accounts.getCurrentUser();
+    Landlord user = Landlords.getCurrentUser();
     List<Residence> residences = new ArrayList<Residence>();
     // Fetch all residences and filter out those within circle
     List<Residence> residencesAll = Residence.findAll();
