@@ -27,3 +27,36 @@ User(maggie):
     lastName: Simpson
     email: maggie@simpson.com
     password: secret
+    
+Residence(residence1):
+    from: marge
+    location: 52.254427, -7.185281
+    rent: 1500
+    type: Studio
+    bedrooms: 3
+    status: Vacant
+    area: 30
+    numberBathrooms: 2
+    formatDate: Wed 29/06/16 - 03:17 PM
+    
+Residence(residence2):
+    from: homer
+    location: 52.2514714, -7.1795088
+    rent: 1500
+    type: Studio
+    bedrooms: 4
+    status: Vacant
+    area: 50
+    numberBathrooms: 1
+    formatDate: Thur 30/06/16 - 04:17 PM
+
+Residence(residence3):
+    from: lisa
+    location: 52.2300000, -7.1795088
+    rent: 3500
+    type: Flat
+    bedrooms: 2
+    status: Vacant
+    area: 10
+    numberBathrooms: 1
+    formatDate: Fri 01/07/16 - 07:17 PM
