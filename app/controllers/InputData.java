@@ -24,8 +24,8 @@ public class InputData extends Controller
    */
   public static void InputData(String location, int rent,int bedrooms, String status, String type,int area, int numberBathrooms)
   {
-    Landlord user = Landlords.getCurrentUser();
-    Residence locate = new Residence(user, location,type ,status, bedrooms,rent, area, numberBathrooms);
+    Landlord landlord = Landlords.getCurrentLandlord();
+    Residence locate = new Residence(landlord, location,type ,status, bedrooms,rent, area, numberBathrooms);
     locate.save();
     index();
   }

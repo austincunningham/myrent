@@ -72,7 +72,7 @@ public class Landlords extends Controller
  * Checks session id for current user id
  * @return
  */
-  public static Landlord getCurrentUser()
+  public static Landlord getCurrentLandlord()
   {
     String userId = session.get("logged_in_userid");
     if (userId == null)

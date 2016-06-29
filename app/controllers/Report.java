@@ -35,7 +35,7 @@ public class Report extends Controller
   {
     // All reported residences will fall within this circle
     Circle circle = new Circle(latcenter, lngcenter, radius);
-    Landlord user = Landlords.getCurrentUser();
+    Landlord landlord = Landlords.getCurrentLandlord();
     List<Residence> residences = new ArrayList<Residence>();
     // Fetch all residences and filter out those within circle
     List<Residence> residencesAll = Residence.findAll();
@@ -48,7 +48,7 @@ public class Report extends Controller
         residences.add(res);
       }
     }
-    render("Report/renderReport.html", user, circle, residences);
+    render("Report/renderReport.html", landlord, circle, residences);
   }
 
   /**
