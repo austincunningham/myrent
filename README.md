@@ -7,7 +7,7 @@
 * [Click here for Live version of app on Heroku](http://myrent-austin.herokuapp.com)
 * Login:homer@simpson.com
 * Password:secret
-![witpress.JPG](https://bitbucket.org/repo/B77MGo/images/2537900400-witpress.JPG)
+![myrent.JPG](https://bitbucket.org/repo/razGgx/images/770677071-myrent.JPG)
 
 ### How do I get set up? ###
 
