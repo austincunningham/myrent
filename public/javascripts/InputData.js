@@ -11,7 +11,7 @@ $('.ui.form')
       rules: [
         {
           type   : 'empty',
-          prompt : 'Please enter your first name the rent at specified location'
+          prompt : 'Please enter the rent at specified location'
         }
       ]
     },
@@ -24,12 +24,30 @@ $('.ui.form')
         }
       ]
     },
-    type: {
-        identifier: 'type',
+    area: {
+        identifier: 'area',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter area of the property at specified location'
+          }
+        ]
+      },
+      type: {
+          identifier: 'type',
+          rules: [
+            {
+              type   : 'empty',
+              prompt : 'Please enter the type of the property at specified location'
+            }
+          ]
+        },
+    numberBathrooms: {
+        identifier: 'numberBathrooms',
         rules: [
           {
             type: 'empty',
-            prompt: 'You forgot to give us money , Please select amount to donate'
+            prompt: 'You forgot to enter the number of bathrooms at specified location'
           }
         ]
       }
