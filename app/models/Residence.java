@@ -22,10 +22,12 @@ public class Residence extends Model
   public String type;
   public String location;
   public String formatDate;
+  public int area;
+  public int numberBathrooms;
   @ManyToOne
   public User from;
 
-  public Residence(User from, String location, String type, String status, int bedrooms, int rent)
+  public Residence(User from, String location, String type, String status, int bedrooms, int rent, int area,int numberBathrooms)
   {
     this.from = from;
     this.location = location;
@@ -33,6 +35,8 @@ public class Residence extends Model
     this.type = type;
     this.bedrooms = bedrooms;
     this.status = status;
+    this.area = area;
+    this.numberBathrooms = numberBathrooms;
     formatDate = dateFormatter();
   }
 /**
