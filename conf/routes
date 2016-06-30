@@ -6,12 +6,12 @@
 GET     /   									Welcome.index
 
 # Landlords
-GET     /Login									Landlords.login
-GET 	/Logout									Landlords.logout
-GET		/Signup									Landlords.signup
-POST    /authenticate                           Landlords.authenticate
-POST    /register                               Landlords.register
-GET     /editdetail							    Landlords.editdetail
+GET     /Landlords/Login						Landlords.login
+GET 	/Logout					            	Landlords.logout
+GET		/Landlords/Signup						Landlords.signup
+POST    /Landlords/authenticate                 Landlords.authenticate
+POST    /Landlords/register                     Landlords.register
+GET     /editdetail			            	    Landlords.editdetail
 POST 	/Landlords/editDetails					Landlords.editDetails
 
 # InputData

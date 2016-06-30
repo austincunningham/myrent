@@ -1,9 +1,8 @@
-#{extends 'main.html' /} #{set title:'MyRent' /}
+#{extends 'main.html' /} 
+#{set title:'MyRent Input Data page' /}
 
 <nav class="ui inverted green menu">
 	<a class="ui item" href="/">Welcome</a> 
-	<a class="ui item" href="/Landlords/SignUp">Sign Up</a> 
-	<a class="ui item" href="/Landlords/Login">Log In</a>
 	#{if currentLandlord != null}
     <a class="ui item" href="/editdetail">Edit Details</a>
     #{/if} 
