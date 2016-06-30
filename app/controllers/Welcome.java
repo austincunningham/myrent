@@ -12,7 +12,8 @@ public class Welcome extends Controller
 
   public static void index()
   {
-    render();
+    Landlord currentLandlord = Landlords.getCurrentLandlord();
+    render(currentLandlord);
   }
 
 }

@@ -12,19 +12,22 @@ public class Landlords extends Controller
 
   public static void index()
   {
-    render();
+    Landlord currentLandlord = getCurrentLandlord();
+    render(currentLandlord);
   }
 
   public static void signup()
   {
-    render();
+    Landlord currentLandlord = getCurrentLandlord();
+    render(currentLandlord);
   }
 
   public static void login()
   {
-    render();
+    Landlord currentLandlord = getCurrentLandlord();
+    render(currentLandlord);
   }
-  public static void editdetails()
+  public static void editdetail()
   {
     Landlord landlord = getCurrentLandlord();
     render(landlord);
@@ -102,7 +105,7 @@ public class Landlords extends Controller
    */
   public static void editDetails(String firstName, String lastName, String line1Address, String line2Address, String city, String county) 
   {
-    
+        Logger.info("do i get into Landlords/editDetails ");
         Landlord landlord = getCurrentLandlord();
         
         if (!firstName.isEmpty())

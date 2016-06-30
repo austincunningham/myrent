@@ -1,0 +1,87 @@
+#{extends 'main.html' /}
+#{set title:'MyRent' /}
+
+<nav class="ui inverted green menu">
+  <a class="ui item" href="/">Welcome</a>
+  <a class="ui item" href="/Landlords/Signup">Sign Up</a>
+  <a class="ui item" href="/Landlords/login">Log In</a>
+  #{if currentLandlord != null}
+  <a class="ui active item" href="/Landlords/editdetails">Edit Details</a>
+  #{/if}
+  <a class="ui item" href="/InputData">Input data</a>
+  <a class="ui item" href="/Report">Report</a>
+  <a class="ui item" href="/Contact">Contact</a>
+  <a class="ui item" href="/Logout">Logout</a>
+</nav>
+
+<section class="ui segment">
+<div class="ui grid">
+  <div class="ten wide column">
+	<h2>Edit details of your MyRent Landlord account</h2>
+	<h5>Existing details are shown in field , you don't have to input all data again</h5>
+
+	<div class="ui fluid form segment">
+		<form action="/Landlords/editDetails" method="POST">
+			<div class="two fields">
+			  <div class="field">
+				<div class="ui left action input">
+				  <button class="ui green labeled icon button">
+					<i class="user icon"></i> First Name
+				</button>
+				<input placeholder="${landlord.firstName}" name="firstName" type="text">
+              	</div>
+			  </div>
+			  <div class="field">
+				<div class="ui left action input">
+				  <button class="ui green labeled icon button">
+					<i class="user icon"></i> Last Name
+				</button>
+				<input placeholder="${landlord.lastName}" name="lastName" type="text">
+              	</div>
+			  </div>
+			</div>
+			<div class="two fields">
+			  <div class="field">
+				<div class="ui left action input">
+				  <button class="ui green labeled icon button">
+					<i class="world icon"></i> 1st line Address
+				</button>
+				<input placeholder="${landlord.line1Address}" name="line1Address" type="text">
+              	</div>
+			  </div>
+			  <div class="field">
+				<div class="ui left action input">
+				  <button class="ui green labeled icon button">
+					<i class="world icon"></i> 2nd line Address
+				</button>
+				<input placeholder="${landlord.line2Address}" name="line2Address" type="text">
+              	</div>
+			  </div>
+			</div>
+			<div class="two fields">
+			  <div class="field">
+				<div class="ui left action input">
+				  <button class="ui green labeled icon button">
+					<i class="world icon"></i> City
+				</button>
+				<input placeholder="${landlord.city}" name="city" type="text">
+              	</div>
+			  </div>
+			  <div class="field">
+				<div class="ui left action input">
+				  <button class="ui green labeled icon button">
+					<i class="world icon"></i> County
+				</button>
+				<input placeholder="${landlord.county}" name="county" type="text">
+              	</div>
+			  </div>
+			</div>
+			<button class="ui green submit button">Submit Data</button>
+			<div class="ui error message"></div>
+		  </form>
+		</div>
+
+	</div>
+	</div>
+</section>
+</section>

@@ -12,7 +12,8 @@ public class InputData extends Controller
 
   public static void index()
   {
-    render();
+    Landlord currentLandlord = Landlords.getCurrentLandlord();
+    render(currentLandlord);
   }
   /**
    * Data passed from form in InputData\index.html to model Residence to populate DB
