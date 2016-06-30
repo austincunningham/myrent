@@ -3,30 +3,50 @@ Landlord(homer):
     lastName: Simpson
     email: homer@simpson.com
     password: secret
+    line1Address: 742 Evergreen Terrace
+    line2Address: Springfield way
+    city: Springfield
+    county: Springfield County
 
 Landlord(marge):
     firstName: Marge
     lastName: Simpson
     email: marge@simpson.com
     password: secret
+    line1Address: 742 Evergreen Terrace
+    line2Address: Springfield way
+    city: Springfield
+    county: Springfield County
     
 Landlord(bart):
     firstName: Bart
     lastName: Simpson
     email: bart@simpson.com
     password: secret
+    line1Address: 742 Evergreen Terrace
+    line2Address: Springfield way
+    city: Springfield
+    county: Springfield County
 
 Landlord(lisa):
     firstName: Lisa
     lastName: Simpson
     email: lisa@simpson.com
     password: secret
+    line1Address: 742 Evergreen Terrace
+    line2Address: Springfield way
+    city: Springfield
+    county: Springfield County
     
 Landlord(maggie):
     firstName: Maggie
     lastName: Simpson
     email: maggie@simpson.com
     password: secret
+    line1Address: 742 Evergreen Terrace
+    line2Address: Springfield way
+    city: Springfield
+    county: Springfield County
     
 Residence(residence1):
     from: marge

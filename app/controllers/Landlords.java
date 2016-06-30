@@ -26,7 +26,8 @@ public class Landlords extends Controller
   }
   public static void editdetails()
   {
-    render();
+    Landlord landlord = getCurrentLandlord();
+    render(landlord);
   }
 /**
  * clears the session id
@@ -44,11 +45,11 @@ public class Landlords extends Controller
  * @param password
  */
   public static void register(String firstName, String lastName, String email, String password, 
-      String line1Address, String line2Address, String city, String country)
+      String line1Address, String line2Address, String city, String county)
   {
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
     Landlord landlord = new Landlord(firstName, lastName, email, password,line1Address,
-        line2Address,city,country);
+        line2Address,city,county);
     landlord.save();
     login();
 
@@ -99,7 +100,7 @@ public class Landlords extends Controller
    * @param city
    * @param country
    */
-  public static void editDetails(String firstName, String lastName, String line1Address, String line2Address, String city, String country) 
+  public static void editDetails(String firstName, String lastName, String line1Address, String line2Address, String city, String county) 
   {
     
         Landlord landlord = getCurrentLandlord();
@@ -134,9 +135,9 @@ public class Landlords extends Controller
           Logger.info(
               "The following users city had been edited -->" + landlord.firstName + " " + landlord.lastName);
         }
-        if (!country.isEmpty())
+        if (!county.isEmpty())
         {
-          landlord.country = country;
+          landlord.county = county;
           Logger.info(
               "The following users city had been edited -->" + landlord.firstName + " " + landlord.lastName);
         }

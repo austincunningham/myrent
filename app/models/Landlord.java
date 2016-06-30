@@ -13,7 +13,7 @@ public class Landlord extends Model
   public String line1Address;
   public String line2Address;
   public String city;
-  public String country;
+  public String county;
 
   public Landlord(String firstName, String lastName, String email, 
       String password,String line1Address,String line2Address,String city, String country)
@@ -25,7 +25,7 @@ public class Landlord extends Model
     this.line1Address = line1Address;
     this.line2Address = line2Address;
     this.city = city;
-    this.country = country;
+    this.county = county;
   }
   
   public static Landlord findByEmail(String email)
