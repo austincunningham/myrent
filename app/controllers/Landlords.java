@@ -24,6 +24,10 @@ public class Landlords extends Controller
   {
     render();
   }
+  public static void editdetails()
+  {
+    render();
+  }
 /**
  * clears the session id
  */
@@ -39,11 +43,13 @@ public class Landlords extends Controller
  * @param email
  * @param password
  */
-  public static void register(String firstName, String lastName, String email, String password)
+  public static void register(String firstName, String lastName, String email, String password, 
+      String line1Address, String line2Address, String city, String country)
   {
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
-    Landlord user = new Landlord(firstName, lastName, email, password);
-    user.save();
+    Landlord landlord = new Landlord(firstName, lastName, email, password,line1Address,
+        line2Address,city,country);
+    landlord.save();
     login();
 
   }
@@ -82,6 +88,61 @@ public class Landlords extends Controller
     Landlord logged_in_user = Landlord.findById(Long.parseLong(userId));
     Logger.info("Logged in User: " + logged_in_user.firstName);
     return logged_in_user;
+  }
+  
+  /**
+   * Checks all fields in form /Landlords/editDetails for input
+   * @param firstName
+   * @param lastName
+   * @param line1Address
+   * @param line2Address
+   * @param city
+   * @param country
+   */
+  public static void editDetails(String firstName, String lastName, String line1Address, String line2Address, String city, String country) 
+  {
+    
+        Landlord landlord = getCurrentLandlord();
+        
+        if (!firstName.isEmpty())
+        {
+          landlord.firstName = firstName;
+          Logger.info(
+            "The following user first name has been edited -->" + landlord.firstName + " " + landlord.lastName);
+        }
+        if (!lastName.isEmpty())
+        {
+          landlord.lastName= lastName;
+          Logger.info(
+            "The following user last name has been edited -->" + landlord.firstName + " " + landlord.lastName);
+        }
+        if (!line1Address.isEmpty())
+        {
+          landlord.line1Address = line1Address;
+          Logger.info(
+              "The following users line one of address -->" + landlord.firstName + " " + landlord.lastName);
+        }
+        if (!line2Address.isEmpty())
+        {
+          landlord.line2Address = line2Address;
+          Logger.info(
+              "The following users line two of address -->" + landlord.firstName + " " + landlord.lastName);
+        }
+        if (!city.isEmpty())
+        {
+          landlord.city = city;
+          Logger.info(
+              "The following users city had been edited -->" + landlord.firstName + " " + landlord.lastName);
+        }
+        if (!country.isEmpty())
+        {
+          landlord.country = country;
+          Logger.info(
+              "The following users city had been edited -->" + landlord.firstName + " " + landlord.lastName);
+        }
+  landlord.save();
+
+  Welcome.index();
   }
 
 }

@@ -11,6 +11,8 @@ GET 	/Logout									Landlords.logout
 GET		/Signup									Landlords.signup
 POST    /authenticate                           Landlords.authenticate
 POST    /register                               Landlords.register
+GET     /editdetails							Landlords.editdetails
+POST 	/editDetails							Landlords.editDetails
 
 # InputData
 GET     /InputData								InputData.index

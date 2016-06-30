@@ -1,24 +1,25 @@
-#{extends 'main.html' /} #{set title:'MyRent' /}
+#{extends 'main.html' /}
+#{set title:'MyRent' /}
 
 <nav class="ui inverted green menu">
-	<a class="ui item" href="/">Welcome</a> 
-	<a class="ui active item" href="/Landlords/Signup">Sign Up</a> 
-	<a class="ui item" href="/Landlords/login">Log In</a>
-	<a class="ui item" href="/Landlords/editDetails">Edit Details</a> 
-	<a class="ui item" href="/InputData">Input data</a> 
-	<a class="ui item" href="/Report">Report</a> 
-	<a class="ui item" href="/Contact">Contact</a> 
-	<a class="ui item" href="/Logout">Logout</a>
+  <a class="ui item" href="/">Welcome</a>
+  <a class="ui item" href="/Landlords/Signup">Sign Up</a>
+  <a class="ui item" href="/Landlords/login">Log In</a>
+  <a class="ui active item" href="/Landlords/editdetails">Edit Details</a>
+  <a class="ui item" href="/InputData">Input data</a>
+  <a class="ui item" href="/Report">Report</a>
+  <a class="ui item" href="/Contact">Contact</a>
+  <a class="ui item" href="/Logout">Logout</a>
 </nav>
 
 <section class="ui segment">
-  <div class="ui grid">
+<div class="ui grid">
   <div class="eight wide colume">
 	<h2>Create a MyRent Landlord account</h2>
 	<h5>Register using a valid email address</h5>
 
 	<div class="ui fluid form segment">
-		<form action="/Landlords/register" method="POST">
+		<form action="/Accounts/register" method="POST">
 			<div class="two fields">
 				<div class="field">
 					<input placeholder="First Name" name="firstName" type="text">
@@ -70,4 +71,4 @@
 	</div>
 	</div>
 </section>
-<script src="@{'/public/javascripts/signup.js'}"></script>
+</section>
