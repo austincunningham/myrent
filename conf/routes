@@ -14,6 +14,13 @@ POST    /Landlords/register                     Landlords.register
 GET     /editdetail			            	    Landlords.editdetail
 POST 	/Landlords/editDetails					Landlords.editDetails
 
+# Tenants
+GET     /Tenants/Login					    	Tenants.login
+GET		/Tenants/Signup						    Tenants.signup
+POST    /Tenants/authenticate                	Tenants.authenticate
+POST    /Tenants/register                     	Tenants.register
+
+
 # InputData
 GET     /InputData								InputData.index
 POST    /InputData/InputData					InputData.InputData

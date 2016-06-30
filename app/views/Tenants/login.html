@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'MyRent Tenant sign in page' /}
+
+<nav class="ui inverted green menu">
+  <a class="ui item" href="/">Welcome</a>
+  <a class="ui active item" href="/Tenants/login">Log In</a>
+  <a class="ui item" href="/Contact">Contact</a>
+  <a class="ui item" href="/Logout">Logout</a>
+</nav>
+
+<section class="ui segment">
+  <h3>Log into your Tenant account</h3>
+  <h5>Your username is the email you registered with</h5>
+  <form action="/Tenants/authenticate" method="POST">
+    <div class="ui three column grid">
+    <div class="column">
+      <div class="ui fluid form segment">
+        <div class="ui left icon input field">
+          <input placeholder="Email" name="email" type="text">
+          <i class="user icon"></i>
+        </div>
+        <div class="ui left icon input field">
+          <input placeholder="Password" type="password" name="password">
+          <i class="lock icon"></i>
+        </div>
+        <button type="submit" class="ui green submit button">Login</button>
+      </div>
+    </div>
+    </div>
+  </form>
+</section>
