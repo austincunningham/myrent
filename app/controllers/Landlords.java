@@ -166,15 +166,16 @@ public class Landlords extends Controller
 
   public static void residenceEdit(Long editResidence)
   { 
-    Logger.info("do i see the id here ?"+editResidence);
     Residence residence = Residence.findById(editResidence);
     Landlord currentLandlord = getCurrentLandlord();
     render(currentLandlord, residence);
   }
   
-  public static void residenceDelete(Long id)
+  public static void residenceDelete(Long deleteResidence)
   {
-    
+    Residence residence = Residence.findById(deleteResidence);
+    residence.delete();
+    index();    
   }
 
 }

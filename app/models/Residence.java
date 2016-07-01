@@ -5,7 +5,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -27,7 +29,7 @@ public class Residence extends Model
   public int numberBathrooms;
   @ManyToOne
   public Landlord from;
-  @OneToOne(mappedBy = "residence")
+  @OneToOne(mappedBy = "residence", cascade=CascadeType.ALL )
   public Tenant tenant;
 
   public Residence(Landlord from, String location, String type, String status, int bedrooms, int rent, int area,int numberBathrooms, Tenant tenant)
