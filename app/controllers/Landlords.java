@@ -164,9 +164,10 @@ public class Landlords extends Controller
   Welcome.index();
   }
 
-  public static void residenceEdit(Long id)
+  public static void residenceEdit(Long editResidence)
   { 
-    Residence residence = Residence.findById(id);
+    Logger.info("do i see the id here ?"+editResidence);
+    Residence residence = Residence.findById(editResidence);
     Landlord currentLandlord = getCurrentLandlord();
     render(currentLandlord, residence);
   }
