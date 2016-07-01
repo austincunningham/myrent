@@ -80,3 +80,11 @@ Residence(residence3):
     area: 10
     numberBathrooms: 1
     formatDate: Fri 01/07/16 - 07:17 PM
+    
+Tenant(barney):
+    firstName: Barney
+    lastName: Gumble
+    email: barney@gumble.com
+    password: secret
+    residence: residence1
+    

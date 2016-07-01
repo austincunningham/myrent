@@ -44,11 +44,11 @@ public class Tenants extends Controller
   public static void authenticate(String email, String password)
   {
     Logger.info("Attempting to authenticate with " + email + ":" + password);
-    Tenant user = Tenant.findByEmail(email);
-    if ((user != null) && (user.checkPassword(password) == true))
+    Tenant tenant = Tenant.findByEmail(email);
+    if ((tenant != null) && (tenant.checkPassword(password) == true))
     {
-      Logger.info("Authentication successful");
-      session.put("logged_in_userid", user.id);
+      session.put("logged_in_tenantid", tenant.id);
+      Logger.info("Authentication successful for tentant id : " +tenant.id);
       InputData.index();
     }
     else
@@ -63,14 +63,15 @@ public class Tenants extends Controller
  */
   public static Tenant getCurrentTenant()
   {
-    String userId = session.get("logged_in_userid");
-    Logger.info("Session id", userId);
+    String userId = session.get("logged_in_tenantid");
+    String id = session.get(userId);
+    Logger.info("tenant Session id "+ userId);
     if (userId == null)
     {
       return null;
     }
     Tenant logged_in_user = Tenant.findById(Long.parseLong(userId));
-    Logger.info("Logged in User: " + logged_in_user.firstName);
+    Logger.info("Logged in Tenant: " + logged_in_user.firstName);
     return logged_in_user;
   }
 

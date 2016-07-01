@@ -37,7 +37,13 @@ public class Landlords extends Controller
  */
   public static void logout()
   {
+    Landlord landlord = getCurrentLandlord();
+    Tenant tenant = Tenants.getCurrentTenant();
+    //Logger.info("Logging out tenant : ", tenant.firstName);
+    //Logger.info("Logging out landlord : "+ landlord.firstName);
     session.clear();
+    //Landlord ll = getCurrentLandlord();
+    //Logger.info("is Landlord logged out ", ll.firstName);
     Welcome.index();
   }
 /**
@@ -65,11 +71,11 @@ public class Landlords extends Controller
   public static void authenticate(String email, String password)
   {
     Logger.info("Attempting to authenticate with " + email + ":" + password);
-    Landlord user = Landlord.findByEmail(email);
-    if ((user != null) && (user.checkPassword(password) == true))
+    Landlord landlord = Landlord.findByEmail(email);
+    if ((landlord != null) && (landlord.checkPassword(password) == true))
     {
-      Logger.info("Authentication successful");
-      session.put("logged_in_userid", user.id);
+      session.put("logged_in_landlordid", landlord.id);
+      Logger.info("Authentication successful for landlord id "+ landlord.id);
       InputData.index();
     }
     else
@@ -84,13 +90,13 @@ public class Landlords extends Controller
  */
   public static Landlord getCurrentLandlord()
   {
-    String userId = session.get("logged_in_userid");
+    String userId = session.get("logged_in_landlordid");
     if (userId == null)
     {
       return null;
     }
     Landlord logged_in_user = Landlord.findById(Long.parseLong(userId));
-    Logger.info("Logged in User: " + logged_in_user.firstName);
+    Logger.info("Logged in Landlord: " + logged_in_user.firstName);
     return logged_in_user;
   }
   
