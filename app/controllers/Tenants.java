@@ -28,10 +28,10 @@ public class Tenants extends Controller
  * @param password
  * @param tenantReference
  */
-  public static void register(String firstName, String lastName, String email, String password, String tenantReference)
+  public static void register(String firstName, String lastName, String email, String password, Residence residence)
   {
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
-    Tenant tenant = new Tenant(firstName, lastName, email, password,tenantReference);
+    Tenant tenant = new Tenant(firstName, lastName, email, password,residence);
     tenant.save();
     login();
 

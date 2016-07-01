@@ -23,10 +23,10 @@ public class InputData extends Controller
    * @param status
    * @param type
    */
-  public static void InputData(String location, int rent,int bedrooms, String status, String type,int area, int numberBathrooms)
+  public static void InputData(String location, int rent,int bedrooms, String status, String type,int area, int numberBathrooms, Tenant tenant)
   {
     Landlord landlord = Landlords.getCurrentLandlord();
-    Residence locate = new Residence(landlord, location,type ,status, bedrooms,rent, area, numberBathrooms);
+    Residence locate = new Residence(landlord, location,type ,status, bedrooms,rent, area, numberBathrooms, tenant);
     locate.save();
     index();
   }

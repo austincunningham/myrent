@@ -1,5 +1,6 @@
 package models;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import play.db.jpa.Model;
 
@@ -10,15 +11,18 @@ public class Tenant extends Model
   public String lastName;
   public String email;
   public String password;
-  public String tenantReference;
   
-  public Tenant(String firstName, String lastName, String email,String password, String tenantReference)
+  @OneToOne
+  public Residence residence;
+  
+  
+  public Tenant(String firstName, String lastName, String email,String password, Residence residence)
   {
     this.firstName = firstName;
     this.lastName  = lastName;
     this.email     = email;
     this.password  = password;
-    this.tenantReference = tenantReference;
+    this.residence = residence;
   }
   
   public static Tenant findByEmail(String email)
