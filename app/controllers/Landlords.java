@@ -12,10 +12,17 @@ public class Landlords extends Controller
 
   public static void index()
   { 
-    List<Residence> residence = new ArrayList();
-    residence = Residence.findAll();
-    
+    List<Residence> AllResidence = new ArrayList();
+    AllResidence = Residence.findAll();
     Landlord currentLandlord = getCurrentLandlord();
+    List<Residence> residence = new ArrayList();
+    for(Residence res : AllResidence)
+    {
+      if( res.from.id == currentLandlord.id)
+      {
+        residence.add(res);
+      }
+    }
     render(currentLandlord, residence);
   }
 
