@@ -76,7 +76,7 @@ public class Landlords extends Controller
     {
       session.put("logged_in_landlordid", landlord.id);
       Logger.info("Authentication successful for landlord id "+ landlord.id);
-      InputData.index();
+      index();
     }
     else
     {

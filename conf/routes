@@ -6,6 +6,7 @@
 GET     /   									Welcome.index
 
 # Landlords
+GET 	/Landlords								Landlords.index
 GET     /Landlords/Login						Landlords.login
 GET 	/Logout					            	Landlords.logout
 GET		/Landlords/Signup						Landlords.signup

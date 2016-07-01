@@ -8,7 +8,6 @@
 war
 db
 eclipse
-/eclipse
 lib
 log
 logs
@@ -22,7 +21,6 @@ conf/crud/*
 public/crud/*
 target
 tmp
-/tmp
 test-result
 server.pid
 *.iml

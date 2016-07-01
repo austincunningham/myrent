@@ -1,0 +1,92 @@
+#{extends 'main.html' /}
+#{set title:'MyRent' /}
+
+<nav class="ui inverted green menu">
+  <a class="ui item" href="/">Welcome</a>
+  <a class="ui active item" href="/Landlords">Landlord</a>
+  <a class="ui item" href="/Contact">Contact</a>
+  <a class="ui item" href="/Logout">Logout</a>
+</nav>
+
+<div class="ui ten wide grid">
+  <div class="five wide column">
+	<section class="ui form segment">
+	  <form action="/editdetail" method="POST">
+		<div class="field">
+	        <button class="ui big teal submit icon button">
+	  			<i class="user icon"></i>
+				  Edit Landlord Details
+			</button>
+		</div>
+		</form>
+	</section>
+	
+	<section class="ui form segment">
+	  <form action="/InputData/InputData" method="POST">
+		<h2 class="ui dividing header">Edit Residence Details</h2>   
+	      <div class="two fields">
+			<div class="field">
+			<label>Residence List</label>
+			  <div class="column">
+				<div class="ui selection dropdown">
+				<input name="type" type="hidden">
+				<div class="default text">Select Residence</div>
+				<i class="dropdown icon"></i>
+				<div class="menu">
+				  <div class="item" data-value="Flat-Apartment">Flat|Apartment</div>
+				  <div class="item" data-value="Studio">Studio</div>
+	              <div class="item" data-value="House">House</div>
+				</div>
+			  </div>
+		    </div>
+	      </div>
+        </div>
+		<button class="ui teal submit button">Edit Residence <i class="home icon"></i></button>
+    <div class="ui error message"></div>
+    </form>
+    </section>
+  </div>
+  
+  <div class="five wide column">  
+    <section class="ui form segment">
+      <form action="/InputData" method="POST">
+	    <div class="field">
+		  <button class="ui big teal submit icon button">
+		  <i class="home icon"></i>
+          Add Residence
+		  </button>
+       </div>
+       </form>
+  </section>
+  <section class="ui form segment">
+	<form action="/landlords/nputData" method="POST">
+		<h2 class="ui dividing header">Delete Residence</h2>   
+          <div class="two fields">
+			<div class="field">
+			<label>Residence list</label>
+				<div class="column">
+					<div class="ui selection dropdown">
+						<input name="type" type="hidden">
+						<div class="default text">Select Residence</div>
+							<i class="dropdown icon"></i>
+							<div class="menu">
+								<div class="item" data-value="Flat-Apartment">Flat|Apartment</div>
+								<div class="item" data-value="Studio">Studio</div>
+								<div class="item" data-value="House">House</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="ui teal submit button">Delete Residence <i class="delete icon"></i></button>
+		<div class="ui error message"></div>
+	  </form>
+      </section>
+  </div>
+</div>
+
+
+
+
+
+   
