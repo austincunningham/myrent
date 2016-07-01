@@ -1,25 +1,26 @@
 /**
  * Created by austin on 01/07/2016.
+ * semantic ui validation 
  */
 $(document).ready(function() {
-  $('#editresidence').dropdown();
-  $('#deleteresidence').dropdown();
+  $('#editResidence').dropdown();
+  $('#deleteResidence').dropdown();
 
   $('.ui.form').form({
     fields: {
-      eircode_delete: {
-        identifier: 'eircode_delete',
+      deleteResidence: {
+        identifier: 'deleteResidence',
         rules: [{
           type: 'empty',
-          prompt: 'Select residence to delete'
+          prompt: 'Select residence to delete from the dropdown'
         }]
       },
 
-      eircode_edit: {
-        identifier: 'eircode_edit',
+      editResidence: {
+        identifier: 'editResidence',
         rules: [{
           type: 'empty',
-          prompt: 'Select residence to edit'
+          prompt: 'Select residence to edit from the dropdown'
         }]
       }
     }

@@ -28,14 +28,14 @@
 			<div class="field">
 			<label>Residence List</label>
 			  <div class="column">
-				<div class="ui selection dropdown">
-				<input name="type" type="hidden">
+				<div class="ui selection dropdown" id="editResidence">
+				<input name="editResidence" type="hidden">
 				<div class="default text">Select Residence</div>
 				<i class="dropdown icon"></i>
 				<div class="menu">
-				  <div class="item" data-value="Flat-Apartment">Flat|Apartment</div>
-				  <div class="item" data-value="Studio">Studio</div>
-	              <div class="item" data-value="House">House</div>
+				  #{list items:residence, as:'res'}
+					<div class="item" data-value="Flat-Apartment">${res.location}</div>
+		          #{/list}
 				</div>
 			  </div>
 		    </div>
@@ -65,14 +65,14 @@
 			<div class="field">
 			<label>Residence list</label>
 				<div class="column">
-					<div class="ui selection dropdown">
-						<input name="type" type="hidden">
+					<div class="ui selection dropdown" id="deleteResidence">
+						<input name="deleteResidence" type="hidden">
 						<div class="default text">Select Residence</div>
 							<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item" data-value="Flat-Apartment">Flat|Apartment</div>
-								<div class="item" data-value="Studio">Studio</div>
-								<div class="item" data-value="House">House</div>
+							   #{list items:residence, as:'res'}
+								  <div class="item" data-value="Flat-Apartment">${res.location}</div>
+							   #{/list}
 							</div>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
       </section>
   </div>
 </div>
-
+<script src="@{'/public/javascripts/landlord.js'}"></script>
 
 
 

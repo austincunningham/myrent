@@ -11,9 +11,12 @@ public class Landlords extends Controller
 {
 
   public static void index()
-  {
+  { 
+    List<Residence> residence = new ArrayList();
+    residence = Residence.findAll();
+    
     Landlord currentLandlord = getCurrentLandlord();
-    render(currentLandlord);
+    render(currentLandlord, residence);
   }
 
   public static void signup()
