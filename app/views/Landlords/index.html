@@ -22,7 +22,7 @@
 	</section>
 	
 	<section class="ui form segment">
-	  <form action="/InputData/InputData" method="POST">
+	  <form action="/Landlord/residenceEdit" method="POST">
 		<h2 class="ui dividing header">Edit Residence Details</h2>   
 	      <div class="two fields">
 			<div class="field">
@@ -34,7 +34,7 @@
 				<i class="dropdown icon"></i>
 				<div class="menu">
 				  #{list items:residence, as:'res'}
-					<div class="item" data-value="Flat-Apartment">${res.location}</div>
+					<div class="item" data-value="${res.id}">${res.location}</div>
 		          #{/list}
 				</div>
 			  </div>
@@ -59,7 +59,7 @@
        </form>
   </section>
   <section class="ui form segment">
-	<form action="/landlords/nputData" method="POST">
+	<form action="/Landlords/residenceDelete" method="POST">
 		<h2 class="ui dividing header">Delete Residence</h2>   
           <div class="two fields">
 			<div class="field">
@@ -71,7 +71,7 @@
 							<i class="dropdown icon"></i>
 							<div class="menu">
 							   #{list items:residence, as:'res'}
-								  <div class="item" data-value="Flat-Apartment">${res.location}</div>
+								  <div class="item" data-value="${res.id}">${res.location}</div>
 							   #{/list}
 							</div>
 						</div>

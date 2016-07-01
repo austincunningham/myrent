@@ -9,7 +9,10 @@ import models.*;
 
 public class Landlords extends Controller
 {
-
+/**
+ * Renders Landlords/index.html 
+ * filters residences list to current logged in landlords residences
+ */
   public static void index()
   { 
     List<Residence> AllResidence = new ArrayList();
@@ -49,11 +52,7 @@ public class Landlords extends Controller
   {
     Landlord landlord = getCurrentLandlord();
     Tenant tenant = Tenants.getCurrentTenant();
-    //Logger.info("Logging out tenant : ", tenant.firstName);
-    //Logger.info("Logging out landlord : "+ landlord.firstName);
     session.clear();
-    //Landlord ll = getCurrentLandlord();
-    //Logger.info("is Landlord logged out ", ll.firstName);
     Welcome.index();
   }
 /**
@@ -163,6 +162,18 @@ public class Landlords extends Controller
   landlord.save();
 
   Welcome.index();
+  }
+
+  public static void residenceEdit(Long id)
+  { 
+    Residence residence = Residence.findById(id);
+    Landlord currentLandlord = getCurrentLandlord();
+    render(currentLandlord, residence);
+  }
+  
+  public static void residenceDelete(Long id)
+  {
+    
   }
 
 }

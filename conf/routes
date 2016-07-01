@@ -14,7 +14,8 @@ POST    /Landlords/authenticate                 Landlords.authenticate
 POST    /Landlords/register                     Landlords.register
 GET     /editdetail			            	    Landlords.editdetail
 POST 	/Landlords/editDetails					Landlords.editDetails
-GET     /Landlords/residenceEdit				Landlords.
+POST    /Landlords/residenceEdit     			Landlords.residenceEdit
+POST    /Landlords/residenceDelete				Landlords.residenceDelete
 
 # Tenants
 GET     /Tenants/Login					    	Tenants.login
