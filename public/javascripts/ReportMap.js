@@ -12,9 +12,7 @@ function requestReport() {
 function initialize() {
   const center = new google.maps.LatLng(52.2514845,-7.1265728);
   const initRadius = 10000;
-  
   const mapProp = {
-//    const mapOptions = {
     center: center,
     zoom: 7,
     mapTypeId: google.maps.MapTypeId.ROAD

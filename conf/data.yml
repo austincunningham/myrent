@@ -46,7 +46,7 @@ Landlord(maggie):
     line1Address: 742 Evergreen Terrace
     line2Address: Springfield way
     city: Springfield
-    county: Springfield County
+    county: Springfield County 
     
 Residence(residence1):
     from: marge
@@ -87,4 +87,19 @@ Tenant(barney):
     email: barney@gumble.com
     password: secret
     residence: residence1
+
+Tenant(moe):
+    firstName: Moe
+    lastName: Szyslak
+    email: moe@szyslak.com
+    password: secret
+    residence: residence2
+    
+Tenant(ned):
+    firstName: Ned
+    lastName: Flanders
+    email: ned@flanders.com
+    password: secret
+    residence: residence3
+
     

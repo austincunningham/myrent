@@ -10,8 +10,8 @@ $('.ui.form')
       identifier: 'rent',
       rules: [
         {
-          type   : 'empty',
-          prompt : 'Please enter the rent at specified location'
+          type: 'empty',
+          prompt: 'Please enter the rent at specified location'
         }
       ]
     },
@@ -19,8 +19,8 @@ $('.ui.form')
       identifier: 'bedrooms',
       rules: [
         {
-          type   : 'empty',
-          prompt : 'Please enter number of Bedrooms at specified location'
+          type: 'empty',
+          prompt: 'Please enter number of Bedrooms at specified location'
         }
       ]
     },
@@ -28,17 +28,17 @@ $('.ui.form')
         identifier: 'area',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter area of the property at specified location'
+            type: 'empty',
+            prompt: 'Please enter area of the property at specified location'
           }
         ]
       },
-      type: {
+    type: {
           identifier: 'type',
           rules: [
             {
-              type   : 'empty',
-              prompt : 'Please enter the type of the property at specified location'
+              type: 'empty',
+              prompt: 'Please enter the type of the property at specified location'
             }
           ]
         },

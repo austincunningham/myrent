@@ -27,7 +27,7 @@ public class Residence extends Model
   public int numberBathrooms;
   @ManyToOne
   public Landlord from;
-  @OneToOne
+  @OneToOne(mappedBy = "residence")
   public Tenant tenant;
 
   public Residence(Landlord from, String location, String type, String status, int bedrooms, int rent, int area,int numberBathrooms, Tenant tenant)
