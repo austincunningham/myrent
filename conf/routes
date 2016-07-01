@@ -27,6 +27,7 @@ POST    /Tenants/register                     	Tenants.register
 # InputData
 GET     /InputData								InputData.index
 POST    /InputData/InputData					InputData.InputData
+POST	/InputData/UpdateData/{id}  			InputData.UpdateData
 
 # Report
 GET		/Report		        					Report.index

@@ -30,5 +30,12 @@ public class InputData extends Controller
     locate.save();
     index();
   }
+  public static void UpdateData(Long id, int rent)
+  {
+    Residence residence = Residence.findById(id);
+    residence.rent = rent;
+    residence.save();
+    Landlords.index();
+  }
   
 }
