@@ -27,7 +27,6 @@ public class InputData extends Controller
    * @param type
    * @param eircode
    * @param numberBathrooms
-   * @param tenant
    * @param area
    */
   public static void InputData(String location, String eircode, int rent, int bedrooms, String status, String type,
