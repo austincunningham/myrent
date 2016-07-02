@@ -21,7 +21,6 @@ public class Residence extends Model
 
   public int rent;
   public int bedrooms;
-  public String status;
   public String type;
   public String location;
   public String formatDate;
@@ -37,7 +36,7 @@ public class Residence extends Model
   public Tenant tenant;
   
 
-  public Residence(Landlord from, String location,String eircode, String type, String status, int bedrooms, int rent, int area,int numberBathrooms)
+  public Residence(Landlord from, String location,String eircode, String type, int bedrooms, int rent, int area,int numberBathrooms)
   {
     this.from = from;
     this.location = location;
@@ -45,7 +44,6 @@ public class Residence extends Model
     this.rent = rent;
     this.type = type;
     this.bedrooms = bedrooms;
-    this.status = status;
     this.area = area;
     this.numberBathrooms = numberBathrooms;
     formatDate = dateFormatter();
