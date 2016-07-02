@@ -15,21 +15,31 @@ public class InputData extends Controller
     Landlord currentLandlord = Landlords.getCurrentLandlord();
     render(currentLandlord);
   }
+
   /**
-   * Data passed from form in InputData\index.html to model Residence to populate DB
+   * Data passed from form in InputData\index.html to model Residence to
+   * populate DB
+   * 
    * @param location
    * @param rent
    * @param bedrooms
    * @param status
    * @param type
+   * @param eircode
+   * @param numberBathrooms
+   * @param tenant
+   * @param area
    */
-  public static void InputData(String location, int rent,int bedrooms, String status, String type,int area, int numberBathrooms, Tenant tenant)
+  public static void InputData(String location, String eircode, int rent, int bedrooms, String status, String type,
+      int area, int numberBathrooms, Tenant tenant)
   {
     Landlord landlord = Landlords.getCurrentLandlord();
-    Residence locate = new Residence(landlord, location,type ,status, bedrooms,rent, area, numberBathrooms, tenant);
+    Residence locate = new Residence(landlord, location, eircode, type, status, bedrooms, rent, area, numberBathrooms,
+        tenant);
     locate.save();
     index();
   }
+
   public static void UpdateData(Long id, int rent)
   {
     Residence residence = Residence.findById(id);
@@ -37,5 +47,5 @@ public class InputData extends Controller
     residence.save();
     Landlords.index();
   }
-  
+
 }

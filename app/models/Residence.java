@@ -27,16 +27,18 @@ public class Residence extends Model
   public String formatDate;
   public int area;
   public int numberBathrooms;
+  public String eircode;
   @ManyToOne
   public Landlord from;
  // @OneToOne(mappedBy = "residence", cascade=CascadeType.ALL )
   //@OneToOne
   public Tenant tenant;
 
-  public Residence(Landlord from, String location, String type, String status, int bedrooms, int rent, int area,int numberBathrooms, Tenant tenant)
+  public Residence(Landlord from, String location,String eircode, String type, String status, int bedrooms, int rent, int area,int numberBathrooms, Tenant tenant)
   {
     this.from = from;
     this.location = location;
+    this.eircode = eircode;
     this.rent = rent;
     this.type = type;
     this.bedrooms = bedrooms;
