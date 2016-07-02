@@ -1,5 +1,9 @@
 package models;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 
@@ -14,6 +18,9 @@ public class Landlord extends Model
   public String line2Address;
   public String city;
   public String county;
+  
+  @OneToMany
+  public List<Residence> residence = new ArrayList<>();
 
   public Landlord(String firstName, String lastName, String email, 
       String password,String line1Address,String line2Address,String city, String country)

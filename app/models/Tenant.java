@@ -12,7 +12,7 @@ public class Tenant extends Model
   public String email;
   public String password;
   
-  //@OneToOne
+  @OneToOne
   public Residence residence;
   
   
