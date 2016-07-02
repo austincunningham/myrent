@@ -32,12 +32,12 @@ public class Residence extends Model
   @ManyToOne
   public Landlord from;
   
- // @OneToOne(mappedBy = "residence", cascade=CascadeType.ALL )
+ //removes both sides of relationship from DB when Residence is deleted 
   @OneToOne(mappedBy = "residence", cascade = CascadeType.REMOVE)
   public Tenant tenant;
   
 
-  public Residence(Landlord from, String location,String eircode, String type, String status, int bedrooms, int rent, int area,int numberBathrooms, Tenant tenant)
+  public Residence(Landlord from, String location,String eircode, String type, String status, int bedrooms, int rent, int area,int numberBathrooms)
   {
     this.from = from;
     this.location = location;
@@ -48,7 +48,6 @@ public class Residence extends Model
     this.status = status;
     this.area = area;
     this.numberBathrooms = numberBathrooms;
-    this.tenant = tenant;
     formatDate = dateFormatter();
   }
 /**

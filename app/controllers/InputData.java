@@ -31,11 +31,10 @@ public class InputData extends Controller
    * @param area
    */
   public static void InputData(String location, String eircode, int rent, int bedrooms, String status, String type,
-      int area, int numberBathrooms, Tenant tenant)
+      int area, int numberBathrooms)
   {
     Landlord landlord = Landlords.getCurrentLandlord();
-    Residence locate = new Residence(landlord, location, eircode, type, status, bedrooms, rent, area, numberBathrooms,
-        tenant);
+    Residence locate = new Residence(landlord, location, eircode, type, status, bedrooms, rent, area, numberBathrooms);
     locate.save();
     index();
   }
