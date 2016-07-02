@@ -29,7 +29,8 @@ public class Residence extends Model
   public int numberBathrooms;
   @ManyToOne
   public Landlord from;
-  @OneToOne(mappedBy = "residence", cascade=CascadeType.ALL )
+ // @OneToOne(mappedBy = "residence", cascade=CascadeType.ALL )
+  //@OneToOne
   public Tenant tenant;
 
   public Residence(Landlord from, String location, String type, String status, int bedrooms, int rent, int area,int numberBathrooms, Tenant tenant)
