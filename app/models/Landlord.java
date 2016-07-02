@@ -2,6 +2,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -19,8 +20,8 @@ public class Landlord extends Model
   public String city;
   public String county;
   
-  @OneToMany
-  public List<Residence> residence = new ArrayList<>();
+  @OneToMany(mappedBy = "from", cascade = CascadeType.ALL)
+  public List<Residence> residences = new ArrayList<>();
 
   public Landlord(String firstName, String lastName, String email, 
       String password,String line1Address,String line2Address,String city, String country)
