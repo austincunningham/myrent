@@ -33,8 +33,9 @@ public class Residence extends Model
   public Landlord from;
   
  // @OneToOne(mappedBy = "residence", cascade=CascadeType.ALL )
-  @OneToOne(mappedBy = "residence")
+  @OneToOne(mappedBy = "residence", cascade = CascadeType.REMOVE)
   public Tenant tenant;
+  
 
   public Residence(Landlord from, String location,String eircode, String type, String status, int bedrooms, int rent, int area,int numberBathrooms, Tenant tenant)
   {
