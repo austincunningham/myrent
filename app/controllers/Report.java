@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Residence;
+import models.Tenant;
 import models.Landlord;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -17,12 +18,14 @@ public class Report extends Controller
   /**
    * This method executed before each action call in the controller.
    * Checks that a user has logged in.
-   * If no user logged in the user is presented with the log in screen.
+   * If no user logged in the user is presented with the welcome screen.
    */
   static void checkAuthentification()
   {
-    if(session.contains("logged_in_userid") == false)
-      Landlords.login();
+    if(session.contains("logged_in_landlordid") == false && session.contains("logged_in_tenantid") == false )
+    {
+      Welcome.index();
+    }
   }
 
   /**
@@ -36,6 +39,7 @@ public class Report extends Controller
     // All reported residences will fall within this circle
     Circle circle = new Circle(latcenter, lngcenter, radius);
     Landlord currentLandlord = Landlords.getCurrentLandlord();
+    Tenant currentTenant = Tenants.getCurrentTenant();
     List<Residence> residences = new ArrayList<Residence>();
     // Fetch all residences and filter out those within circle
     List<Residence> residencesAll = Residence.findAll();
@@ -48,7 +52,7 @@ public class Report extends Controller
         residences.add(res);
       }
     }
-    render("Report/renderReport.html", currentLandlord, circle, residences);
+    render("Report/renderReport.html", currentLandlord, currentTenant, circle, residences);
   }
 
   /**
@@ -57,7 +61,8 @@ public class Report extends Controller
    */
   public static void index()
   {
+    Tenant currentTenant = Tenants.getCurrentTenant();
     Landlord currentLandlord = Landlords.getCurrentLandlord();
-    render(currentLandlord);
+    render(currentLandlord, currentTenant);
   }
 }

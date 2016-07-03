@@ -17,6 +17,7 @@ public class Landlords extends Controller
   { 
     List<Residence> AllResidence = new ArrayList();
     AllResidence = Residence.findAll();
+    Tenant currentTenant = Tenants.getCurrentTenant();
     Landlord currentLandlord = getCurrentLandlord();
     List<Residence> residence = new ArrayList();
     for(Residence res : AllResidence)
@@ -26,13 +27,14 @@ public class Landlords extends Controller
         residence.add(res);
       }
     }
-    render(currentLandlord, residence);
+    render(currentLandlord, residence, currentTenant);
   }
 
   public static void signup()
   {
+    Tenant currentTenant = Tenants.getCurrentTenant();
     Landlord currentLandlord = getCurrentLandlord();
-    render(currentLandlord);
+    render(currentLandlord, currentTenant);
   }
 
   public static void login()
@@ -42,8 +44,9 @@ public class Landlords extends Controller
   }
   public static void editdetail()
   {
-    Landlord landlord = getCurrentLandlord();
-    render(landlord);
+    Landlord currentLandlord = getCurrentLandlord();
+    Tenant currentTenant = Tenants.getCurrentTenant();
+    render(currentLandlord, currentTenant);
   }
 /**
  * removes the logged_in_landlordid from the session
