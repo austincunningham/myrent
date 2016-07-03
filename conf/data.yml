@@ -135,4 +135,9 @@ Tenant(ned):
     password: secret
     residence: residence3
 
+Tenant(edna):
+    firstName: Edna
+    lastName: K
+    email: edna@k.com
+    password: secret
     

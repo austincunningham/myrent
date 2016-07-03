@@ -134,9 +134,12 @@ public class Tenants extends Controller
 
   public static void selectResidence(long id)
   {
-    Residence residence = Residence.findById(id);
+    Logger.info(" residence id from form : "+id);
+    Residence res = Residence.findById(id);
     Tenant tenant = Tenants.getCurrentTenant();
-    tenant.residence = residence;
+    tenant.residence = res;
+    //Logger.info(" res.eircode : "+res.eircode);
     tenant.save();
+    index();
   }
 }
