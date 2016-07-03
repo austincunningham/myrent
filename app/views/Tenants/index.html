@@ -17,7 +17,12 @@
 		  <button class="ui yellow labeled icon button">
 			<i class="world icon"></i> Eircode
 		</button>
+		#{if tenantResidence != null}
 		<input readonly value="${tenantResidence.eircode}" type="text" name="eircode">
+		#{/if}
+		#{if tenantResidence == null}
+		<input readonly placeholder value="Select new residence" type="text" name="eircode">
+		#{/if}
 		</div>
       </div>    
     </section>
@@ -53,7 +58,7 @@
 					</div>
 				</div>
 			</div>
-			<button class="ui yellow submit button">Delete Residence <i class="delete icon"></i></button>
+			<button class="ui yellow submit button">Select Residence <i class="delete icon"></i></button>
 		<div class="ui error message"></div>
 	  </form>
       </section>

@@ -24,6 +24,7 @@ GET 	/Tenants/Logout		            	    Tenants.logout
 GET		/Tenants/Signup						    Tenants.signup
 POST    /Tenants/authenticate                	Tenants.authenticate
 POST    /Tenants/register                     	Tenants.register
+POST    /Tenants/deleteResidence				Tenants.deleteResidence
 
 
 # InputData

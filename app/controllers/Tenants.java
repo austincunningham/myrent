@@ -121,5 +121,22 @@ public class Tenants extends Controller
     Logger.info("Logged in Tenant: " + logged_in_user.firstName);
     return logged_in_user;
   }
+  /**
+   * Search for current logged in Tenant and sets the residence to null
+   */
+  public static void deleteResidence()
+  {
+    Tenant tenant = Tenants.getCurrentTenant();
+    tenant.residence = null;
+    tenant.save();
+    index();  
+  }
 
+  public static void selectResidence(long id)
+  {
+    Residence residence = Residence.findById(id);
+    Tenant tenant = Tenants.getCurrentTenant();
+    tenant.residence = residence;
+    tenant.save();
+  }
 }
