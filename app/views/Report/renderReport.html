@@ -7,6 +7,7 @@
   <a class="ui active item" href="/Report">Report</a>
   <a class="ui item" href="/Contact">Contact</a>
   #{if currentLandlord != null}
+    <a class="ui item" href="/Landlords">Landlord</a>
     <a class="ui item" href="/Landlords/Logout">Landlord Logout</a>
   #{/if} 
   #{if currentTenant != null}
@@ -31,7 +32,12 @@
                 </thead>
                 <tbody>           
                     <tr>
-                      <td>${currentLandlord.firstName} ${currentLandlord.lastName}</td>
+                      #{if currentLandlord != null}
+                        <td>${currentLandlord.firstName} ${currentLandlord.lastName}</td>
+                      #{/if}
+                      #{if currentTenant != null}
+                        <td>${currentTenant.firstName} ${currentTenant.lastName}</td>
+                      #{/if}
                       <td>${circle.radius}</td>
                       <td>${circle.latcenter}</td>
                       <td>${circle.lngcenter}</td>
