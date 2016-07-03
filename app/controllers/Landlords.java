@@ -177,7 +177,11 @@ public class Landlords extends Controller
     Landlord currentLandlord = getCurrentLandlord();
     render(currentLandlord, residence);
   }
-  
+  /**
+   * finds residence by id and deletes it , because of OneToOne relationship the linked tenant is also deleted
+   * backupTenant backs up linked tenant and restores after residence delete 
+   * @param deleteResidence
+   */
   public static void residenceDelete(Long deleteResidence)
   {
     Residence residence = Residence.findById(deleteResidence);

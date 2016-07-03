@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'MyRent' /}
+#{set title:'MyRent Tenants page' /}
 
 <nav class="ui inverted green menu">
   <a class="ui item" href="/">Welcome</a>
@@ -8,8 +8,8 @@
   <a class="ui item" href="/Tenants/Logout">Logout</a>
 </nav>
 
-<div class="ui ten wide grid">  
-  <div class="eight wide column">
+<div class="ui sixteen wide grid">  
+  <div class="six wide column">
     <section class="ui segment">
       <div class="field">
       <h3 class="ui dividing header">Current Residence Eircode</h3>
@@ -58,33 +58,34 @@
 					</div>
 				</div>
 			</div>
-			<button class="ui yellow submit button">Select Residence <i class="delete icon"></i></button>
+			<button class="ui yellow submit button">Add Residence <i class="home icon"></i></button>
 		<div class="ui error message"></div>
 	  </form>
       </section>
+		</div>
+		  <div class="eight wide column">
+			<section class="ui segment">
+			  <h4>Define the region for which you require a report</h4>
+			  <form action="/Tenants/Report" method="POST">    
+			    Size and position circle to select region for report 
+			    <div  class="ui 4:3 embed" id="map-canvas"></div>
+			    
+
+			    <button type="submit" class="ui big yellow submit button" onclick="requestReport()">Generate Report</button>
+			    <div style="visibility: hidden" name="circledata" id="circledata">
+			      <input type="text"  id="radius" name="radius">
+			      <input type="text"  id="latcenter" name="latcenter">
+			      <input type="text"  id="lngcenter" name="lngcenter">
+			    </div>
+			   </div>
+			  </form>
+		    </section>
 		  </div>
-  <div class="eight wide column">
-	<section class="ui segment">
-	  <h4>Define the region for which you require a report</h4>
-	  <form action="/Report/generateReport" method="POST">    
-	    Size and position circle to select region for report 
-	    <div class="ui 4:3 embed" id="map-canvas"></div>
-	    <br>
-	    <div class="ui horizontal divider">
-	    </div>
-	    <br>
-	    <button type="submit" class="ui big inverted submit button" onclick="requestReport()">Generate Report</button>
-	    <div style="visibility: hidden" name="circledata" id="circledata">
-	      <input type="text"  id="radius" name="radius">
-	      <input type="text"  id="latcenter" name="latcenter">
-	      <input type="text"  id="lngcenter" name="lngcenter">
-	    </div>
-	  </form>
-    </section>
-  </div>
   
 </div>
 <script src="@{'/public/javascripts/tenants.js'}"></script>
+
+<script src="@{'/public/javascripts/tenantsMap.js'}"></script>
 
 
 
