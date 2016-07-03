@@ -69,7 +69,7 @@ public class Tenants extends Controller
     {
       session.put("logged_in_tenantid", tenant.id);
       Logger.info("Authentication successful for tentant id : " +tenant.id);
-      InputData.index();
+      index();
     }
     else
     {

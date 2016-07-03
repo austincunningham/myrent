@@ -18,6 +18,7 @@ POST    /Landlords/residenceEdit     			Landlords.residenceEdit
 POST    /Landlords/residenceDelete				Landlords.residenceDelete
 
 # Tenants
+GET		/Tenants								Tenants.index
 GET     /Tenants/Login					    	Tenants.login
 GET 	/Tenants/Logout		            	    Tenants.logout
 GET		/Tenants/Signup						    Tenants.signup
