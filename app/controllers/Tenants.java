@@ -20,6 +20,19 @@ public class Tenants extends Controller
     render();
   }
 
+  /**
+   * removes the logged_in_tenantid from the session
+   */
+    public static void logout()
+    {
+      Landlord landlord = Landlords.getCurrentLandlord();
+      Tenant tenant = getCurrentTenant();
+      
+      //session.clear();
+      // session.get looks for logged_in_tenantid to confirm logged in tenant
+      session.remove("logged_in_tenantid");
+      Welcome.index();
+    }
 /**
  * parma passed from form in Tenants/signup.html to model User to populate DB
  * @param firstName

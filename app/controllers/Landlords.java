@@ -46,13 +46,16 @@ public class Landlords extends Controller
     render(landlord);
   }
 /**
- * clears the session id
+ * removes the logged_in_landlordid from the session
  */
   public static void logout()
   {
     Landlord landlord = getCurrentLandlord();
     Tenant tenant = Tenants.getCurrentTenant();
-    session.clear();
+    
+    //session.clear();
+    // session.get looks for logged_in_landlordid to confirm logged in landlord
+    session.remove("logged_in_landlordid");
     Welcome.index();
   }
 /**
