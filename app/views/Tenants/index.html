@@ -8,69 +8,44 @@
   <a class="ui item" href="/Tenants/Logout">Logout</a>
 </nav>
 
-<div class="ui ten wide grid">
-  <div class="five wide column">
-	<section class="ui segment">
-	  <form action="/editdetail" method="GET">
-		<div class="field">
-	        <button class="ui big teal submit icon button">
-	  			<i class="user icon"></i>
-				  Edit Landlord Details
-			</button>
+<div class="ui ten wide grid">  
+  <div class="eight wide column">
+    <section class="ui segment">
+      <div class="field">
+      <h3 class="ui dividing header">Current Residence Eircode</h3>
+        <div class="ui left action input">
+		  <button class="ui yellow labeled icon button">
+			<i class="world icon"></i> Eircode
+		</button>
+		<input readonly value="${tenantResidence.eircode}" type="text" name="eircode">
 		</div>
-		</form>
-	</section>
-	
-	<section class="ui form segment">
-	  <form action="/Landlords/residenceEdit" method="POST">
-		<h2 class="ui dividing header">Edit Residence Details</h2>   
-	      <div class="two fields">
-			<div class="field">
-			<label>Residence List</label>
-			  <div class="column">
-				<div class="ui selection dropdown" id="editResidence">
-				<input name="editResidence" type="hidden">
-				<div class="default text">Select Residence</div>
-				<i class="dropdown icon"></i>
-				<div class="menu">
-				  #{list items:residence, as:'res'}
-					<div class="item" data-value="${res.id}">${res.eircode}</div>
-		          #{/list}
-				</div>
-			  </div>
-		    </div>
-	      </div>
-        </div>
-		<button class="ui teal submit button">Edit Residence <i class="home icon"></i></button>
-    <div class="ui error message"></div>
-    </form>
+      </div>    
     </section>
-  </div>
-  
-  <div class="five wide column">  
+      
     <section class="ui form segment">
-      <form action="/InputData" method="GET">
+      <form action="/Tenants/deleteResidence" method="GET">
 	    <div class="field">
-		  <button class="ui big teal submit icon button">
+		  <button class="ui big yellow submit icon button">
 		  <i class="home icon"></i>
-          Add Residence
+          Delete Residence
 		  </button>
        </div>
-       </form>
+     </form>
   </section>
+  
   <section class="ui form segment">
 	<form action="/Landlords/residenceDelete" method="POST">
-		<h2 class="ui dividing header">Delete Residence</h2>   
+		<h2 class="ui dividing header">Select Residence</h2>   
           <div class="two fields">
 			<div class="field">
 			<label>Residence list</label>
 				<div class="column">
 					<div class="ui selection dropdown" id="deleteResidence">
-						<input name="deleteResidence" type="hidden">
+						<input name="selectResidence" type="hidden">
 						<div class="default text">Select Residence</div>
 							<i class="dropdown icon"></i>
 							<div class="menu">
-							   #{list items:residence, as:'res'}
+							   #{list items:residences, as:'res'}
 								  <div class="item" data-value="${res.id}">${res.eircode}</div>
 							   #{/list}
 							</div>
@@ -78,13 +53,33 @@
 					</div>
 				</div>
 			</div>
-			<button class="ui teal submit button">Delete Residence <i class="delete icon"></i></button>
+			<button class="ui yellow submit button">Delete Residence <i class="delete icon"></i></button>
 		<div class="ui error message"></div>
 	  </form>
       </section>
+		  </div>
+  <div class="eight wide column">
+	<section class="ui segment">
+	  <h4>Define the region for which you require a report</h4>
+	  <form action="/Report/generateReport" method="POST">    
+	    Size and position circle to select region for report 
+	    <div class="ui 4:3 embed" id="map-canvas"></div>
+	    <br>
+	    <div class="ui horizontal divider">
+	    </div>
+	    <br>
+	    <button type="submit" class="ui big inverted submit button" onclick="requestReport()">Generate Report</button>
+	    <div style="visibility: hidden" name="circledata" id="circledata">
+	      <input type="text"  id="radius" name="radius">
+	      <input type="text"  id="latcenter" name="latcenter">
+	      <input type="text"  id="lngcenter" name="lngcenter">
+	    </div>
+	  </form>
+    </section>
   </div>
+  
 </div>
-<script src="@{'/public/javascripts/landlord.js'}"></script>
+<script src="@{'/public/javascripts/tenants.js'}"></script>
 
 
 
