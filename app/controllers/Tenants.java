@@ -17,6 +17,7 @@ public class Tenants extends Controller
 
   public static void login()
   {
+    session.clear();
     render();
   }
 
@@ -77,7 +78,6 @@ public class Tenants extends Controller
   public static Tenant getCurrentTenant()
   {
     String userId = session.get("logged_in_tenantid");
-    String id = session.get(userId);
     Logger.info("tenant Session id "+ userId);
     if (userId == null)
     {

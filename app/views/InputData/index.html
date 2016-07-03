@@ -3,13 +3,16 @@
 
 <nav class="ui inverted green menu">
 	<a class="ui item" href="/">Welcome</a> 
-	#{if currentLandlord != null}
-    <a class="ui item" href="/editdetail">Edit Details</a>
-    #{/if} 
 	<a class="ui active item" href="/InputData">Input data</a> 
 	<a class="ui item" href="/Report">Report</a>
 	<a class="ui item" href="/Contact">Contact</a> 
-	<a class="ui item" href="/Logout">Logout</a>
+	#{if currentLandlord != null}
+    <a class="ui item" href="/editdetail">Edit Details</a>
+    <a class="ui item" href="/Landlords/Logout">Landlord Logout</a>
+    #{/if} 
+    #{if currentTenant != null}
+	<a class="ui item" href="/Tenants/Logout">Tenant Logout</a>
+	#{/if}
 </nav>
 
 <div class="ui two colume grid">

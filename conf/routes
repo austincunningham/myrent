@@ -8,7 +8,7 @@ GET     /   									Welcome.index
 # Landlords
 GET 	/Landlords								Landlords.index
 GET     /Landlords/Login						Landlords.login
-GET 	/Logout					            	Landlords.logout
+GET 	/Landlords/Logout		            	Landlords.logout
 GET		/Landlords/Signup						Landlords.signup
 POST    /Landlords/authenticate                 Landlords.authenticate
 POST    /Landlords/register                     Landlords.register
@@ -19,6 +19,7 @@ POST    /Landlords/residenceDelete				Landlords.residenceDelete
 
 # Tenants
 GET     /Tenants/Login					    	Tenants.login
+GET 	/Tenants/Logout		            	    Tenants.logout
 GET		/Tenants/Signup						    Tenants.signup
 POST    /Tenants/authenticate                	Tenants.authenticate
 POST    /Tenants/register                     	Tenants.register

@@ -13,7 +13,8 @@ public class InputData extends Controller
   public static void index()
   {
     Landlord currentLandlord = Landlords.getCurrentLandlord();
-    render(currentLandlord);
+    Tenant currentTenant = Tenants.getCurrentTenant();
+    render(currentLandlord, currentTenant);
   }
 
   /**

@@ -37,8 +37,8 @@ public class Landlords extends Controller
 
   public static void login()
   {
-    Landlord currentLandlord = getCurrentLandlord();
-    render(currentLandlord);
+    session.clear();
+    render();
   }
   public static void editdetail()
   {
@@ -103,6 +103,7 @@ public class Landlords extends Controller
   public static Landlord getCurrentLandlord()
   {
     String userId = session.get("logged_in_landlordid");
+    Logger.info("landlord Session id "+ userId);
     if (userId == null)
     {
       return null;
