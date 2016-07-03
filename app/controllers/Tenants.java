@@ -9,6 +9,12 @@ import models.*;
 
 public class Tenants extends Controller
 {
+  public static void index()
+  {
+    Tenant tenant = getCurrentTenant();
+    Residence tenantResidence = tenant.residence;
+    render(tenantResidence);
+  }
 
   public static void signup()
   {
