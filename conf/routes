@@ -26,6 +26,7 @@ POST    /Tenants/authenticate                	Tenants.authenticate
 POST    /Tenants/register                     	Tenants.register
 POST    /Tenants/deleteResidence				Tenants.deleteResidence
 POST    /Tenants/selectResidence				Tenants.selectResidence
+POST    /Tenants/Report							Tenants.Report
 
 
 # InputData

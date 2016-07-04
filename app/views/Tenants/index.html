@@ -14,7 +14,7 @@
       <div class="field">
       <h3 class="ui dividing header">Current Residence Eircode</h3>
         <div class="ui left action input">
-		  <button class="ui yellow labeled icon button">
+		  <button class="ui green labeled icon button">
 			<i class="world icon"></i> Eircode
 		</button>
 		#{if tenantResidence != null}
@@ -30,7 +30,7 @@
     <section class="ui form segment">
       <form action="/Tenants/deleteResidence" method="GET">
 	    <div class="field">
-		  <button class="ui big yellow submit icon button">
+		  <button class="ui big green submit icon button">
 		  <i class="home icon"></i>
           Delete Residence
 		  </button>
@@ -58,12 +58,12 @@
 					</div>
 				</div>
 			</div>
-			<button class="ui yellow submit button">Add Residence <i class="home icon"></i></button>
+			<button class="ui green submit button">Add Residence <i class="home icon"></i></button>
 		<div class="ui error message"></div>
 	  </form>
       </section>
 		</div>
-		  <div class="eight wide column">
+		  <div class="six wide column">
 			<section class="ui segment">
 			  <h4>Define the region for which you require a report</h4>
 			  <form action="/Tenants/Report" method="POST">    
@@ -71,7 +71,7 @@
 			    <div  class="ui 4:3 embed" id="map-canvas"></div>
 			    
 
-			    <button type="submit" class="ui big yellow submit button" onclick="requestReport()">Generate Report</button>
+			    <button type="submit" class="fluid ui green submit button" onclick="requestReport()">Generate Report</button>
 			    <div style="visibility: hidden" name="circledata" id="circledata">
 			      <input type="text"  id="radius" name="radius">
 			      <input type="text"  id="latcenter" name="latcenter">
