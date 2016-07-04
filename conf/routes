@@ -29,6 +29,10 @@ POST    /Tenants/selectResidence				Tenants.selectResidence
 POST    /Tenants/Report							Tenants.Report
 POST    /Tenants/vacant							Tenants.vacant
 
+# Administrator
+GET		/Administrator							Administrator.index
+GET     /Administrator/Login			    	Administrator.login
+GET 	/Administrator/Logout	           	    Administrator.logout
 
 # InputData
 GET     /InputData								InputData.index
