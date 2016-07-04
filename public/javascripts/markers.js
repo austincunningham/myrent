@@ -24,8 +24,8 @@ function initialize() {
 }
 
 /**
- * The basic map, no markers, no centre specified
- * Canvas id on html is 'googleMap'
+ * The basic map
+ * Canvas id on html is 'map-canvas'
  */
 function rendermap() {
 
@@ -33,8 +33,8 @@ function rendermap() {
   const initRadius = 10000;
 
   const mapProp = {
-    center: center,
-    zoom: 7,
+    //center: center,
+    //zoom: 7,
     mapTypeId: google.maps.MapTypeId.ROAD,
   };
 
@@ -72,7 +72,7 @@ function circleListener() {
  *
  * Use ajax call to get users and their geolocations pass returned array marker
  * locations to callback method Here is the format in which marker data stored
- * geoObj[0] is descripion. geoObj[1] is latitude geoObj[2] is longitude We use
+ * geoObj[0] is eircode. geoObj[1] is a string of latitude and longitude We use
  * geoObj[0] in the infoWindow. Click marker to reveal description.
  *
  */
@@ -138,8 +138,8 @@ function setInfoWindowListener(latlngStr) {
  * thence to a google.maps.LatLng object
  *
  * @param str
- *            str is list of strings : username, lat, lon str[0] is description
- *            str[1] is latitude str[2] is longitude
+ *            str is list of strings : str[0] is eircode
+ *            str[1] is location a string of  latitude and longitude
  * @param The
  *            object 'str' holding an individual marker data set
  * @return A google.maps.LatLng object containing the marker coordinates.
