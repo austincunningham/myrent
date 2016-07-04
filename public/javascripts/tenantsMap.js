@@ -18,7 +18,7 @@ function initialize() {
   const initRadius = 10000;
   const mapProp = {
     center: center,
-    zoom: 7,
+    zoom: 8,
     mapTypeId: google.maps.MapTypeId.ROAD
   };
   
@@ -41,10 +41,12 @@ function initialize() {
   circle.setEditable(true);//allows radius be dragging anchor point
   circle.setMap(map);
   map.setCenter(center);
-//  addMarker(map, center);
+  
   circleListener();
   
   retrieveMarkerLocations();
+  
+  
 }
 
 function circleListener()
@@ -79,18 +81,37 @@ function positionMarkers(data)
   {
       latlngStr.push(geoObj);
       });
-      fitBounds(latlngStr);
+      return latlngStr;
+      //fitBounds(latlngStr);
+      for(i=0; i<latlngStr.length; i++){
+          addMarker(map, getLatLng(latlngStr[i]));
+        }
 }
 
 function getLatLng(str)
 { 
-  latLng = str[1].split(',');
+  let latLng =  str[1].split(',');
   const lat = Number(latLng[0]);
   const lon = Number(latLng[1]);
   return new google.maps.LatLng(lat, lon);
 }
 
-function fitBounds(latlngStr)
+function addMarker(map, value)
+{
+	for(i=0; i<latlngStr.length; i++){
+  // create a marker
+    marker = new google.maps.Marker({
+      map: map,
+      position: getLatLng(latlngStr[i]),
+      title: 'Drag and drop on your property!',
+      draggable: true,
+    });
+	
+  marker.setMap(map);
+	}
+};
+
+/*function fitBounds(latlngStr)
 {
     const bounds = new google.maps.LatLngBounds();
     const infowindow = new google.maps.InfoWindow();
@@ -101,24 +122,22 @@ function fitBounds(latlngStr)
           position: getLatLng(latlngStr[i]),
           map: map
       });
-      marker.setMap(map);
-    }
-      
-/*        click marker displays message (infowindow) 
+        click marker displays message (infowindow) 
       google.maps.event.addListener(marker, 'click', (function (marker, i) {
           return function () {
             infowindow.setContent('Eircode ' + latlngStr[i][0] + " : " + latlngStr[i][1]);
               infowindow.open(map, marker);
           }
       })(marker, i));
+      markers[i] = marker;
       
-      bounds.extend(marker.position);
+      //bounds.extend(marker.position);
       
-      markers.push(marker); // to facilitate removel of markers
+      //markers.push(marker); // to facilitate removel of markers
+      
     }
-
-    map.fitBounds(bounds);*/
-}
-
+    marker.setMap(map);
+    //map.fitBounds(bounds);
+}*/
 
 google.maps.event.addDomListener(window, 'load', initialize);

@@ -166,9 +166,6 @@ public class Tenants extends Controller
     List<Residence> residences = new ArrayList<Residence>();
     List<Residence> allResidence = Residence.findAll();
     // find vacant residences and put in an arraylist
-    
-    List<List<String>> jsonArray = new ArrayList<List<String>>();
-    int i = 0;
     for (Residence res : allResidence)
     {
       if (res.tenant != null)
@@ -178,15 +175,10 @@ public class Tenants extends Controller
       else
       {
         Logger.info("Adding residence with tenant " +res.eircode);
-
-        jsonArray.add(i, Arrays.asList(res.eircode, res.location));
-        i++;
         allResidences.add(res);
       }
     }
-    
-    //renderJSON(jsonArray );
-    
+        
     // Fetch all vacant residences and filter out those within circle
     for (Residence residence : allResidences)
     {
@@ -200,5 +192,27 @@ public class Tenants extends Controller
     }
     render("Tenants/renderReport.html", currentLandlord, currentTenant, circle, residences);
   }
+  
+  public static void vacant()
+  {
+    List<List<String>> jsonArray = new ArrayList<List<String>>();
+    List<Residence> allResidence = Residence.findAll();
+    int i = 0;
+    for (Residence res : allResidence)
+    {
+      if (res.tenant != null)
+      {
+        Logger.info("No tenant present");
+      }
+      else
+      {
+        Logger.info("Adding residence with tenant " +res.eircode);
 
+        jsonArray.add(i, Arrays.asList(res.eircode, res.location));
+        i++;
+      }
+    }
+    renderJSON(jsonArray );
+
+  }
 }
