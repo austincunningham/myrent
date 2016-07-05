@@ -44,6 +44,19 @@ public class Administrators extends Controller
     return admin;
   }
   
+  public static Administrator getCurrentAdministrator()
+  {
+    String administratorId = session.get("logged_in_administratorid");
+    Logger.info("landlord Session id "+ administratorId);
+    if (administratorId == null)
+    {
+      return null;
+    }
+    Administrator logged_in_administrator = Administrator.findById(Long.parseLong(administratorId));
+    Logger.info("Logged in Administrator: " + logged_in_administrator.email);
+    return logged_in_administrator;
+  }
+  
   public static void index()
   {
     Administrator admin = Administrators.getLoggedin();

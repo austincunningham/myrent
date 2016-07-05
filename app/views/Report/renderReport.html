@@ -13,6 +13,10 @@
   #{if currentTenant != null}
     <a class="ui item" href="/Tenants/Logout">Tenant Logout</a>
   #{/if}
+  	#{if currentAdministrator != null}
+      <a class="ui item" href="/Administrator">Administrator</a>
+      <a class="ui item" href="/Administrator/Logout">Administrator Logout</a>
+    #{/if}
 </nav>
 
 <div class="ui grid">

@@ -7,7 +7,14 @@
 	<a class="ui item" href="/InputData">Input data</a> 
 	<a class="ui item" href="/Report">Report</a> 
 	<a class="ui item" href="/Contact">Contact</a> 
-	<a class="ui item" href="/Landlords/Logout">Logout</a>
+	#{if currentLandlord != null}
+	  <a class="ui item" href="/Landlords">Landlord</a>
+	  <a class="ui item" href="/Landlords/Logout">Landlord Logout</a>
+	#{/if} 
+	#{if currentAdministrator != null}
+      <a class="ui item" href="/Administrator">Administrator</a>
+      <a class="ui item" href="/Administrator/Logout">Administrator Logout</a>
+    #{/if}
 </nav>
 
 <section class="ui segment">

@@ -49,9 +49,10 @@ public class Landlords extends Controller
   
   public static void signup()
   {
+    Administrator currentAdministrator = Administrators.getCurrentAdministrator();
     Tenant currentTenant = Tenants.getCurrentTenant();
     Landlord currentLandlord = getCurrentLandlord();
-    render(currentLandlord, currentTenant);
+    render(currentLandlord, currentTenant, currentAdministrator);
   }
 
   public static void login()

@@ -12,9 +12,10 @@ public class InputData extends Controller
 
   public static void index()
   {
+    Administrator currentAdministrator = Administrators.getCurrentAdministrator();
     Landlord currentLandlord = Landlords.getCurrentLandlord();
     Tenant currentTenant = Tenants.getCurrentTenant();
-    render(currentLandlord, currentTenant);
+    render(currentLandlord, currentTenant, currentAdministrator);
   }
 
   /**

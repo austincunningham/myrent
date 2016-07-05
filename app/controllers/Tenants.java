@@ -56,7 +56,8 @@ public class Tenants extends Controller
   
   public static void signup()
   {
-    render();
+    Administrator currentAdministrator = Administrators.getCurrentAdministrator();
+    render(currentAdministrator);
   }
 
   public static void login()

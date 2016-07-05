@@ -11,8 +11,13 @@
     <a class="ui item" href="/Landlords/Logout">Landlord Logout</a>
   #{/if} 
   #{if currentTenant != null}
+    <a class="ui item" href="/Tenants"></a>
     <a class="ui item" href="/Tenants/Logout">Tenant Logout</a>
   #{/if}
+  #{if currentAdministrator != null}
+    <a class="ui item" href="/Administrator">Administrator</a>
+    <a class="ui item" href="/Administrator/Logout">Administrator Logout</a>
+  #{/if} 
 </nav>
 
 <section class="ui green inverted segment">      

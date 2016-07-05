@@ -6,6 +6,7 @@ import java.util.List;
 
 import models.Residence;
 import models.Tenant;
+import models.Administrator;
 import models.Landlord;
 import play.mvc.Before;
 import play.mvc.Controller;
@@ -40,6 +41,7 @@ public class Report extends Controller
     Circle circle = new Circle(latcenter, lngcenter, radius);
     Landlord currentLandlord = Landlords.getCurrentLandlord();
     Tenant currentTenant = Tenants.getCurrentTenant();
+    Administrator currentAdministrator = Administrators.getCurrentAdministrator();
     List<Residence> residences = new ArrayList<Residence>();
     // Fetch all residences and filter out those within circle
     List<Residence> residencesAll = Residence.findAll();
@@ -52,7 +54,7 @@ public class Report extends Controller
         residences.add(res);
       }
     }
-    render("Report/renderReport.html", currentLandlord, currentTenant, circle, residences);
+    render("Report/renderReport.html", currentLandlord,currentAdministrator, currentTenant, circle, residences);
   }
 
   /**
@@ -61,8 +63,9 @@ public class Report extends Controller
    */
   public static void index()
   {
+    Administrator currentAdministrator = Administrators.getCurrentAdministrator();
     Tenant currentTenant = Tenants.getCurrentTenant();
     Landlord currentLandlord = Landlords.getCurrentLandlord();
-    render(currentLandlord, currentTenant);
+    render(currentLandlord, currentTenant,currentAdministrator);
   }
 }
