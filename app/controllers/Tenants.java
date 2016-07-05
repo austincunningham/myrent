@@ -15,6 +15,7 @@ public class Tenants extends Controller
 {
   public static void index()
   {
+    Tenant tenant = Tenants.getLoggedin();
     List<Residence> allResidence = new ArrayList();
     allResidence = Residence.findAll();
     List<Residence> residences = new ArrayList();
@@ -32,13 +33,27 @@ public class Tenants extends Controller
         residences.add(res);
       }
     }
-
-    Tenant tenant = getCurrentTenant();
     Residence tenantResidence = tenant.residence;
 
     render(tenantResidence, residences);
   }
 
+  public static Tenant getLoggedin()
+  {
+    Tenant tenant = null;
+    if (session.get("logged_in_tenantid") != null)
+    {
+      String tenantId = session.get("logged_in_tenantid");
+          tenant = Tenant.findById(Long.parseLong(tenantId));
+      
+    }
+    else
+    {
+      Welcome.index();
+    }
+    return tenant;
+  }
+  
   public static void signup()
   {
     render();

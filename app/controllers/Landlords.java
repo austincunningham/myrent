@@ -15,6 +15,7 @@ public class Landlords extends Controller
  */
   public static void index()
   { 
+    Landlord landlord = Landlords.getLoggedin();
     List<Residence> AllResidence = new ArrayList();
     AllResidence = Residence.findAll();
     Tenant currentTenant = Tenants.getCurrentTenant();
@@ -30,6 +31,22 @@ public class Landlords extends Controller
     render(currentLandlord, residence, currentTenant);
   }
 
+  public static Landlord getLoggedin()
+  {
+    Landlord landlord = null;
+    if (session.get("logged_in_landlordid") != null)
+    {
+      String landlordId = session.get("logged_in_landlordid");
+          landlord = Landlord.findById(Long.parseLong(landlordId));
+      
+    }
+    else
+    {
+      Welcome.index();
+    }
+    return landlord;
+  }
+  
   public static void signup()
   {
     Tenant currentTenant = Tenants.getCurrentTenant();

@@ -26,14 +26,32 @@ public class Administrators extends Controller
     session.remove("logged_in_administratorid");
     Welcome.index();
   }
-
+  
+  
+  public static Administrator getLoggedin()
+  {
+    Administrator admin = null;
+    if (session.get("logged_in_administratorid") != null)
+    {
+      String administratorId = session.get("logged_in_administratorid");
+          admin = Administrator.findById(Long.parseLong(administratorId));
+      
+    }
+    else
+    {
+      Welcome.index();
+    }
+    return admin;
+  }
+  
   public static void index()
   {
+    Administrator admin = Administrators.getLoggedin();
     List<Tenant> tenants = new ArrayList<Tenant>();
     tenants = Tenant.findAll();
     List<Landlord> landlords = new ArrayList<Landlord>();
     landlords = Landlord.findAll();
-    render(tenants, landlords);
+    render(admin, tenants, landlords);
   }
 
   /**
