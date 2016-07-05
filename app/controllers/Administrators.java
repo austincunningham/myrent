@@ -20,17 +20,32 @@ public class Administrators extends Controller
     session.clear();
     render();
   }
+  public static void logout()
+  {
+    session.remove("logged_in_administratorid");
+    Welcome.index();
+  }
+  
   public static void index()
   {
     render();
   }
-  public static void authenticate(String email, String password)
+  
+  /**
+   * checks admin account exists and authenticates
+   * @param email
+   * @param password
+   */
+    public static void authenticate(String email, String password)
   {
-    Administrator administrator = new Administrator("admin@witpress.ie", "secret");
-    administrator.save();
+    Administrator administrator = Administrator.findByEmail(email);
+    if(administrator == null)
+    {
+      administrator = new Administrator("admin@witpress.ie", "secret");
+      administrator.save();
+    }
     Logger.info("Attempting to authenticate with " + email + ":" + password);
-    
-    if ((email == "admin@witpress.ie") && (password == "secret"))
+    if ((administrator != null) && (administrator.checkPassword(password) == true))
     {
       session.put("logged_in_administratorid", administrator.id);
       Logger.info("Authentication successful for Administrator ");

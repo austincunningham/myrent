@@ -23,4 +23,14 @@ public class Administrator extends Model
     this.email = email;
     this.password = password;
   }
+  public static Administrator findByEmail(String email)
+  {
+    return find("email", email).first();
+  }
+
+  public boolean checkPassword(String password)
+  {
+    return this.password.equals(password);
+  }
+  
 }
