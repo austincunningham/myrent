@@ -11,7 +11,7 @@ import java.util.*;
 
 import models.*;
 
-public class Administrator extends Controller
+public class Administrators extends Controller
 {
 
   public static void login()
@@ -26,12 +26,13 @@ public class Administrator extends Controller
   }
   public static void authenticate(String email, String password)
   {
+    Administrator administrator = new Administrator("admin@witpress.ie", "secret");
+    administrator.save();
     Logger.info("Attempting to authenticate with " + email + ":" + password);
     
     if ((email == "admin@witpress.ie") && (password == "secret"))
     {
-      long id = 1;
-      session.put("logged_in_administratorid",id);
+      session.put("logged_in_administratorid", administrator.id);
       Logger.info("Authentication successful for Administrator ");
       index();
     }
