@@ -10,7 +10,20 @@
 
 <div class="ui sixteen wide grid">  
   <div class="six wide column">
-    <section class="ui six wide segment">	     
+    <section class="ui six wide segment">
+    
+    <section class="ui form segment">
+      <form action="/Tenants/Signup	" method="GET">
+	    <div class="field">
+		  <button class="ui big green submit icon button">
+		  <i class="home icon"></i>
+          Add Tenant
+		  </button>
+       </div>
+     </form>
+  </section>
+    
+    	     
 	  <section class="ui form segment">
 		<form action="/Tenants/deleteTenant" method="POST">
 			<h2 class="ui dividing header">Select Tenant</h2>   
@@ -36,6 +49,16 @@
 		  </form>
 	    </section>
 	  
+	  <section class="ui form segment">
+      <form action="/Landlords/Signup" method="GET">
+	    <div class="field">
+		  <button class="ui big green submit icon button">
+		  <i class="home icon"></i>
+          Add Landlord
+		  </button>
+       </div>
+     </form>
+  </section>
 	    
   <section class="ui form segment">
 	<form action="/Landlords/deleteLandlord" method="POST">
