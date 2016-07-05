@@ -8,5 +8,67 @@
   <a class="ui item" href="/Administrator/Logout">Logout</a>
 </nav>
 
-<div class="ui sixteen wide grid"> 
+<div class="ui sixteen wide grid">  
+  <div class="six wide column">
+    <section class="ui six wide segment">	     
+	  <section class="ui form segment">
+		<form action="/Tenants/deleteTenant" method="POST">
+			<h2 class="ui dividing header">Select Tenant</h2>   
+	          <div class="two fields">
+				<div class="field">
+				<label>Tenant list</label>
+					<div class="column">
+						<div class="ui selection dropdown" id="deleteTenant">
+							<input name="deleteTenant" type="hidden">
+							<div class="default text">Select Tenant</div>
+								<i class="dropdown icon"></i>
+								<div class="menu">
+								   #{list items:tenants, as:'tenant'}
+									  <div class="item" data-value="${tenant.id}">${tenant.email}</div>
+								   #{/list}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="ui green submit button">Delete Tenant <i class="user icon"></i></button>
+			<div class="ui error message"></div>
+		  </form>
+	    </section>
+	  
+	    
+  <section class="ui form segment">
+	<form action="/Landlord/deleteLandlord" method="POST">
+		<h2 class="ui dividing header">Select Landlord</h2>   
+          <div class="two fields">
+			<div class="field">
+			<label>Landlord list</label>
+				<div class="column">
+					<div class="ui selection dropdown" id="deleteLandlord">
+						<input name="deleteLandlord" type="hidden">
+						<div class="default text">Delete Landlord</div>
+							<i class="dropdown icon"></i>
+							<div class="menu">
+							   #{list items:landlords, as:'landlord'}
+								  <div class="item" data-value="${landlord.id}">${landlord.email}</div>
+							   #{/list}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="ui green submit button">Delete Landlord <i class="user icon"></i></button>
+		<div class="ui error message"></div>
+	  </form>
+    </section>
+	  
+    </section>
+  </div>  
+  <div class="eight wide column">
+    <section class="ui eight wide segment">
+     Map goes here
+    </section>
+  </div> 
 </div>
+
+<script src="@{'/public/javascripts/administrator.js'}"></script>

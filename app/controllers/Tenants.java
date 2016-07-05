@@ -135,6 +135,13 @@ public class Tenants extends Controller
     index();
   }
 
+  public static void deleteTenant(long deleteTenant)
+  {
+    Tenant tenant = Tenant.findById(deleteTenant);
+    Logger.info("Deleting Tenant : "+tenant.firstName);
+    tenant.delete();    
+  }
+  
   public static void selectResidence(long selectResidence)
   {
     Logger.info(" residence id from form : " + selectResidence);

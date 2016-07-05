@@ -28,7 +28,11 @@ public class Administrators extends Controller
   
   public static void index()
   {
-    render();
+    List<Tenant> tenants = new ArrayList<Tenant>();
+    tenants = Tenant.findAll();
+    List<Landlord> landlords = new ArrayList<Landlord>();
+    landlords = Landlord.findAll();
+    render(tenants, landlords);
   }
   
   /**
