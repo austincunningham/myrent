@@ -35,6 +35,7 @@ GET		/Administrator							Administrators.index
 GET     /Administrator/Login			    	Administrators.login
 GET 	/Administrator/Logout	           	    Administrators.logout
 POST	/Administrator/authenticate				Administrators.authenticate
+GET     /Administrator/administratorResidences  Administrators.administratorResidences
 
 # InputData
 GET     /InputData								InputData.index

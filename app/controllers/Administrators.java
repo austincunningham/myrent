@@ -20,12 +20,13 @@ public class Administrators extends Controller
     session.clear();
     render();
   }
+
   public static void logout()
   {
     session.remove("logged_in_administratorid");
     Welcome.index();
   }
-  
+
   public static void index()
   {
     List<Tenant> tenants = new ArrayList<Tenant>();
@@ -34,16 +35,17 @@ public class Administrators extends Controller
     landlords = Landlord.findAll();
     render(tenants, landlords);
   }
-  
+
   /**
    * checks admin account exists and authenticates
+   * 
    * @param email
    * @param password
    */
-    public static void authenticate(String email, String password)
+  public static void authenticate(String email, String password)
   {
     Administrator administrator = Administrator.findByEmail(email);
-    if(administrator == null)
+    if (administrator == null)
     {
       administrator = new Administrator("admin@witpress.ie", "secret");
       administrator.save();
@@ -61,8 +63,37 @@ public class Administrators extends Controller
       login();
     }
   }
-  
-  
-  
-  
+
+  public static void administratorResidences()
+  {
+    List<List<String>> jsonArray = new ArrayList<List<String>>();
+    List<Residence> allResidence = Residence.findAll();
+    List<Tenant> allTenants = Tenant.findAll();
+    int i = 0;
+
+    for (Residence res : allResidence)
+    {
+      Logger.info("how many times " + i);
+      for (Tenant ten : allTenants)
+      {
+        Logger.info("who :" + ten.firstName+""+res.eircode);
+        if (ten.residence == null)
+        {
+          Logger.info("Adding residence with eircode to json: " + res.eircode);
+          Logger.info("Tenant vacant");
+          jsonArray.add(i, Arrays.asList(res.eircode, res.location, "Vacant", "Residence"));
+          
+        }
+        else if (ten.residence.equals(res))
+        {
+          Logger.info("Adding residence with eircode to json : " + res.eircode);
+          Logger.info("Tenant :" + ten.firstName + " " + ten.lastName);
+          jsonArray.add(i, Arrays.asList(res.eircode, res.location, ten.firstName, ten.lastName));
+        }
+      }
+      i++;
+    }
+    renderJSON(jsonArray);
+  }
+
 }

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -32,7 +33,7 @@ public class Residence extends Model
   public Landlord from;
   
  //removes both sides of relationship from DB when Residence is deleted 
-  @OneToOne(mappedBy = "residence", cascade = CascadeType.REMOVE)
+  @OneToOne(mappedBy = "residence", cascade = CascadeType.ALL)
   public Tenant tenant;
   
 

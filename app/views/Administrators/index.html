@@ -16,60 +16,58 @@
       <form action="/Tenants/Signup	" method="GET">
 	    <div class="field">
 		  <button class="ui big green submit icon button">
-		  <i class="home icon"></i>
-          Add Tenant
+		  <i class="user icon"></i>
+          Register Tenant
+		  </button>
+       </div>
+     </form>
+  </section>
+  
+  <section class="ui form segment">
+      <form action="/Landlords/Signup" method="GET">
+	    <div class="field">
+		  <button class="ui big green submit icon button">
+		  <i class="user icon"></i>
+          Register Landlord
 		  </button>
        </div>
      </form>
   </section>
     
     	     
-	  <section class="ui form segment">
-		<form action="/Tenants/deleteTenant" method="POST">
-			<h2 class="ui dividing header">Select Tenant</h2>   
-	          <div class="two fields">
-				<div class="field">
-				<label>Tenant list</label>
-					<div class="column">
-						<div class="ui selection dropdown" id="deleteTenant">
-							<input name="deleteTenant" type="hidden">
-							<div class="default text">Select Tenant</div>
-								<i class="dropdown icon"></i>
-								<div class="menu">
-								   #{list items:tenants, as:'tenant'}
-									  <div class="item" data-value="${tenant.id}">${tenant.email}</div>
-								   #{/list}
-								</div>
+<section class="ui form segment">
+	<form action="/Tenants/deleteTenant" method="POST">
+		<h2 class="ui dividing header">Delete Tenant</h2>   
+	         <div class="two fields">
+			<div class="field">
+				<div class="column">
+					<div class="ui selection dropdown" id="deleteTenant">
+						<input name="deleteTenant" type="hidden">
+						<div class="default text">Select Tenant</div>
+							<i class="dropdown icon"></i>
+							<div class="menu">
+							   #{list items:tenants, as:'tenant'}
+								  <div class="item" data-value="${tenant.id}">${tenant.email}</div>
+							   #{/list}
 							</div>
 						</div>
 					</div>
 				</div>
-				<button class="ui green submit button">Delete Tenant <i class="user icon"></i></button>
-			<div class="ui error message"></div>
-		  </form>
-	    </section>
-	  
-	  <section class="ui form segment">
-      <form action="/Landlords/Signup" method="GET">
-	    <div class="field">
-		  <button class="ui big green submit icon button">
-		  <i class="home icon"></i>
-          Add Landlord
-		  </button>
-       </div>
-     </form>
-  </section>
+			</div>
+			<button class="ui green submit button">Delete Tenant <i class="delete icon"></i></button>
+		<div class="ui error message"></div>
+	  </form>
+</section>
 	    
   <section class="ui form segment">
 	<form action="/Landlords/deleteLandlord" method="POST">
-		<h2 class="ui dividing header">Select Landlord</h2>   
+		<h2 class="ui dividing header">Delete Landlord</h2>   
           <div class="two fields">
 			<div class="field">
-			<label>Landlord list</label>
 				<div class="column">
 					<div class="ui selection dropdown" id="deleteLandlord">
 						<input name="deleteLandlord" type="hidden">
-						<div class="default text">Delete Landlord</div>
+						<div class="default text">Select Landlord</div>
 							<i class="dropdown icon"></i>
 							<div class="menu">
 							   #{list items:landlords, as:'landlord'}
@@ -80,7 +78,7 @@
 					</div>
 				</div>
 			</div>
-			<button class="ui green submit button">Delete Landlord <i class="user icon"></i></button>
+			<button class="ui green submit button">Delete Landlord <i class="delete icon"></i></button>
 		<div class="ui error message"></div>
 	  </form>
     </section>
@@ -89,9 +87,20 @@
   </div>  
   <div class="eight wide column">
     <section class="ui eight wide segment">
-     Map goes here
+     
+			<section class="ui segment">
+			  <h4>Define the region for which you require a report</h4>
+			  <form action="/Administrator/administratorResidences" method="POST">    
+			    Size and position circle to select region for report 
+			    <div  class="ui 4:3 embed" id="map-canvas"></div>
+			    </div>
+			   </div>
+			  </form>
+		    </section>
+
     </section>
   </div> 
 </div>
 
 <script src="@{'/public/javascripts/administrator.js'}"></script>
+<script src="@{'/public/javascripts/administratorMap.js'}"></script>

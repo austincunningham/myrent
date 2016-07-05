@@ -185,6 +185,11 @@ public class Landlords extends Controller
   public static void residenceDelete(Long deleteResidence)
   {
     Residence residence = Residence.findById(deleteResidence);
+//Cascade.All will delete even if set to null, 'DELETE ON SET NULL' not available in JPA
+//    final Tenant tenant = residence.tenant;
+//    tenant.residence = null;
+//    tenant.save();
+    
     residence.delete();
     index();    
   }
