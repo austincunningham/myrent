@@ -188,5 +188,12 @@ public class Landlords extends Controller
     residence.delete();
     index();    
   }
+  
+  public static void deleteLandlord(Long deleteLandlord)
+  {
+    Landlord landlord = Landlord.findById(deleteLandlord);
+    landlord.delete();
+    Administrators.index();    
+  }
 
 }

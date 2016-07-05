@@ -13,7 +13,7 @@
 
 * Summary of set up
 * Configuration: clone repo, play run , access localhost:9000 on browser
-* Dependencies: Need Play framework 1.4 or greater
+* Dependencies: Need Play framework 1.4 
 * Database configuration:locally H2:mem auto populated by bootstrap and yml file, Heroku version MySql database , 
 no configuration needed.
 

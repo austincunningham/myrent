@@ -16,6 +16,7 @@ GET     /editdetail			            	    Landlords.editdetail
 POST 	/Landlords/editDetails					Landlords.editDetails
 POST    /Landlords/residenceEdit     			Landlords.residenceEdit
 POST    /Landlords/residenceDelete				Landlords.residenceDelete
+POST 	/Landlords/deleteLandlord				Landlords.deleteLandlord
 
 # Tenants
 GET		/Tenants								Tenants.index

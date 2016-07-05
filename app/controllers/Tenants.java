@@ -139,7 +139,8 @@ public class Tenants extends Controller
   {
     Tenant tenant = Tenant.findById(deleteTenant);
     Logger.info("Deleting Tenant : "+tenant.firstName);
-    tenant.delete();    
+    tenant.delete();
+    Administrators.index();
   }
   
   public static void selectResidence(long selectResidence)
