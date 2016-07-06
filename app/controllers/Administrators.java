@@ -26,16 +26,15 @@ public class Administrators extends Controller
     session.remove("logged_in_administratorid");
     Welcome.index();
   }
-  
-  
+
   public static Administrator getLoggedin()
   {
     Administrator admin = null;
     if (session.get("logged_in_administratorid") != null)
     {
       String administratorId = session.get("logged_in_administratorid");
-          admin = Administrator.findById(Long.parseLong(administratorId));
-      
+      admin = Administrator.findById(Long.parseLong(administratorId));
+
     }
     else
     {
@@ -43,11 +42,11 @@ public class Administrators extends Controller
     }
     return admin;
   }
-  
+
   public static Administrator getCurrentAdministrator()
   {
     String administratorId = session.get("logged_in_administratorid");
-    Logger.info("landlord Session id "+ administratorId);
+    Logger.info("landlord Session id " + administratorId);
     if (administratorId == null)
     {
       return null;
@@ -56,7 +55,7 @@ public class Administrators extends Controller
     Logger.info("Logged in Administrator: " + logged_in_administrator.email);
     return logged_in_administrator;
   }
-  
+
   public static void index()
   {
     Administrator admin = Administrators.getLoggedin();
@@ -94,11 +93,12 @@ public class Administrators extends Controller
       login();
     }
   }
-/**
- * Passes a list of all residences to a jsonArray to be displayed on an Google Map
- * values passed: eircode, tenant.firstName,tenant.lastName
- * if no tenant present passes values "Vacant", "Residence"
- */
+
+  /**
+   * Passes a list of all residences to a jsonArray to be displayed on an Google
+   * Map values passed: eircode, tenant.firstName,tenant.lastName if no tenant
+   * present passes values "Vacant", "Residence"
+   */
   public static void administratorResidences()
   {
     List<List<String>> jsonArray = new ArrayList<List<String>>();
@@ -108,23 +108,17 @@ public class Administrators extends Controller
 
     for (Residence res : allResidence)
     {
-      Logger.info("how many times " + i);
-      for (Tenant ten : allTenants)
+      if (res.tenant == null)
       {
-        Logger.info("who :" + ten.firstName+""+res.eircode);
-        if (ten.residence == null)
-        {
-          Logger.info("Adding residence with eircode to json: " + res.eircode);
-          Logger.info("Tenant vacant");
-          jsonArray.add(i, Arrays.asList(res.eircode, res.location, "Vacant", "Residence"));
-          
-        }
-        else if (ten.residence.equals(res))
-        {
-          Logger.info("Adding residence with eircode to json : " + res.eircode);
-          Logger.info("Tenant :" + ten.firstName + " " + ten.lastName);
-          jsonArray.add(i, Arrays.asList(res.eircode, res.location, ten.firstName, ten.lastName));
-        }
+        Logger.info("Adding residence with eircode to json: " + res.eircode);
+        Logger.info("Tenant vacant");
+        jsonArray.add(i, Arrays.asList(res.eircode, res.location, "Vacant", "Residence"));
+
+      }
+      else
+      {
+        Logger.info("Adding residence with eircode to json : " + res.eircode);
+        jsonArray.add(i, Arrays.asList(res.eircode, res.location, res.tenant.firstName, res.tenant.lastName));
       }
       i++;
     }
@@ -134,8 +128,33 @@ public class Administrators extends Controller
   public static void renderReport()
   {
     Administrator admin = Administrators.getLoggedin();
+    render();
+  }
+
+  public static void findAllResidences()
+  {
+    List<List<String>> jsonArray = new ArrayList<List<String>>();
     List<Residence> residences = new ArrayList<Residence>();
+    List<Tenant> allTenants = new ArrayList<Tenant>();
+    allTenants = Tenant.findAll();
     residences = Residence.findAll();
-    render(residences);
+
+    int i = 0;
+    for (Residence res : residences)
+    {
+      if (res.tenant == null)
+      {
+        jsonArray.add(i, Arrays.asList(res.eircode, res.from.firstName, res.from.lastName, "Vacant", "Residence",
+            res.formatDate, "" + res.rent, res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
+      }
+      else
+      {
+        jsonArray.add(i,
+            Arrays.asList(res.eircode, res.from.firstName, res.from.lastName, res.tenant.firstName, res.tenant.lastName,
+                res.formatDate, "" + res.rent, res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
+      }
+      i++;
+    }
+    renderJSON(jsonArray);
   }
 }
