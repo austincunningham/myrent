@@ -94,7 +94,11 @@ public class Administrators extends Controller
       login();
     }
   }
-
+/**
+ * Passes a list of all residences to a jsonArray to be displayed on an Google Map
+ * values passed: eircode, tenant.firstName,tenant.lastName
+ * if no tenant present passes values "Vacant", "Residence"
+ */
   public static void administratorResidences()
   {
     List<List<String>> jsonArray = new ArrayList<List<String>>();
@@ -127,4 +131,11 @@ public class Administrators extends Controller
     renderJSON(jsonArray);
   }
 
+  public static void renderReport()
+  {
+    Administrator admin = Administrators.getLoggedin();
+    List<Residence> residences = new ArrayList<Residence>();
+    residences = Residence.findAll();
+    render(residences);
+  }
 }
