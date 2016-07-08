@@ -65,7 +65,7 @@ function rented() {
           return 0;
         };
 
-        populateTableRow(val);
+        populateTable();
       }
   );
 }
@@ -82,7 +82,7 @@ function byType() {
           return 0;
         };
 
-        populateTableRow(val);
+        populateTable();
       }
   );
 }
@@ -98,7 +98,8 @@ function byRent() {
       return (a[6]) - (b[6]);
     };
 
-    populateTableRow(val);
+    populateTable();
+
   })
 
   ;
