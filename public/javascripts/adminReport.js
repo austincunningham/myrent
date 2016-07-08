@@ -4,6 +4,21 @@
  * About: does various sorts on button click on a jsonArray
  */
 
+/**
+ * loads the jsonArray into the page
+ */
+window.onload = function() {
+  $(function () {
+    $.get('/Administrator/findAllResidences', function (data) {
+      $.each(data, function (index, reportdata) {
+            console.log(reportdata);
+          }
+      );
+      callback(data);
+    });
+  });
+};
+
 function initialize() {
   unsorted();
   rented();
@@ -25,17 +40,16 @@ function deleteTable() {
  *
  */
 function unsorted() {
-  deleteTable();
   $(function () {
     $.get('/Administrator/findAllResidences', function (data) {
-      $.each(data, function (index, geoObj) {
-        console.log(geoObj);
+      $.each(data, function (index, reportdata) {
+        console.log(reportdata);
       }
       );
       callback(data);
     });
   });
-}
+};
 
 /**
  *
@@ -43,7 +57,7 @@ function unsorted() {
  *
  */
 function callback(data) {
-  latlng = data; // store the array of data in a global for later use
+  adminSort = data; // store the array of data in a global for later use
   populateTable();  // within view
 }
 
@@ -52,12 +66,15 @@ function callback(data) {
   if (a[1] > b[1]) return 1;
   return 0;
 }*/
+/**
+ * sorting jsonArray by the third element of the arrayList rented status
+ * tenant name will appear if rented and 'vacant residence' will appear if not
+ */
 
 function rented() {
-  deleteTable();
-  $.each(latlng, function (i, val) {
+  $.each(adminSort, function (i, val) {
         console.log('what is val ' + val);
-        latlng = latlng.sort(Comparator);
+        adminSort = adminSort.sort(Comparator);
 
         function Comparator(a, b) {
           if (a[3] < b[3]) return -1;
@@ -69,12 +86,15 @@ function rented() {
       }
   );
 }
+/**
+ * sorting jsonArray by element seven of the arrayList type of dwelling
+ * flat,house,stuido
+ */
 
 function byType() {
-  deleteTable();
-  $.each(latlng, function (i, val) {
+  $.each(adminSort, function (i, val) {
         console.log('what is val ' + val);
-        latlng = latlng.sort(Comparator);
+        adminSort = adminSort.sort(Comparator);
 
         function Comparator(a, b) {
           if (a[7] < b[7]) return -1;
@@ -88,10 +108,9 @@ function byType() {
 }
 
 function byRent() {
-  deleteTable();
-  $.each(latlng, function (i, val) {
+  $.each(adminSort, function (i, val) {
     console.log('what is val ' + val);
-    latlng = latlng.sort(Comparator);
+    adminSort = adminSort.sort(Comparator);
 
     function Comparator(a, b) {
       console.log('what is a :' + a[6] + ' what is b :' + b[6]);
@@ -107,15 +126,15 @@ function byRent() {
 
 /*******************************populating table with data*************************/
 /**
- * Populates table
+ * Populates table, required deleteTable first as old data would remain on screen
  */
-function populateTable()
-{
-  $.each(latlng, function (i, val) {
+function populateTable() {
+  deleteTable();
+  $.each(adminSort, function (i, val) {
     populateTableRow(val);
-
   });
 }
+
 
 /**
  * renders table row
