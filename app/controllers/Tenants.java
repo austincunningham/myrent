@@ -92,10 +92,18 @@ public class Tenants extends Controller
    */
   public static void register(String firstName, String lastName, String email, String password, Residence residence)
   {
+    Administrator currentAdministrator = Administrators.getCurrentAdministrator();
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
     Tenant tenant = new Tenant(firstName, lastName, email, password, residence);
     tenant.save();
-    login();
+    if (currentAdministrator != null)
+    {
+      Administrators.index();
+    }
+    else
+    {
+      login();
+    }
 
   }
 

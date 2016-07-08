@@ -7,7 +7,7 @@
 /**
  * loads the jsonArray into the page
  */
-window.onload = function() {
+window.onload = function () {
   $(function () {
     $.get('/Administrator/findAllResidences', function (data) {
       $.each(data, function (index, reportdata) {
@@ -106,7 +106,9 @@ function byType() {
       }
   );
 }
-
+/**
+ * sorting jsonArray by element six of the arrayList amount of rent
+ */
 function byRent() {
   $.each(adminSort, function (i, val) {
     console.log('what is val ' + val);
