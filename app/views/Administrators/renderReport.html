@@ -16,14 +16,15 @@
         <button class="ui green button" type="button" onclick="unsorted()">Unsorted</button>
         <button class="ui green button" type="button" onclick="rented()">Rented/Vacant</button>
         <button class="ui green button" type="button" onclick="byRent()"><i class="euro icon"></i>By Rent</button>
-        <button class="ui green button" type="button" onclick="residenceType()">By Type</button>
+        <button class="ui green button" type="button" onclick="byType()">By Type</button>
+        <button class="ui green button" type="button" onclick="deleteTable()">delete the table</button>
       </section>
     </div>
     <div class="sixteen wide column">
       <section class="ui segment">
       <h4>Sort the Residence list with the button filters</h4><br>
         <div style="overflow-y:scroll; max-height:405px">
-          <table class="ui green inverted table segment">
+          <table class="ui green inverted table segment" class="removeMe">
             <thead>
               <tr>
                 <th>Eircode</th>

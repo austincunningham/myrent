@@ -1,24 +1,37 @@
+/**
+ * Author : Austin Cunningham
+ * Date:08/07/2016
+ * About: does various sorts on button click on a jsonArray
+ */
+
 function initialize() {
   unsorted();
   rented();
   byRent();
-  byType();  
+  byType();
+  deleteTable();
 }
+/**
+ * Clears the table data
+ */
+function deleteTable() {
+  document.getElementById('markertable').innerHTML = '';
+}
+
 
 /**
  *
- * Use ajax call to get users and their geolocations pass returned array marker
- * locations to callback method Here is the format in which marker data stored
- * geoObj[0] is eircode. geoObj[1] is a string of latitude and longitude We use
- * geoObj[0] in the infoWindow. Click marker to reveal description.
+ * Use ajax call to get data from all residences
  *
  */
 function unsorted() {
+  deleteTable();
   $(function () {
     $.get('/Administrator/findAllResidences', function (data) {
       $.each(data, function (index, geoObj) {
-        console.log(geoObj[0] + ' ' + geoObj[1]+' '+ geoObj[2]+' '+ geoObj[3]);
-      });
+        console.log(geoObj);
+      }
+      );
       callback(data);
     });
   });
@@ -26,44 +39,97 @@ function unsorted() {
 
 /**
  *
- * we've got the marker location from data in ajax call we now put data into an
- * array the format is 'firstName, xx.xxxx, yy.yyyyy' -> (firstName, lat, lng)
- * then invoke 'fitBounds' to render the markers, centre map and create
- * infoWindow to display firstName
+ * we've got the data in ajax call back
  *
  */
 function callback(data) {
   latlng = data; // store the array of data in a global for later use
-  populateTable();
-  // within view
-
+  populateTable();  // within view
 }
 
-/*******************************populating table with marker data*************************/
+/*function Comparator(a, b) {
+  if (a[1] < b[1]) return -1;
+  if (a[1] > b[1]) return 1;
+  return 0;
+}*/
+
+function rented() {
+  deleteTable();
+  $.each(latlng, function (i, val) {
+        console.log('what is val ' + val);
+        latlng = latlng.sort(Comparator);
+
+        function Comparator(a, b) {
+          if (a[3] < b[3]) return -1;
+          if (a[3] > b[3]) return 1;
+          return 0;
+        };
+
+        populateTableRow(val);
+      }
+  );
+}
+
+function byType() {
+  deleteTable();
+  $.each(latlng, function (i, val) {
+        console.log('what is val ' + val);
+        latlng = latlng.sort(Comparator);
+
+        function Comparator(a, b) {
+          if (a[7] < b[7]) return -1;
+          if (a[7] > b[7]) return 1;
+          return 0;
+        };
+
+        populateTableRow(val);
+      }
+  );
+}
+
+function byRent() {
+  deleteTable();
+  $.each(latlng, function (i, val) {
+    console.log('what is val ' + val);
+    latlng = latlng.sort(Comparator);
+
+    function Comparator(a, b) {
+      console.log('what is a :' + a[6] + ' what is b :' + b[6]);
+      return (a[6]) - (b[6]);
+    };
+
+    populateTableRow(val);
+  })
+
+  ;
+};
+
+/*******************************populating table with data*************************/
 /**
- * Populates table with complete marker list + it's gps coords
+ * Populates table
  */
 function populateTable()
 {
-  $.each(latlng, function(i, val) {
+  $.each(latlng, function (i, val) {
     populateTableRow(val);
+
   });
 }
 
 /**
- * renders table row comprising marker and its gps coordinates
- * @param data the array comprising description + gps (lat, lng)
+ * renders table row
+ * @param data the array comprising residence data
  */
 function populateTableRow(data)
 {
-  const eircode = "<td>" + data[0] + "</td>";
-  const landlord = "<td>" + data[1] + " " + data[2] + "</td>"
-  const tenantName   = "<td>" + data[3] + " " + data[4] + "</td>";
-  const date = "<td>" + data[5] + "</td>";
-  const rent = "<td>" + data[6] + "</td>";
-  const typeDwelling = "<td>" + data[7] + "</td>";
-  const bedroom = "<td>" + data[8] + "</td>";
-  const bathroom = "<td>" + data[9] + "</td>";
-  const area = "<td>" + data[10] + "</td>";
-  $('#markertable').append("<tr>" + eircode + landlord + tenantName + date + rent+ typeDwelling+ bedroom+ bathroom+ area+ "</tr>");
+  const eircode = '<td><i class=\"world icon\"></i>' + data[0] + '</td>';
+  const landlord = '<td><i class=\"legal icon\"></i>' + data[1] + ' ' + data[2] + '</td>';
+  const tenantName   = '<td><i class=\"user icon\"></i>' + data[3] + ' ' + data[4] + '</td>';
+  const date = '<td><i class=\"calendar icon\"></i>' + data[5] + '</td>';
+  const rent = '<td><i class=\"euro icon\"></i>' + data[6] + '</td>';
+  const typeDwelling = '<td><i class=\"home icon\"></i>' + data[7] + '</td>';
+  const bedroom = '<td><i class=\"bed icon\"></i>' + data[8] + '</td>';
+  const bathroom = '<td></i><i class=\"female icon\"></i>' + data[9] + '</td>';
+  const area = '<td>' + data[10] + ' &#x33a1;</td>';
+  $('#markertable').append('<tr>' + eircode + landlord + tenantName + date + rent + typeDwelling + bedroom + bathroom + area + '</tr>');
 }
