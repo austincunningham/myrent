@@ -10,18 +10,18 @@ function requestReport() {
 }
 
 function initialize() {
-  const center = new google.maps.LatLng(52.2514845,-7.1265728);
+  const center = new google.maps.LatLng(52.2514845, -7.1265728);
   const initRadius = 10000;
   const mapProp = {
     center: center,
     zoom: 7,
-    mapTypeId: google.maps.MapTypeId.ROAD
+    mapTypeId: google.maps.MapTypeId.ROAD,
   };
-  
+
   const mapDiv = document.getElementById('map-canvas');
   const map = new google.maps.Map(mapDiv, mapProp);
   //const map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  
+
   mapDiv.style.width = '500px';
   mapDiv.style.height = '500px';
 
