@@ -130,6 +130,12 @@ public class Administrators extends Controller
     Administrator admin = Administrators.getLoggedin();
     render();
   }
+  
+  public static void charts()
+  {
+    Administrator admin = Administrators.getLoggedin();
+    render();
+  }
 
   public static void findAllResidences()
   {
