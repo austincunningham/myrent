@@ -107,7 +107,7 @@ function byType() {
   );
 }
 /**
- * sorting jsonArray by element six of the arrayList amount of rent
+ * sorting jsonArray by element six of the arrayList ammount
  */
 function byRent() {
   $.each(adminSort, function (i, val) {

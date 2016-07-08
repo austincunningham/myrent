@@ -140,4 +140,4 @@ Tenant(edna):
     lastName: K
     email: edna@k.com
     password: secret
-    
+    residence: residence6
