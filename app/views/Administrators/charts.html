@@ -11,9 +11,34 @@
 </nav>
 
 <div class="ui grid">
-  <div class="sixteen wide column">
-  <section class="ui segment">
-  </section>
+
+   <div class="eight wide column">
+    <section class="ui eight wide segment">
+      <h3>Administrator Charts</h3><br>
+        <div style="overflow-y:scroll; max-height:405px">
+          <table class="ui green inverted table segment" class="removeMe">
+            <thead>
+              <tr>
+                <th>Eircode</th>
+			    <th>Landlord</th>
+		        <th>Rent <i class="euro icon"></i></th>
+              </tr>
+            </thead>
+            <tbody id="markertable">           
+              <tr>
+              </tr>          
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <div class="eight wide column">
+      <section class="ui eight wide segment">
+         <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+      </section>
+    </div>
   </div>
-  </div>
-  
+  <script src="@{'/public/javascripts/adminPieChart.js'}"></script>
+  <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+  <script src="@{'/public/javascripts/canvasjs.min.js'}"></script>   
+     

@@ -133,7 +133,7 @@ Tenant(ned):
     lastName: Flanders
     email: ned@flanders.com
     password: secret
-    residence: residence3
+    residence: residence4
 
 Tenant(edna):
     firstName: Edna
