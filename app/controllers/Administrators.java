@@ -136,6 +136,53 @@ public class Administrators extends Controller
     Administrator admin = Administrators.getLoggedin();
     render();
   }
+  
+  public static void dataCharts()
+  {
+    List<List<String>> jsonArray1 = new ArrayList<List<String>>();
+    List<Residence> residences = new ArrayList<Residence>();
+    List<Residence> landlordOnce = new ArrayList<Residence>();
+    List<Tenant> allTenants = new ArrayList<Tenant>();
+    allTenants = Tenant.findAll();
+    residences = Residence.findAll();
+    int z =0;
+    int sum=0;
+    //filter residence to remove vacant residences
+    for(Residence res : residences)
+    {
+      if (res.tenant == null)
+      { 
+        Logger.info("DO NOTHING");
+      }
+      else 
+      {
+        landlordOnce.add(res);
+      }
+    }
+    //filter residences for duplicate landlords,remove duplicates and sum there rent
+    for(int i = 0; i < landlordOnce.size(); i++)
+    {
+        for(int j = i + 1; j < landlordOnce.size(); j++)
+        {
+          if (landlordOnce.get(i).from .equals(landlordOnce.get(j).from))
+          {
+            sum = landlordOnce.get(j).rent + landlordOnce.get(i).rent;
+            Logger.info("Sum: "+sum);
+            landlordOnce.get(i).rent = sum;
+            landlordOnce.remove(j);
+            j--;
+          }
+        }
+    }
+    // add filtered list to jsonArray
+    for (Residence res : landlordOnce)
+    {
+        Logger.info("z equals what?? "+z);
+        jsonArray1.add(z, Arrays.asList( ""+res.rent ,res.from.firstName+" "+res.from.lastName));
+        z++;
+    }    
+    renderJSON(jsonArray1);
+  }
 
   public static void findAllResidences()
   {
@@ -151,13 +198,13 @@ public class Administrators extends Controller
       if (res.tenant == null)
       {
         jsonArray.add(i, Arrays.asList(res.eircode, res.from.firstName, res.from.lastName, "Vacant", "Residence",
-            res.formatDate, "" + res.rent, res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
+            res.formatDate, "" + res.rent +" "+ res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
       }
       else
       {
         jsonArray.add(i,
             Arrays.asList(res.eircode, res.from.firstName, res.from.lastName, res.tenant.firstName, res.tenant.lastName,
-                res.formatDate, "" + res.rent, res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
+                res.formatDate, "" + res.rent +" "+ res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
       }
       i++;
     }

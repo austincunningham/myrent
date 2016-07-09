@@ -39,6 +39,7 @@ GET     /Administrator/administratorResidences  Administrators.administratorResi
 GET     /Administrator/Report                   Administrators.renderReport
 GET     /Administrator/findAllResidences		Administrators.findAllResidences
 GET     /Administrator/Charts					Administrators.charts
+GET     /Administrator/dataCharts				Administrators.dataCharts
 
 # InputData
 GET     /InputData								InputData.index
