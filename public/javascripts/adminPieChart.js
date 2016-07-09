@@ -48,7 +48,7 @@ window.onload = function () {
             console.log('Getting added to pie ' + chartSort[i][1]);
             chart.options.data[0].dataPoints.push({
               y: ((parseFloat(val[0]) / total) * 100),
-              indexLabel: val[1] + ' €' + val[0] + ' ' + (parseFloat(val[0] / 100)) + '%',
+              indexLabel: val[1] + ' €' + val[0],
             });
             console.log(chart.options.data[0].dataPoints);
             chart.render();
