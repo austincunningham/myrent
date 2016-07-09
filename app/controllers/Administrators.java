@@ -137,6 +137,13 @@ public class Administrators extends Controller
     render();
   }
   
+  /**
+   * Creates a jsonArray to be passed to charts.html and on to /public/javascripts/adminPieChart.js
+   * values passed from Residence:
+   * from.firstName, from.lastName, rent
+   * list is filter to exclude vacant Residences. 
+   * Also duplicate landlord entries have there rent summed to one entry 
+   */
   public static void dataCharts()
   {
     List<List<String>> jsonArray1 = new ArrayList<List<String>>();
@@ -159,7 +166,7 @@ public class Administrators extends Controller
         landlordOnce.add(res);
       }
     }
-    //filter residences for duplicate landlords,remove duplicates and sum there rent
+    //filter residences for duplicate landlords,remove duplicates and sum their rent
     for(int i = 0; i < landlordOnce.size(); i++)
     {
         for(int j = i + 1; j < landlordOnce.size(); j++)
@@ -184,12 +191,14 @@ public class Administrators extends Controller
     renderJSON(jsonArray1);
   }
 
+  /**
+   * Creates a jsonArray of all residences, 
+   * Adds 'Vacant' 'Residences' to residences with out tenants.
+   */
   public static void findAllResidences()
   {
     List<List<String>> jsonArray = new ArrayList<List<String>>();
     List<Residence> residences = new ArrayList<Residence>();
-    List<Tenant> allTenants = new ArrayList<Tenant>();
-    allTenants = Tenant.findAll();
     residences = Residence.findAll();
 
     int i = 0;
@@ -198,13 +207,13 @@ public class Administrators extends Controller
       if (res.tenant == null)
       {
         jsonArray.add(i, Arrays.asList(res.eircode, res.from.firstName, res.from.lastName, "Vacant", "Residence",
-            res.formatDate, "" + res.rent +" "+ res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
+            res.formatDate, "" + res.rent, res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
       }
       else
       {
         jsonArray.add(i,
             Arrays.asList(res.eircode, res.from.firstName, res.from.lastName, res.tenant.firstName, res.tenant.lastName,
-                res.formatDate, "" + res.rent +" "+ res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
+                res.formatDate, "" + res.rent, res.type, "" + res.bedrooms, "" + res.numberBathrooms, "" + res.area));
       }
       i++;
     }
