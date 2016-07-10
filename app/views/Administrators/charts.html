@@ -34,8 +34,13 @@
     </div>
     <div class="eight wide column">
     <section class="ui eight wide segment"> 
-<!--          <button class="ui green button" type="button" onclick="loadChart()"><i class="refresh icon"></i>Load Pie Chart</button> -->
+       <div class="ui segment">
          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+       </div>
+       <div class="ui segment">
+         <button class="ui green button" type="button" onclick="loadChart()"><i class="bar chart icon"></i>Column Chart</button>
+         <button class="ui green button" type="button" onclick="reloadPie()"><i class="pie chart icon"></i>Pie Chart</button>
+       </div>
     </section>
     </div>
   </div>
