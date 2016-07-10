@@ -43,6 +43,9 @@
                       #{if currentTenant != null}
                         <td>${currentTenant.firstName} ${currentTenant.lastName}</td>
                       #{/if}
+                      #{if currentAdministrator != null}
+                        <td>Administrator</td>
+                      #{/if}
                       <td>${circle.radius}</td>
                       <td>${circle.latcenter}</td>
                       <td>${circle.lngcenter}</td>
