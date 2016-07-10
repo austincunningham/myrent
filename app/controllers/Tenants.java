@@ -91,12 +91,12 @@ public class Tenants extends Controller
    * @param tenantReference
    */
   //public static void register(String firstName, String lastName, String email, String password, Residence residence)
-  public static void register(String firstName, String lastName, String email, String password,String residenceRef)
+  public static void register(String firstName, String lastName, String email, String password,String tenantReference)
   {
     Administrator currentAdministrator = Administrators.getCurrentAdministrator();
     Logger.info(firstName + " " + lastName + " " + email + " " + password);
     //Tenant tenant = new Tenant(firstName, lastName, email, password, residence);
-    Tenant tenant = new Tenant(firstName, lastName, email, password,residenceRef);
+    Tenant tenant = new Tenant(firstName, lastName, email, password,tenantReference);
     tenant.save();
     if (currentAdministrator != null)
     {
