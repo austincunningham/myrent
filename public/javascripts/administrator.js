@@ -1,8 +1,8 @@
 /**
  * Created by austin on 05/07/2016.
- * semantic ui validation 
+ * semantic ui validation
  */
-$(document).ready(function() {
+$(document).ready(function () {
   $('#deleteTenant').dropdown();
   $('#deleteLandlord').dropdown();
 
@@ -12,17 +12,17 @@ $(document).ready(function() {
         identifier: 'deleteTenant',
         rules: [{
           type: 'empty',
-          prompt: 'Select Tenant to delete from the dropdown'
-        }]
+          prompt: 'Select Tenant to delete from the dropdown',
+        },],
       },
 
       deleteLandlord: {
         identifier: 'deleteLandlord',
         rules: [{
           type: 'empty',
-          prompt: 'Select Landlord to edit from the dropdown'
-        }]
-      }
-    }
+          prompt: 'Select Landlord to edit from the dropdown',
+        },],
+      },
+    },
   });
 });

@@ -25,7 +25,7 @@ $('.ui.form')
         identifier: 'email',
         rules: [
           {
-            type: 'empty',
+            type: 'email',
             prompt: 'Please enter your email',
           },
         ],

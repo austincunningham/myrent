@@ -9,7 +9,7 @@ $('.ui.form')
           identifier: 'email',
           rules: [
             {
-              type: 'empty',
+              type: 'email',
               prompt: 'Please enter your user name, it is the email address you signed up with',
             },
           ],
