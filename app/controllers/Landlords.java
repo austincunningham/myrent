@@ -197,7 +197,7 @@ public class Landlords extends Controller
     }
     landlord.save();
 
-    Welcome.index();
+    editdetail();
   }
 
   public static void residenceEdit(Long editResidence)
