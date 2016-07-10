@@ -75,11 +75,11 @@ public class Administrators extends Controller
   public static void authenticate(String email, String password)
   {
     Administrator administrator = Administrator.findByEmail(email);
-    if (administrator == null)
-    {
-      administrator = new Administrator("admin@witpress.ie", "secret");
-      administrator.save();
-    }
+//    if (administrator == null)
+//    {
+//      administrator = new Administrator("admin@witpress.ie", "secret");
+//      administrator.save();
+//    }
     Logger.info("Attempting to authenticate with " + email + ":" + password);
     if ((administrator != null) && (administrator.checkPassword(password) == true))
     {
