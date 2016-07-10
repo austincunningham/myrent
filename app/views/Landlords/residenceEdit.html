@@ -13,6 +13,7 @@
   <div class="eight wide column">
 	<section class="ui form segment">
 	  <form action="/InputData/UpdateData/${residence.id}" method="POST">
+	  <div>
 	  <div class="two fields">
 		<div class="field">
 		  <div class="ui left action input">
@@ -33,7 +34,9 @@
 	</div>
 	<button class="ui green submit button">Submit Data <i class="globe icon"></i></button>
 	<div class="ui error message"></div>
+	</div>
 	</form>
     </section>
   </div>
 </div>
+<script src="@{'/public/javascripts/landlordResidenceEdit.js'}"></script>
