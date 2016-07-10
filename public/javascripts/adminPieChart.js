@@ -66,7 +66,22 @@ function reloadPie() {
   location.reload();
 }
 
-function loadChart() {
+function chartSpline() {
+  let chartType = 'spline';
+  loadChart(chartType);
+}
+
+function chartColume() {
+  let chartType = 'column';
+  loadChart(chartType);
+}
+
+function chartPie() {
+  let chartType = 'pie';
+  loadChart(chartType);
+}
+
+function loadChart(chartType) {
   var chart = new CanvasJS.Chart('chartContainer',
       {
         title: {
@@ -74,7 +89,7 @@ function loadChart() {
         },
         data: [
           {
-            type: 'column',
+            type: chartType,
             toolTipContent: '{y} %',
             dataPoints: [],
           },
