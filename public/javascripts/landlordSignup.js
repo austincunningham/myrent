@@ -43,6 +43,42 @@ $('.ui.form')
           }
         ]
       },
+      line1Address: {
+        identifier: 'line1Address',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the first line of your address'
+          }
+        ]
+      },
+      line2Address: {
+        identifier: 'line2Address',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the second line of your address'
+          }
+        ]
+      },
+      city: {
+        identifier: 'city',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the city/town where you live'
+          }
+        ]
+      },
+      county: {
+        identifier: 'county',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Please enter the county where you live'
+          }
+        ]
+      },
       conditions: {
         identifier: 'conditions',
         rules: [
