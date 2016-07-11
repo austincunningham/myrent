@@ -1,6 +1,4 @@
-function initialize()
-{
-
+function initialize() {
   const mapOptions =
   {
       center: new google.maps.LatLng(52.254427, -7.185281),
@@ -34,7 +32,8 @@ function initialize()
   //marker listener populates hidden fields ondragend
   google.maps.event.addListener(marker, 'dragend', function () {
       const latLng = marker.getPosition();
-      const latlong = latLng.lat().toString().substring(0, 10) + ',' + latLng.lng().toString().substring(0, 10);
+      const latlong = latLng.lat().toString().substring(0, 10) + ','
+          + latLng.lng().toString().substring(0, 10);
 
       //publish lat long in geolocation control in html page
       $('#geolocation').val(latlong);
