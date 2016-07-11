@@ -18,8 +18,7 @@ $(document).ready(function () {
       },
     },
     onSuccess: function () {
-      inline: true,
-          console.log('on success');
+      console.log('on success');
       submitTenantForm();
       return false;
     },
@@ -29,13 +28,27 @@ $(document).ready(function () {
     const formData = $('.ui.form.segment input').serialize();
     $.ajax({
       type: 'POST',
-      url: '/Tenants/deleteResidence',
+      url: '/Tenants/deleteTenant',
       data: formData,
-      limitValues: false,
+      //limitValues: false,
       success: function (response) {
-        console.log('What do I get here' + response);
+        console.log('notification: ' + response.index);
+        $('#notificationTenant').html('<div class=\"ui green inverted segment\">' + response.index
+            + '</div> <br>');
+        let email = $('#deleteTenant').dropdown('get text');
+        tenantDropdownDelete(email);
       },
     });
+    function tenantDropdownDelete(email) {
+      let $obj = $('.item.tenant');
+      for (let i = 0; i < $obj.length; i += 1) {
+        if ($obj[i].getAttribute('data-value').localeCompare(email) == 0) {
+          $obj[i].remove();
+          $('#deleteTenant').dropdown('clear');
+          break;
+        }
+      }
+    };
   };
 });
 

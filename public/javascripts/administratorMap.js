@@ -1,4 +1,4 @@
-const ADMINMAP = (function (context) {
+//const ADMINMAP = (function () {
 
   let map; // the google map
   let latlng = []; // geolocation data later retrieved from server in func
@@ -119,5 +119,8 @@ const ADMINMAP = (function (context) {
     const lon = Number(latLng[1]);
     return new google.maps.LatLng(lat, lon);
   }
-});
-google.maps.event.addDomListener(window, 'load', ADMINMAP.initialize);
+//});
+
+//google.maps.event.addDomListener(window, 'load', ADMINMAP.initialize);
+
+google.maps.event.addDomListener(window, 'load', initialize);

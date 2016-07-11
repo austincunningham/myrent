@@ -9,6 +9,8 @@ import utils.LatLng;
 
 import java.util.*;
 
+import org.json.simple.JSONObject;
+
 import models.*;
 
 public class Tenants extends Controller
@@ -165,15 +167,11 @@ public class Tenants extends Controller
   {
     Tenant tenant = Tenant.findById(deleteTenant);
     Logger.info("Deleting Tenant : "+tenant.firstName);
+    String value = "Congratulations. You have successfully deleted "+ tenant.firstName +" "+tenant.lastName+".";
     tenant.delete();
-    List<List<String>> jsonArray = new ArrayList<List<String>>();
-    List<Tenant> allTenants = Tenant.findAll();
-    int i = 0;
-    for(Tenant ten: allTenants)
-    {
-      jsonArray.add(i, Arrays.asList(ten.firstName, ten.lastName));
-    }
-    renderJSON(jsonArray);
+    JSONObject obj = new JSONObject();
+    obj.put("index", value);
+    renderJSON(obj);
     //Administrators.index();
   }
   

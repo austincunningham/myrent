@@ -58,10 +58,10 @@
 					</div>
 				</div>
 			</div>
-               <div id="notificationLandlord"></div>
+               <div id="notificationTenant"></div>
 			<button class="ui green submit button">Delete Tenant <i class="delete icon"></i></button>
 		<div class="ui error message"></div>
-	  </form>
+<!-- 	  </form> -->
 </section>
 	    
 <!--   <section class="ui form segment"> -->
@@ -76,7 +76,9 @@
 						<div class="default text">Select Landlord</div>
 							<i class="dropdown icon"></i>
 							<div class="menu landlord">
-
+								#{list items:landlords, as:'landlord'}
+								  <div class="item" data-value="${landlord.id}">${landlord.email}</div>
+								#{/list}
 							</div>
 						</div>
 					</div>
@@ -84,7 +86,7 @@
 			</div>
 			<button class="ui green submit button">Delete Landlord <i class="delete icon"></i></button>
 		<div class="ui error message"></div>
-	  </form>
+<!-- 	  </form> -->
     </section>
 	  
     </section>
