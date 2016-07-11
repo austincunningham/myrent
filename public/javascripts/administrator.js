@@ -6,16 +6,41 @@ $(document).ready(function () {
   $('#deleteTenant').dropdown();
   $('#deleteLandlord').dropdown();
 
-  $('.ui.form').form({
+  $('.ui.form.tenant').form({
     fields: {
       deleteTenant: {
         identifier: 'deleteTenant',
         rules: [{
           type: 'empty',
           prompt: 'Select Tenant to delete from the dropdown',
-        },],
+        },
+        ],
       },
+    },
+    onSuccess: function () {
+      inline: true,
+          console.log('on success');
+      submitTenantForm();
+      return false;
+    },
+  });
 
+  function submitTenantForm() {
+    const formData = $('.ui.form.segment input').serialize();
+    $.ajax({
+      type: 'POST',
+      url: '/Tenants/deleteResidence',
+      data: formData,
+      limitValues: false,
+      success: function (response) {
+        console.log('What do I get here' + response);
+      },
+    });
+  };
+});
+
+/*  $('.ui.form.landlord').form({
+    fields: {
       deleteLandlord: {
         identifier: 'deleteLandlord',
         rules: [{
@@ -24,5 +49,10 @@ $(document).ready(function () {
         },],
       },
     },
-  });
-});
+    onSuccess : function() {
+      inline: true,
+          console.log('on success');
+      submitLandlordForm();
+      return false;
+  };
+});*/

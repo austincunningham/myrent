@@ -166,7 +166,15 @@ public class Tenants extends Controller
     Tenant tenant = Tenant.findById(deleteTenant);
     Logger.info("Deleting Tenant : "+tenant.firstName);
     tenant.delete();
-    Administrators.index();
+    List<List<String>> jsonArray = new ArrayList<List<String>>();
+    List<Tenant> allTenants = Tenant.findAll();
+    int i = 0;
+    for(Tenant ten: allTenants)
+    {
+      jsonArray.add(i, Arrays.asList(ten.firstName, ten.lastName));
+    }
+    renderJSON(jsonArray);
+    //Administrators.index();
   }
   
   public static void selectResidence(long selectResidence)

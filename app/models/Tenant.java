@@ -28,6 +28,7 @@ public class Tenant extends Model
     this.email     = email;
     this.password  = password;
     this.tenantReference = tenantReference;
+    this.residence = residence;
   }
   
   public static Tenant findByEmail(String email)

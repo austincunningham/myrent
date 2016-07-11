@@ -1,3 +1,4 @@
+
 #{extends 'main.html' /}
 #{set title:'MyRent Tenants page' /}
 
@@ -37,8 +38,9 @@
   </section>
     
     	     
-<section class="ui form segment">
-	<form action="/Tenants/deleteTenant" method="POST">
+<!-- <section class="ui form segment"> -->
+<!-- 	<form action="/Tenants/deleteTenant" method="POST"> -->
+     <section class="ui form segment tenant">
 		<h2 class="ui dividing header">Delete Tenant</h2>   
 	         <div class="two fields">
 			<div class="field">
@@ -47,22 +49,24 @@
 						<input name="deleteTenant" type="hidden">
 						<div class="default text">Select Tenant</div>
 							<i class="dropdown icon"></i>
-							<div class="menu">
+							<div class="menu tenant">
 							   #{list items:tenants, as:'tenant'}
-								  <div class="item" data-value="${tenant.id}">${tenant.email}</div>
-							   #{/list}
+								<div class="item" data-value="${tenant.id}">${tenant.email}</div>
+							   #{/list}							   
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+               <div id="notificationLandlord"></div>
 			<button class="ui green submit button">Delete Tenant <i class="delete icon"></i></button>
 		<div class="ui error message"></div>
 	  </form>
 </section>
 	    
-  <section class="ui form segment">
-	<form action="/Landlords/deleteLandlord" method="POST">
+<!--   <section class="ui form segment"> -->
+<!-- 	<form action="/Landlords/deleteLandlord" method="POST"> -->
+     <section class="ui form segment landlord">
 		<h2 class="ui dividing header">Delete Landlord</h2>   
           <div class="two fields">
 			<div class="field">
@@ -71,10 +75,8 @@
 						<input name="deleteLandlord" type="hidden">
 						<div class="default text">Select Landlord</div>
 							<i class="dropdown icon"></i>
-							<div class="menu">
-							   #{list items:landlords, as:'landlord'}
-								  <div class="item" data-value="${landlord.id}">${landlord.email}</div>
-							   #{/list}
+							<div class="menu landlord">
+
 							</div>
 						</div>
 					</div>
