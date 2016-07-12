@@ -30,19 +30,22 @@ $(document).ready(function () {
       type: 'POST',
       url: '/Tenants/deleteTenant',
       data: formData,
-      //limitValues: false,
       success: function (response) {
         console.log('notification: ' + response.index);
         $('#notificationTenant').html('<div class=\"ui green inverted segment\">' + response.index
             + '</div> <br>');
-        let email = $('#deleteTenant').dropdown('get text');
-        tenantDropdownDelete(email);
+
+        // No need to call the map here as residences can exist without tenants
+        let tenantId = $('#deleteTenant').dropdown('get value');
+        tenantDropdownDelete(tenantId);
       },
     });
-    function tenantDropdownDelete(email) {
-      let $obj = $('.item.tenant');
+    function tenantDropdownDelete(tenantId) {
+      let $obj = $('.item.tenantList');
       for (let i = 0; i < $obj.length; i += 1) {
-        if ($obj[i].getAttribute('data-value').localeCompare(email) == 0) {
+        console.log('dropdown loop number :' + i);
+        if ($obj[i].getAttribute('data-value').localeCompare(tenantId) === 0) {
+          console.log('found matching tenant id and removing from the dropdown');
           $obj[i].remove();
           $('#deleteTenant').dropdown('clear');
           break;

@@ -167,10 +167,11 @@ public class Tenants extends Controller
   {
     Tenant tenant = Tenant.findById(deleteTenant);
     Logger.info("Deleting Tenant : "+tenant.firstName);
-    String value = "Congratulations. You have successfully deleted "+ tenant.firstName +" "+tenant.lastName+".";
-    tenant.delete();
+    String value = "Congratulations. You have successfully deleted "+ tenant.email +".";
     JSONObject obj = new JSONObject();
     obj.put("index", value);
+    obj.put("email", tenant.email );
+    tenant.delete();
     renderJSON(obj);
     //Administrators.index();
   }
