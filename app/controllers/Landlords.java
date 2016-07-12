@@ -5,6 +5,8 @@ import play.mvc.*;
 
 import java.util.*;
 
+import org.json.simple.JSONObject;
+
 import models.*;
 
 public class Landlords extends Controller
@@ -230,8 +232,12 @@ public class Landlords extends Controller
   public static void deleteLandlord(Long deleteLandlord)
   {
     Landlord landlord = Landlord.findById(deleteLandlord);
+    String value = "Congratulations. You have successfully deleted "+ landlord.email +".";
+    JSONObject obj = new JSONObject();
+    obj.put("index", value);
     landlord.delete();
-    Administrators.index();
+    renderJSON(obj);
+    //Administrators.index();
   }
 
 }

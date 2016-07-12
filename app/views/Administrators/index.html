@@ -58,7 +58,6 @@
 					</div>
 				</div>
 			</div>
-               <div id="notificationTenant"></div>
 			<button class="ui green submit button">Delete Tenant <i class="delete icon"></i></button>
 		<div class="ui error message"></div>
 <!-- 	  </form> -->
@@ -77,7 +76,7 @@
 							<i class="dropdown icon"></i>
 							<div class="menu landlord">
 								#{list items:landlords, as:'landlord'}
-								  <div class="item" data-value="${landlord.id}">${landlord.email}</div>
+								  <div class="item landlordList" data-value="${landlord.id}">${landlord.email}</div>
 								#{/list}
 							</div>
 						</div>
@@ -95,15 +94,16 @@
     <section class="ui eight wide segment">
      
 			<section class="ui segment">
-			  <h4>Define the region for which you require a report</h4>
+			  <h4>Residences appear as markers</h4>
 			  <form action="/Administrator/administratorResidences" method="POST">    
-			    Size and position circle to select region for report 
+			    click on the markers for information on tenant
 			    <div  class="ui 4:3 embed" id="map-canvas"></div>
+			    <div id="notification"></div>
 			    </div>
-			   </div>
+			    
+			   </div>			  	
 			  </form>
 		    </section>
-
     </section>
   </div> 
 </div>

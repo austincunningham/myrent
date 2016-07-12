@@ -170,7 +170,6 @@ public class Tenants extends Controller
     String value = "Congratulations. You have successfully deleted "+ tenant.email +".";
     JSONObject obj = new JSONObject();
     obj.put("index", value);
-    obj.put("email", tenant.email );
     tenant.delete();
     renderJSON(obj);
     //Administrators.index();
