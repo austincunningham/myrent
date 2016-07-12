@@ -1,8 +1,8 @@
-//const ADMINMAP = (function () {
+const ADMINMAP = (function () {
 
   let map; // the google map
   let latlng = []; // geolocation data later retrieved from server in func
-// callback
+  // callback
   const markers = []; // array of all markers (unfiltered)
 
   /**
@@ -119,8 +119,60 @@
     const lon = Number(latLng[1]);
     return new google.maps.LatLng(lat, lon);
   }
-//});
 
-//google.maps.event.addDomListener(window, 'load', ADMINMAP.initialize);
+  /**
+   *  data comes from /Administrator/administratorResidences again, ajax makes the call
+   *  after tenant/landlord has been removed from the database. Regenerates new set of markers after
+   *  revmoveMarkers is called.
+   * @param data
+   */
+  function updateMarkers(data)
+  {
+    removeMarkers();
+    latlngStr = [];
+    $.each(data, function (index, geoObj)
+    {
+      latlngStr.push(geoObj);
+    });
 
-google.maps.event.addDomListener(window, 'load', initialize);
+    const infowindow = new google.maps.InfoWindow();
+
+    for (i = 0; i < latlngStr.length; i++)
+    {
+      marker = new google.maps.Marker({
+        position: getLatLng(latlngStr[i]),
+        map: map,
+      });
+      google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+          infowindow.setContent('Eircode : ' + latlngStr[i][0] + '<div>Tenant : ' + latlngStr[i][2]
+              + ' ' + latlngStr[i][3] + '</div>');
+          infowindow.open(map, marker);
+        };
+      })(marker, i));
+
+      markers.push(marker);
+    }
+  }
+
+  /**
+   * Remove existing markers
+   */
+  function removeMarkers()
+  {
+    for (i = 0; i < markers.length; i += 1)  {
+      markers[i].setMap(undefined);
+    }
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+  return {
+    updateMarkers: updateMarkers,
+  };
+
+  google.maps.event.addDomListener(window, 'load', ADMINMAP.initialize);
+
+  //google.maps.event.addDomListener(window, 'load', initialize);
+
+}());

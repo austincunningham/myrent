@@ -31,11 +31,10 @@ $(document).ready(function () {
       url: '/Tenants/deleteTenant',
       data: formData,
       success: function (response) {
-        console.log('notification: ' + response.index);
-        $('#notification').html('<br><div class=\"ui green inverted segment\">' + response.index
-            + '</div> <br>');
-
-        // No need to call the map here as residences can exist without tenants
+        //console.log('notification: ' + response.index);
+        //$('#notification').html('<br><div class=\"ui green inverted segment\">' + response.index
+        //   + '</div> <br>');
+        ADMINMAP.updateMarkers(response);
         let tenantId = $('#deleteTenant').dropdown('get value');
         tenantDropdownDelete(tenantId);
       },
@@ -79,9 +78,10 @@ $(document).ready(function () {
       url: '/Landlords/deleteLandlord',
       data: formData,
       success: function (response) {
-        console.log('notification: ' + response.index);
-        $('#notification').html('<br><div class=\"ui green inverted segment\">' + response.index
-            + '</div> <br>');
+        //console.log('notification: ' + response.index);
+        //$('#notification').html('<br><div class=\"ui green inverted segment\">' + response.index
+        //    + '</div> <br>');
+        ADMINMAP.updateMarkers(response);
         let landlordId = $('#deleteLandlord').dropdown('get value');
         landlordDropdownDelete(landlordId);
       },
