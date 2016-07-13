@@ -6,6 +6,62 @@ $(document).ready(function () {
   $('#deleteTenant').dropdown();
   $('#deleteLandlord').dropdown();
 
+  function tenantDropdownDelete(response) {
+    let $obj = $('.item.tenantList');
+    let removeList = [];
+
+    for (i = 0; i < $obj.length; i++) {
+      removeList[i] = $obj[i].innerHTML;
+    }
+
+    console.log(removeList);
+    const val = $.each(response, function (index, geoObj) {
+      console.log('Current email list :' + geoObj[4]);
+    });
+
+    /*let value;
+    for (value of val) {
+      if (value[4] === null) {
+        val.remove[value];
+      }
+    }
+*/
+    for (let i = 0; i < removeList.length; i++) {
+      //console.log('obj = ' + $obj[i].innerHTML);
+      for (let j = 0; j < val.length; j++) {
+        if (val[j][4] === null) {
+          console.log('do nothing its null');
+        } else {
+          let removeL = removeList[i].toString();
+          let value = val[j][4].toString();
+          if (value.localeCompare(removeL) == 0) {
+            console.log('do i ever remove :' + removeList[i]);
+            removeList.splice(i, 1);
+          }
+        }
+      }
+
+    }
+
+    for (let x = 0; x < removeList.length; x++) {
+      console.log('whats left ' + removeList[x]);
+    }
+
+    for (let i = 0; i < $obj.length; i++) {
+      for (let j = 0; j < removeList.length; j++) {
+        console.log('should be something here: ' + removeList[j] + ' innerHtml ' + $obj[i].innerHTML);
+        if ($obj[i].innerHTML.localeCompare(removeList[j]) == 0) {
+          console.log('do i ever remove :'  + $obj[i].innerHTML);
+          $obj[i].remove();
+        }
+      }
+    }
+
+    $('#deleteTenant').dropdown('clear');
+    //break;
+
+  }
+
   $('.ui.form.tenant').form({
     fields: {
       deleteTenant: {
@@ -35,22 +91,11 @@ $(document).ready(function () {
         //$('#notification').html('<br><div class=\"ui green inverted segment\">' + response.index
         //   + '</div> <br>');
         ADMINMAP.updateMarkers(response);
-        let tenantId = $('#deleteTenant').dropdown('get value');
-        tenantDropdownDelete(tenantId);
+        //let tenantId = $('#deleteTenant').dropdown('get value');
+        tenantDropdownDelete(response);
       },
     });
-    function tenantDropdownDelete(tenantId) {
-      let $obj = $('.item.tenantList');
-      for (let i = 0; i < $obj.length; i += 1) {
-        console.log('dropdown loop number :' + i);
-        if ($obj[i].getAttribute('data-value').localeCompare(tenantId) === 0) {
-          console.log('found matching tenant id and removing from the dropdown');
-          $obj[i].remove();
-          $('#deleteTenant').dropdown('clear');
-          break;
-        }
-      }
-    };
+
   };
 
   $('.ui.form.landlord').form({
@@ -84,6 +129,7 @@ $(document).ready(function () {
         ADMINMAP.updateMarkers(response);
         let landlordId = $('#deleteLandlord').dropdown('get value');
         landlordDropdownDelete(landlordId);
+        tenantDropdownDelete(response);
       },
     });
     function landlordDropdownDelete(landlordId) {

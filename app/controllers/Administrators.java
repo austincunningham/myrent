@@ -107,13 +107,14 @@ public class Administrators extends Controller
       {
         Logger.info("Adding residence with eircode to json: " + res.eircode);
         Logger.info("Tenant vacant");
-        jsonArray.add(i, Arrays.asList(res.eircode, res.location, "Vacant", "Residence"));
+        jsonArray.add(i, Arrays.asList(res.eircode, res.location, "Vacant", "Residence",null));
 
       }
       else
       {
         Logger.info("Adding residence with eircode to json : " + res.eircode);
-        jsonArray.add(i, Arrays.asList(res.eircode, res.location, res.tenant.firstName, res.tenant.lastName));
+        jsonArray.add(i, Arrays.asList(res.eircode, res.location, res.tenant.firstName, res.tenant.lastName
+            ,res.tenant.email));
       }
       i++;
     }
