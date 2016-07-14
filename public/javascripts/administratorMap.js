@@ -45,7 +45,7 @@ const ADMINMAP = (function () {
     $(function () {
       $.get('/Administrator/administratorResidences', function (data) {
         $.each(data, function (index, geoObj) {
-          console.log(geoObj[0] + ' ' + geoObj[1] + ' ' + geoObj[2] + ' ' + geoObj[3] + ' '
+          console.log(geoObj[0] + ' ' + geoObj[1] + ' ' + geoObj[2] + ' ' + geoObj[3] + ' ' 
               + geoObj[4]);
         });
 

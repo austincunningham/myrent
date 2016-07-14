@@ -10,48 +10,49 @@
 
 <div class="ui sixteen wide grid">  
   <div class="six wide column">
-    <section class="ui segment">
+
+      
+    <section class="ui form segment deleteResidence">
+     <section class="ui segment">
       <div class="field">
-      <h3 class="ui dividing header">Current Residence Eircode</h3>
-        <div class="ui left action input">
-		  <button class="ui green labeled icon button">
-			<i class="world icon"></i> Eircode
-		</button>
-		#{if tenantResidence != null}
-		<input readonly value="${tenantResidence.eircode}" type="text" name="eircode">
-		#{/if}
-		#{if tenantResidence == null}
-		<input readonly placeholder value="Select new residence" type="text" name="eircode">
-		#{/if}
-		</div>
+	      <h3 class="ui dividing header">Current Residence Eircode</h3>
+	      <div class="ui left action input">
+			<button class="ui green labeled icon button">
+				<i class="world icon"></i> Eircode
+			</button>
+			#{if tenantResidence != null}
+			  <input id="eircode" readonly value="${tenantResidence.eircode}" type="text" name="eircode">
+			#{/if}
+			#{if tenantResidence == null}
+			  <input id="eircode" readonly placeholder value="Select new residence" type="text" name="eircode">
+			#{/if}
+		  </div>
       </div>    
     </section>
-      
-    <section class="ui form segment">
-      <form action="/Tenants/deleteResidence" method="GET">
+	<section class="ui segment">	    
 	    <div class="field">
 		  <button class="ui big green submit icon button">
 		  <i class="home icon"></i>
           Delete Residence
 		  </button>
        </div>
-     </form>
+   </section>  
   </section>
   
-  <section class="ui form segment">
+  <section class="ui form segment selectResidence">
 	<form action="/Tenants/selectResidence" method="POST">
 		<h2 class="ui dividing header">Select Residence</h2>   
           <div class="two fields">
 			<div class="field">
 			<label>Residence list</label>
 				<div class="column">
-					<div class="ui selection dropdown" id="deleteResidence">
+					<div class="ui selection dropdown" id="selectResidence">
 						<input name="selectResidence" type="hidden">
 						<div class="default text">Select Residence</div>
 							<i class="dropdown icon"></i>
-							<div class="menu">
+							<div class="menu selectResidence">
 							   #{list items:residences, as:'res'}
-								  <div class="item" data-value="${res.id}">${res.eircode}</div>
+								  <div id="residencesList" class="item" data-value="${res.id}">${res.eircode}</div>
 							   #{/list}
 							</div>
 						</div>

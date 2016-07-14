@@ -160,7 +160,10 @@ public class Tenants extends Controller
     Tenant tenant = Tenants.getCurrentTenant();
     tenant.residence = null;
     tenant.save();
-    index();
+    String value = "Select new residence";
+    JSONObject obj = new JSONObject();
+    obj.put("index", value);
+    renderJSON(obj);
   }
 
   public static void deleteTenant(long deleteTenant)

@@ -1,11 +1,16 @@
 /**
  * Created by austin on 05/07/2016.
- * semantic ui validation
+ * semantic ui validation and ajax
  */
 $(document).ready(function () {
   $('#deleteTenant').dropdown();
   $('#deleteLandlord').dropdown();
 
+  /**
+   * Uses the response from the ajax call to compare with the existing page list dropdown and
+   * remove what is not in the DB
+   * @param response
+   */
   function tenantDropdownDelete(response) {
     let $obj = $('.item.tenantList');
     let removeList = [];
@@ -19,15 +24,8 @@ $(document).ready(function () {
       console.log('Current email list :' + geoObj[4]);
     });
 
-    /*let value;
-    for (value of val) {
-      if (value[4] === null) {
-        val.remove[value];
-      }
-    }
-*/
+    //finds the differences between the two and puts in an array
     for (let i = 0; i < removeList.length; i++) {
-      //console.log('obj = ' + $obj[i].innerHTML);
       for (let j = 0; j < val.length; j++) {
         if (val[j][4] === null) {
           console.log('do nothing its null');
@@ -49,7 +47,8 @@ $(document).ready(function () {
 
     for (let i = 0; i < $obj.length; i++) {
       for (let j = 0; j < removeList.length; j++) {
-        console.log('should be something here: ' + removeList[j] + ' innerHtml ' + $obj[i].innerHTML);
+        console.log('should be something here: ' + removeList[j] + ' innerHtml '
+            + $obj[i].innerHTML);
         if ($obj[i].innerHTML.localeCompare(removeList[j]) == 0) {
           console.log('do i ever remove :'  + $obj[i].innerHTML);
           $obj[i].remove();
@@ -58,8 +57,6 @@ $(document).ready(function () {
     }
 
     $('#deleteTenant').dropdown('clear');
-    //break;
-
   }
 
   $('.ui.form.tenant').form({
@@ -91,7 +88,6 @@ $(document).ready(function () {
         //$('#notification').html('<br><div class=\"ui green inverted segment\">' + response.index
         //   + '</div> <br>');
         ADMINMAP.updateMarkers(response);
-        //let tenantId = $('#deleteTenant').dropdown('get value');
         tenantDropdownDelete(response);
       },
     });
