@@ -249,7 +249,7 @@ public class Tenants extends Controller
       {
         Logger.info("Adding vacant residence with eircode : " +res.eircode);
 
-        jsonArray.add(i, Arrays.asList(res.eircode, res.location, ""+res.tenant));
+        jsonArray.add(i, Arrays.asList(res.eircode, res.location,""+ res.id));
         i++;
       }
     }

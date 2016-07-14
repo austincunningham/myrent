@@ -31,7 +31,13 @@ $(document).ready(function () {
       success: function (response) {
         console.log('notification: ' + response);
         let selectedEircode = document.getElementById('eircode').value;
-        residenceDropDownAdd(selectedEircode);
+        let selectedId = $.each(response, function (index, geoObj) {
+          console.log(geoObj[0] + ' ' + geoObj[1] + ' id: ' + geoObj[2]);
+          if (geoObj[0] === selectedEircode) {
+            return geoObj[2];
+          }
+        });
+        residenceDropDownAdd(selectedEircode, selectedId);
         document.getElementById('eircode').value = 'Select new residence ';
 
         TENANTMAP.updateMarkers(response);
@@ -39,8 +45,8 @@ $(document).ready(function () {
     });
   }
 
-  function residenceDropDownAdd(selectedEircode) {
-    let newMenuItem = '<div class="item eircode"' + ' ' + 'data-value="' + selectedEircode + '">'
+  function residenceDropDownAdd(selectedEircode, selectedId) {
+    let newMenuItem = '<div class="item eircode"' + ' ' + 'data-value="' + selectedId + '">'
         + selectedEircode + '</div>';
     $('.menu.selectResidence').append(newMenuItem);
   }
@@ -70,11 +76,13 @@ $(document).ready(function () {
       url: '/Tenants/selectResidence',
       data: formData,
       success: function (response) {
-        console.log('notification: ' + response.index);
+        console.log('notification: ' + response);
 
         //TENANTMAP.updateMarkers(response);
-        let residenceId = $('#selectResidences').dropdown('get value');
-        let selectedEircode = $('#selectResidences').dropdown('get text');
+        let residenceId = $('#residencesList').dropdown('get value');
+        console.log('id no expected :' + residenceId);
+        let selectedEircode = $('#residencesList').dropdown('get text');
+        console.log('eircode expected : ' + selectedEircode);
         document.getElementById('eircode').value = selectedEircode;
         residenceDropdownSelect(residenceId);
       },
