@@ -63,6 +63,7 @@ const TENANTMAP = (function () {
     google.maps.event.addListener(circle, 'center_changed', function () {
       circleData();
     });
+
     google.maps.event.addListener(circle, 'radius_changed', function () {
       circleData();
     });
@@ -82,6 +83,7 @@ const TENANTMAP = (function () {
         $.each(data, function (index, geoObj) {
           console.log(geoObj[0] + ' ' + geoObj[1]);
         });
+
         callback(data);
       });
     });
@@ -115,6 +117,7 @@ const TENANTMAP = (function () {
       markers[i] = marker;
       bounds.extend(marker.position);
     }
+
     map.fitBounds(bounds);
   }
 
@@ -151,6 +154,56 @@ const TENANTMAP = (function () {
     const lon = Number(latLng[1]);
     return new google.maps.LatLng(lat, lon);
   }
+
+  /**
+   *  data comes from /Administrator/administratorResidences again, ajax makes the call
+   *  after tenant/landlord has been removed from the database. Regenerates new set of markers after
+   *  revmoveMarkers is called.
+   * @param data
+   */
+  function updateMarkers(data)
+  {
+    removeMarkers();
+    latlngStr = [];
+    $.each(data, function (index, geoObj)
+    {
+      latlngStr.push(geoObj);
+    });
+
+    const infowindow = new google.maps.InfoWindow();
+
+    for (i = 0; i < latlngStr.length; i++)
+    {
+      marker = new google.maps.Marker({
+        position: getLatLng(latlngStr[i]),
+        map: map,
+      });
+      google.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+          infowindow.setContent('Eircode : ' + latlngStr[i][0]);
+          infowindow.open(map, marker);
+        };
+      })(marker, i));
+
+      markers.push(marker);
+    }
+  }
+
+  /**
+   * Remove existing markers
+   */
+  function removeMarkers()
+  {
+    for (i = 0; i < markers.length; i += 1)  {
+      markers[i].setMap(undefined);
+    }
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+  return {
+    updateMarkers: updateMarkers,
+  };
 
   google.maps.event.addDomListener(window, 'load', initialize);
 

@@ -159,11 +159,8 @@ public class Tenants extends Controller
   {
     Tenant tenant = Tenants.getCurrentTenant();
     tenant.residence = null;
-    tenant.save();
-    String value = "Select new residence";
-    JSONObject obj = new JSONObject();
-    obj.put("index", value);
-    renderJSON(obj);
+    tenant.save();    
+    vacant();
   }
 
   public static void deleteTenant(long deleteTenant)

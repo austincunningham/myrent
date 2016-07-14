@@ -29,11 +29,10 @@ $(document).ready(function () {
       url: '/Tenants/deleteResidence',
       data: formData,
       success: function (response) {
-        console.log('notification: ' + response.index);
-        //$('#eircode').html(response.index);
-        document.getElementById("eircode").value = response.index;
-
-        //TENANTMAP.updateMarkers(response);
+        console.log('notification: ' + response);
+        document.getElementById('eircode').value = 'Select new residence ';
+        
+        TENANTMAP.updateMarkers(response);
       },
     });
   }
