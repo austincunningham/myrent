@@ -30,11 +30,19 @@ $(document).ready(function () {
       data: formData,
       success: function (response) {
         console.log('notification: ' + response);
+        let selectedEircode = document.getElementById('eircode').value;
+        residenceDropDownAdd(selectedEircode);
         document.getElementById('eircode').value = 'Select new residence ';
-        
+
         TENANTMAP.updateMarkers(response);
       },
     });
+  }
+
+  function residenceDropDownAdd(selectedEircode) {
+    let newMenuItem = '<div class="item eircode"' + ' ' + 'data-value="' + selectedEircode + '">'
+        + selectedEircode + '</div>';
+    $('.menu.selectResidence').append(newMenuItem);
   }
 
   $('.ui.form.selectResidence').form({
@@ -66,6 +74,8 @@ $(document).ready(function () {
 
         //TENANTMAP.updateMarkers(response);
         let residenceId = $('#selectResidences').dropdown('get value');
+        let selectedEircode = $('#selectResidences').dropdown('get text');
+        document.getElementById('eircode').value = selectedEircode;
         residenceDropdownSelect(residenceId);
       },
     });
@@ -74,9 +84,8 @@ $(document).ready(function () {
       for (let i = 0; i < $obj.length; i += 1) {
         console.log('dropdown loop number :' + i);
         if ($obj[i].getAttribute('data-value').localeCompare(residenceId) === 0) {
-          console.log('found matching landlord id and removing from the dropdown');
           $obj[i].remove();
-          $('#deleteLandlord').dropdown('clear');
+          $('#selectedResidences').dropdown('clear');
           break;
         }
       }

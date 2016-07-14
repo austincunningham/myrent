@@ -184,7 +184,7 @@ public class Tenants extends Controller
     tenant.residence = res;
     // Logger.info(" res.eircode : "+res.eircode);
     tenant.save();
-    index();
+    vacant();
   }
 
   /**
@@ -249,7 +249,7 @@ public class Tenants extends Controller
       {
         Logger.info("Adding vacant residence with eircode : " +res.eircode);
 
-        jsonArray.add(i, Arrays.asList(res.eircode, res.location));
+        jsonArray.add(i, Arrays.asList(res.eircode, res.location, ""+res.tenant));
         i++;
       }
     }
