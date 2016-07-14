@@ -31,12 +31,13 @@ $(document).ready(function () {
       success: function (response) {
         console.log('notification: ' + response);
         let selectedEircode = document.getElementById('eircode').value;
-        let selectedId = $.each(response, function (index, geoObj) {
-          console.log(geoObj[0] + ' ' + geoObj[1] + ' id: ' + geoObj[2]);
+        let selectedId;
+        $.each(response, function (index, geoObj) {
           if (geoObj[0] === selectedEircode) {
-            return geoObj[2];
+            selectedId = geoObj[2];
           }
         });
+
         residenceDropDownAdd(selectedEircode, selectedId);
         document.getElementById('eircode').value = 'Select new residence ';
 
@@ -48,7 +49,7 @@ $(document).ready(function () {
   function residenceDropDownAdd(selectedEircode, selectedId) {
     let newMenuItem = '<div class="item eircode"' + ' ' + 'data-value="' + selectedId + '">'
         + selectedEircode + '</div>';
-    $('.menu.selectResidence').append(newMenuItem);
+    $('.menu.residence').append(newMenuItem);
   }
 
   $('.ui.form.selectResidence').form({
@@ -71,6 +72,8 @@ $(document).ready(function () {
 
   function selectResidenceForm() {
     const formData = $('.ui.form.segment input').serialize();
+
+
     $.ajax({
       type: 'POST',
       url: '/Tenants/selectResidence',
@@ -78,22 +81,24 @@ $(document).ready(function () {
       success: function (response) {
         console.log('notification: ' + response);
 
-        //TENANTMAP.updateMarkers(response);
-        let residenceId = $('#residencesList').dropdown('get value');
+        TENANTMAP.updateMarkers(response);
+        let residenceId = $('#selectResidence').dropdown('get value');
         console.log('id no expected :' + residenceId);
-        let selectedEircode = $('#residencesList').dropdown('get text');
-        console.log('eircode expected : ' + selectedEircode);
-        document.getElementById('eircode').value = selectedEircode;
+        let residenceEircode = $('#selectResidence').dropdown('get text');
+        console.log('eircode expected : ' + residenceEircode);
+
+
+        document.getElementById('eircode').value = residenceEircode;
         residenceDropdownSelect(residenceId);
       },
     });
-    function residenceDropdownSelect(residenceId) {
+    function residenceDropdownSelect(response) {
       let $obj = $('.item.residencesList');
       for (let i = 0; i < $obj.length; i += 1) {
         console.log('dropdown loop number :' + i);
         if ($obj[i].getAttribute('data-value').localeCompare(residenceId) === 0) {
           $obj[i].remove();
-          $('#selectedResidences').dropdown('clear');
+          $('#selectResidence').dropdown('clear');
           break;
         }
       }

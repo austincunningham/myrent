@@ -242,8 +242,8 @@ public class Tenants extends Controller
     for (Residence res : allResidence)
     {
       if (res.tenant != null)
-      {
-        Logger.info("No tenant present");
+      { 
+        Logger.info("tenant present");
       }
       else
       {

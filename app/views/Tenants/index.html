@@ -50,9 +50,9 @@
 						<input name="selectResidence" type="hidden">
 						<div class="default text">Select Residence</div>
 							<i class="dropdown icon"></i>
-							<div class="menu selectResidence">
+							<div class="menu residence">
 							   #{list items:residences, as:'res'}
-								  <div id="residencesList" class="item" data-value="${res.id}">${res.eircode}</div>
+								  <div class="item residencesList" data-value="${res.id}">${res.eircode}</div>
 							   #{/list}
 							</div>
 						</div>

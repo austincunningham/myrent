@@ -1,6 +1,6 @@
 /**
  * Created by austin on 05/07/2016.
- * semantic ui validation and ajax
+ * semantic ui validation
  */
 $(document).ready(function () {
   $('#deleteTenant').dropdown();
@@ -47,8 +47,7 @@ $(document).ready(function () {
 
     for (let i = 0; i < $obj.length; i++) {
       for (let j = 0; j < removeList.length; j++) {
-        console.log('should be something here: ' + removeList[j] + ' innerHtml '
-            + $obj[i].innerHTML);
+        console.log('should be something here: ' + removeList[j] + ' innerHtml ' + $obj[i].innerHTML);
         if ($obj[i].innerHTML.localeCompare(removeList[j]) == 0) {
           console.log('do i ever remove :'  + $obj[i].innerHTML);
           $obj[i].remove();
@@ -57,6 +56,8 @@ $(document).ready(function () {
     }
 
     $('#deleteTenant').dropdown('clear');
+    //break;
+
   }
 
   $('.ui.form.tenant').form({
@@ -88,6 +89,7 @@ $(document).ready(function () {
         //$('#notification').html('<br><div class=\"ui green inverted segment\">' + response.index
         //   + '</div> <br>');
         ADMINMAP.updateMarkers(response);
+        //let tenantId = $('#deleteTenant').dropdown('get value');
         tenantDropdownDelete(response);
       },
     });
