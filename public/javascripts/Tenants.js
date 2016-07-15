@@ -72,27 +72,27 @@ $(document).ready(function () {
 
   function selectResidenceForm() {
     const formData = $('.ui.form.segment input').serialize();
-
-
     $.ajax({
       type: 'POST',
       url: '/Tenants/selectResidence',
       data: formData,
       success: function (response) {
         console.log('notification: ' + response);
-
         TENANTMAP.updateMarkers(response);
         let residenceId = $('#selectResidence').dropdown('get value');
         console.log('id no expected :' + residenceId);
         let residenceEircode = $('#selectResidence').dropdown('get text');
         console.log('eircode expected : ' + residenceEircode);
 
+        // only populate value if there is an eircode present
+        if (residenceEircode != '') {
+          document.getElementById('eircode').value = residenceEircode;
+        }
 
-        document.getElementById('eircode').value = residenceEircode;
         residenceDropdownSelect(residenceId);
       },
     });
-    function residenceDropdownSelect(response) {
+    function residenceDropdownSelect(residenceId) {
       let $obj = $('.item.residencesList');
       for (let i = 0; i < $obj.length; i += 1) {
         console.log('dropdown loop number :' + i);
