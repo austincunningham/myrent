@@ -4,6 +4,7 @@
  */
 $(document).ready(function () {
   $('.ui.dropdown').dropdown();
+  let counter = 0;
 
   $('.ui.form.deleteResidence').form({
     fields: {
@@ -84,65 +85,19 @@ $(document).ready(function () {
         let residenceEircode = $('#selectResidence').dropdown('get text');
         console.log('eircode expected : ' + residenceEircode);
 
-        // only populate value if there is an eircode present
-        if (residenceEircode != '') {
-          document.getElementById('eircode').value = residenceEircode;
+        // seems to do two loops second over writes the first , use counter to stop this as the
+        // as the 0 iteration returns the correct data
+        if (counter === 0) {
+          counter++;
+
+          //document.getElementById('eircode').value = residenceEircode; bug on page refresh
+          $('#eircode').val(residenceEircode);
         }
 
         residenceDropdownSelect(residenceId);
       },
     });
     function residenceDropdownSelect(residenceId) {
-      //==========================================================================
-/*
-      let $obj = $('.item.residencesList');
-      let removeList = [];
-
-      for (i = 0; i < $obj.length; i++) {
-        removeList[i] = $obj[i].innerHTML;
-      }
-
-      console.log(removeList);
-      const val = $.each(response, function (index, geoObj) {
-        console.log('Current eircode list :' + geoObj[0]);
-      });
-
-      //finds the differences between the two and puts in an array
-      for (let i = 0; i < removeList.length; i++) {
-        for (let j = 0; j < val.length; j++) {
-          if (val[j][0] === null) {
-            console.log('do nothing its null');
-          } else {
-            let removeL = removeList[i].toString();
-            let value = val[j][0].toString();
-            if (value.localeCompare(removeL) == 0) {
-              console.log('Remove from remove list :' + removeList[i]);
-              removeList.splice(i, 1);
-            }
-          }
-        }
-
-      }
-
-      for (let x = 0; x < removeList.length; x++) {
-        console.log('whats left to remove ' + removeList[x]);
-      }
-
-      for (let i = 0; i < $obj.length; i++) {
-        for (let j = 0; j < removeList.length; j++) {
-          console.log('should be something here: ' + removeList[j] + ' innerHtml '
-              + $obj[i].innerHTML);
-          if ($obj[i].innerHTML.localeCompare(removeList[j]) == 0) {
-            console.log('do i ever remove :'  + $obj[i].innerHTML);
-            $obj[i].remove();
-          }
-        }
-      }
-
-      $('#selectResidence').dropdown('clear');
-*/
-
-      //==========================================================================
       let $obj = $('.item.residencesList');
       for (let i = 0; i < $obj.length; i += 1) {
         console.log('dropdown loop number :' + i);
