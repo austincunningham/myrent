@@ -76,8 +76,8 @@ Residence(residence2):
 
 Residence(residence3):
     from: homer
-    location: 52.2517534,-7.1847904
-    eircode: X91 X3E8
+    location: 52.3215180,-6.4493257
+    eircode: Y35 AH70
     rent: 5500
     type: House
     bedrooms: 2
@@ -98,8 +98,8 @@ Residence(residence4):
     
 Residence(residence5):
     from: marge
-    location: 52.1103008,-7.6169050
-    eircode: X35 K578
+    location: 52.1433001,-9.9833185
+    eircode: V92 YD27
     rent: 1000
     type: Studio
     bedrooms: 4
