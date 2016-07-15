@@ -61,11 +61,11 @@ const TENANTMAP = (function () {
 
   function circleListener() {
     google.maps.event.addListener(circle, 'center_changed', function () {
-      circleData();
+      requestReport();
     });
 
     google.maps.event.addListener(circle, 'radius_changed', function () {
-      circleData();
+      requestReport();
     });
   }
 
