@@ -82,15 +82,17 @@ $(document).ready(function () {
         TENANTMAP.updateMarkers(response);
         let residenceId = $('#selectResidence').dropdown('get value');
         console.log('id no expected :' + residenceId);
+
         let residenceEircode = $('#selectResidence').dropdown('get text');
+        //let residenceEircode = $('#selectResidence option:selected').text();
         console.log('eircode expected : ' + residenceEircode);
 
-        // seems to do two loops second over writes the first , use counter to stop this as the
-        // as the 0 iteration returns the correct data
-        if (counter === 0) {
-          counter++;
-
-          //document.getElementById('eircode').value = residenceEircode; bug on page refresh
+        // does to do two loops second over writes the first , use conditions to stop over write
+        if (residenceEircode === '') {
+          console.log('Do nothing');
+        } else if (residenceEircode === 'Select Residence') {
+          console.log('Do nothing');
+        } else {
           $('#eircode').val(residenceEircode);
         }
 
