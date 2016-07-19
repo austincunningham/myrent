@@ -1,7 +1,7 @@
 /**
  * Created by austin on 19/07/2016.
  */
-
+//const TENANTMAP = (function () {
 let map; // the google map
 let latlng = []; // geolocation data later retrieved from server in func callback
 const markers = []; // array of all markers (unfiltered)
@@ -132,7 +132,7 @@ function start() {
     return;
   }
 
-  $('#markertable').empty();
+  //$('#markertable').empty();
   listenerHandler = google.maps.event.addListener(map, 'click', function (e) {
     pos[posIndex] = e.latLng;
     if (posIndex > 0) {
@@ -194,7 +194,7 @@ function reset() {
 function polyline(prevIndex, index) {
   const coords = [
     new google.maps.LatLng(pos[prevIndex].lat(), pos[prevIndex].lng()),
-    new google.maps.LatLng(pos[index].lat(), pos[index].lng()), ];
+    new google.maps.LatLng(pos[index].lat(), pos[index].lng()),];
 
   const line = new google.maps.Polyline({
     path: coords,
@@ -235,5 +235,55 @@ function drawPolygon() {
 }
 
 
+/**
+ *  data comes from /Administrator/administratorResidences again, ajax makes the call
+ *  after tenant/landlord has been removed from the database. Regenerates new set of markers after
+ *  revmoveMarkers is called.
+ * @param data
+ */
+
+function updateMarkers(data) {
+  removeMarkers();
+  latlngStr = [];
+  $.each(data, function (index, geoObj) {
+    latlngStr.push(geoObj);
+  });
+
+  const infowindow = new google.maps.InfoWindow();
+
+  for (i = 0; i < latlngStr.length; i++) {
+    marker = new google.maps.Marker({
+      position: getLatLng(latlngStr[i]),
+      map: map,
+    });
+    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+      return function () {
+        infowindow.setContent('Eircode : ' + latlngStr[i][0]);
+        infowindow.open(map, marker);
+      };
+    })(marker, i));
+
+    markers.push(marker);
+    returnMarkers();
+  }
+}
+
+/**
+   * Remove existing markers
+   */
+function removeMarkers() {
+  for (i = 0; i < markers.length; i += 1) {
+    markers[i].setMap(undefined);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+function returnMarkers() {
+  return {
+    updateMarkers: updateMarkers,
+  };
+}
+
 google.maps.event.addDomListener(window, 'load', initialize);
 
+//}());

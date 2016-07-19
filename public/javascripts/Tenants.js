@@ -42,7 +42,8 @@ $(document).ready(function () {
         residenceDropDownAdd(selectedEircode, selectedId);
         document.getElementById('eircode').value = 'Select new residence ';
 
-        TENANTMAP.updateMarkers(response);
+        //TENANTMAP.updateMarkers(response);
+        updateMarkers(response);
       },
     });
   }
@@ -79,7 +80,8 @@ $(document).ready(function () {
       data: formData,
       success: function (response) {
         console.log('notification: ' + response);
-        TENANTMAP.updateMarkers(response);
+        //TENANTMAP.updateMarkers(response);
+        updateMarkers(response);
         let residenceId = $('#selectResidence').dropdown('get value');
         console.log('id no expected :' + residenceId);
         let residenceEircode = $('#selectResidence').dropdown('get text');
