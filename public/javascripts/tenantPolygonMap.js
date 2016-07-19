@@ -94,8 +94,8 @@ function setInfoWindowListener(latlngStr)
     const marker = markers[i];
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
       return function () {
-        infowindow.setContent(latlngStr[i][0] + '<div> Latitude ' + latlngStr[i][1]
-            + '</div><div> Longitude ' + latlngStr[i][2] + '</div>');
+        infowindow.setContent('<div> Eircode : ' + latlngStr[i][0] + '</div>'
+            + '<div> Geolocation:' + latlngStr[i][1]  + '</div>');
 
         //infowindow.setContent();
         infowindow.open(map, marker);
@@ -166,11 +166,13 @@ function stop() {
  * within polyon are rendered and those outside are not displayed
  */
 function filter() {
-  for (let i = 0; i < latlng.length; i += 1) {
-    const point = new google.maps.LatLng(latlng[i][1], latlng[i][2]);
+  for (let i = 0; i < latlng.length; i++) {
+    //const point = new google.maps.LatLng(latlng[i][1]);
+    const point = getLatLng(latlng[i]);
+    console.log('point:' + point);
     if (google.maps.geometry.poly.containsLocation(point, polygon)) {
       markers[i].setVisible(true);
-      populateTableRow(latlng[i]);
+      //populateTableRow(latlng[i]);
     } else {
       markers[i].setVisible(false);
     }
@@ -194,7 +196,7 @@ function reset() {
 function polyline(prevIndex, index) {
   const coords = [
     new google.maps.LatLng(pos[prevIndex].lat(), pos[prevIndex].lng()),
-    new google.maps.LatLng(pos[index].lat(), pos[index].lng()),];
+    new google.maps.LatLng(pos[index].lat(), pos[index].lng()), ];
 
   const line = new google.maps.Polyline({
     path: coords,
