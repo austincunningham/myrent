@@ -161,8 +161,7 @@ const TENANTMAP = (function () {
    *  revmoveMarkers is called.
    * @param data
    */
-  function updateMarkers(data)
-  {
+  function updateMarkers(data) {
     removeMarkers();
     latlngStr = [];
     $.each(data, function (index, geoObj)
@@ -192,8 +191,7 @@ const TENANTMAP = (function () {
   /**
    * Remove existing markers
    */
-  function removeMarkers()
-  {
+  function removeMarkers() {
     for (i = 0; i < markers.length; i += 1)  {
       markers[i].setMap(undefined);
     }
@@ -204,7 +202,6 @@ const TENANTMAP = (function () {
   return {
     updateMarkers: updateMarkers,
   };
-
-  google.maps.event.addDomListener(window, 'load', initialize);
+  //google.maps.event.addDomListener(window, 'load', initialize);
 
 }());

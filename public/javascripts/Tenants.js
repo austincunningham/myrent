@@ -82,7 +82,6 @@ $(document).ready(function () {
         TENANTMAP.updateMarkers(response);
         let residenceId = $('#selectResidence').dropdown('get value');
         console.log('id no expected :' + residenceId);
-
         let residenceEircode = $('#selectResidence').dropdown('get text');
         //let residenceEircode = $('#selectResidence option:selected').text();
         console.log('eircode expected : ' + residenceEircode);
