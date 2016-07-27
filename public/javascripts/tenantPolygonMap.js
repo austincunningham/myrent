@@ -65,7 +65,6 @@ function callback(data) {
   fitBounds(latlng); // then invoke fitBounds to zoom and display markers
   setInfoWindowListener(latlng);
   allResidences();
-  //populateTable();
 }
 /**
  * creates and positions markers
@@ -184,8 +183,6 @@ function allResidences() {
  */
 function allResidencesCallback(data) {
   allresidence = data; // store the array of data in a global for later use
-  console.log('All residences' + allresidence);
-  //populateTable();  // within view
 }
 
 /**
@@ -195,30 +192,44 @@ function allResidencesCallback(data) {
  * within polyon are rendered and those outside are not displayed
  */
 function filter() {
-  //allResidences();
-  console.log(allresidence);
   let res;
-  for (let i = 0; i < latlng.length; i++) {
-    //const point = new google.maps.LatLng(latlng[i][1]);
+  if (typeof latlngStr == 'undefined') {
+    for (let i = 0; i < latlng.length; i++) {
+      console.log('latlng loop');
+      const point = getLatLng(latlng[i]);
+      console.log('latlng[i] : ' + latlng[i]);
+      console.log('point:' + point);
+      if (google.maps.geometry.poly.containsLocation(point, polygon)) {
+        //markers[i].setVisible(true);
 
-    const point = getLatLng(latlng[i]);
-    console.log('latlng[i] : ' + latlng[i]);
-    console.log('point:' + point);
-    if (google.maps.geometry.poly.containsLocation(point, polygon)) {
-      markers[i].setVisible(true);
-
-      for (res of allresidence) {
-
-        console.log('res' + res);
-        if (latlng[i][0] === res[0]) {
-          //allresidence.splice(count, 0, latlng[i][1]);
-          populateTableRow(res);
-
+        for (res of allresidence) {
+          console.log('res' + res);
+          if (latlng[i][0] === res[0]) {
+            populateTableRow(res);
+          }
         }
-        //populateTableRow(latlng[i]);
-      }
-    }else {
-      markers[i].setVisible(false);
+       }// else {
+      //   markers[i].setVisible(false);
+      // }
+    }
+  } else {
+    for (let i = 0; i < latlngStr.length; i++) {
+      console.log('can i see latlngStr :' + latlngStr[i]);
+      const point = getLatLng(latlngStr[i]);
+      console.log('latlngStr[i] : ' + latlngStr[i]);
+      console.log('point:' + point);
+      if (google.maps.geometry.poly.containsLocation(point, polygon)) {
+        //markers[i].setVisible(true);
+
+        for (res of allresidence) {
+          console.log('res' + res);
+          if (latlngStr[i][0] === res[0]) {
+            populateTableRow(res);
+          }
+        }
+      } //else {
+        //markers[i].setVisible(false);
+      //}
     }
   }
 }
@@ -240,7 +251,8 @@ function reset() {
 function polyline(prevIndex, index) {
   const coords = [
     new google.maps.LatLng(pos[prevIndex].lat(), pos[prevIndex].lng()),
-    new google.maps.LatLng(pos[index].lat(), pos[index].lng()), ];
+    new google.maps.LatLng(pos[index].lat(), pos[index].lng()),
+  ];
 
   const line = new google.maps.Polyline({
     path: coords,
@@ -309,6 +321,7 @@ function updateMarkers(data) {
     })(marker, i));
 
     markers.push(marker);
+    console.log('markers : ' + marker);
     returnMarkers();
   }
 }
@@ -322,7 +335,6 @@ function removeMarkers() {
   }
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
 function returnMarkers() {
   return {
     updateMarkers: updateMarkers,
@@ -335,7 +347,7 @@ function returnMarkers() {
  */
 function populateTable()
 {
-  $.each(latlng, function(i, val) {
+  $.each(latlng, function (i, val) {
     populateTableRow(val);
   });
 }
@@ -359,6 +371,7 @@ function populateTableRow(data)
   $('#markertable').append('<tr>' + landlord + date + geolocation + eircode  + rent + typeDwelling
       + bedroom + bathroom + area + '</tr>');
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
 
 //}());
