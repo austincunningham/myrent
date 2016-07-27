@@ -234,6 +234,11 @@ public class Tenants extends Controller
     render("Tenants/renderReport.html", currentLandlord, currentTenant, circle, residences);
   }
   
+  public static void ReportPolygon(ArrayList<ArrayList<String>> polygonMarkers )
+  {
+    
+  }
+  
   public static void vacant()
   {
     List<List<String>> jsonArray = new ArrayList<List<String>>();
