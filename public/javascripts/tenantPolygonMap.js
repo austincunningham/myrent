@@ -64,7 +64,8 @@ function callback(data) {
   latlng = data; // store the array of data in a global for later use
   fitBounds(latlng); // then invoke fitBounds to zoom and display markers
   setInfoWindowListener(latlng);
-  populateTable();
+  allResidences();
+  //populateTable();
 }
 /**
  * creates and positions markers
@@ -161,20 +162,62 @@ function stop() {
 }
 
 /**
+ * find all residences
+ */
+
+function allResidences() {
+  $(function () {
+    $.get('/Administrator/findAllResidences', function (data) {
+      $.each(data, function (index, reportdata) {
+            console.log(reportdata);
+          }
+      );
+      allResidencesCallback(data);
+    });
+  });
+};
+
+/**
+ *
+ * we've got the data in ajax call back
+ *
+ */
+function allResidencesCallback(data) {
+  allresidence = data; // store the array of data in a global for later use
+  console.log('All residences' + allresidence);
+  //populateTable();  // within view
+}
+
+/**
  * (re)initialize array of locations falling within poly overlay.
  *  Recall latlng[i][0] contains description and latlng[i][1] and latlng[i][2]
  * the latitude & longitude respectively. In this method the markers falling
  * within polyon are rendered and those outside are not displayed
  */
 function filter() {
+  //allResidences();
+  console.log(allresidence);
+  let res;
   for (let i = 0; i < latlng.length; i++) {
     //const point = new google.maps.LatLng(latlng[i][1]);
+
     const point = getLatLng(latlng[i]);
+    console.log('latlng[i] : ' + latlng[i]);
     console.log('point:' + point);
     if (google.maps.geometry.poly.containsLocation(point, polygon)) {
       markers[i].setVisible(true);
-      populateTableRow(latlng[i]);
-    } else {
+
+      for (res of allresidence) {
+
+        console.log('res' + res);
+        if (latlng[i][0] === res[0]) {
+          //allresidence.splice(count, 0, latlng[i][1]);
+          populateTableRow(res);
+
+        }
+        //populateTableRow(latlng[i]);
+      }
+    }else {
       markers[i].setVisible(false);
     }
   }
@@ -303,11 +346,19 @@ function populateTable()
  */
 function populateTableRow(data)
 {
-  const description = "<td>" + data[0] + "</td>";
-  const gps   = "<td>" + data[1] + " " + data[2] + "</td>";
-  $('#markertable').append("<tr>" + description + gps + "</tr>");
+  const eircode = '<td><i class=\"world icon\"></i>' + data[0] + '</td>';
+  const landlord = '<td><i class=\"legal icon\"></i>' + data[1] + ' ' + data[2] + '</td>';
+  const tenantName   = '<td><i class=\"user icon\"></i>' + data[3] + ' ' + data[4] + '</td>';
+  const date = '<td><i class=\"calendar icon\"></i>' + data[5] + '</td>';
+  const rent = '<td><i class=\"euro icon\"></i>' + data[6] + '</td>';
+  const typeDwelling = '<td><i class=\"home icon\"></i>' + data[7] + '</td>';
+  const bedroom = '<td><i class=\"bed icon\"></i>' + data[8] + '</td>';
+  const bathroom = '<td></i><i class=\"female icon\"></i>' + data[9] + '</td>';
+  const area = '<td>' + data[10] + ' &#x33a1;</td>';
+  const geolocation = '<td>' + data[11] + '</td>';
+  $('#markertable').append('<tr>' + landlord + date + geolocation + eircode  + rent + typeDwelling
+      + bedroom + bathroom + area + '</tr>');
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
 
 //}());
