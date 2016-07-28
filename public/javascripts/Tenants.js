@@ -39,8 +39,11 @@ $(document).ready(function () {
           }
         });
 
-        residenceDropDownAdd(selectedEircode, selectedId);
-        document.getElementById('eircode').value = 'Select new residence ';
+        // if delete is clicked with no eircode don't add to dropdown
+        if (selectedEircode !== 'Select new residence') {
+          residenceDropDownAdd(selectedEircode, selectedId);
+          document.getElementById('eircode').value = 'Select new residence ';
+        }
 
         //TENANTMAP.updateMarkers(response);
         updateMarkers(response);
