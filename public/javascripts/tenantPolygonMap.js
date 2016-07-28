@@ -184,7 +184,12 @@ function allResidences() {
 function allResidencesCallback(data) {
   allresidence = data; // store the array of data in a global for later use
 }
-
+/**
+ * Clears the table data
+ */
+function deleteTable() {
+  document.getElementById('markertable').innerHTML = '';
+}
 /**
  * (re)initialize array of locations falling within poly overlay.
  *  Recall latlng[i][0] contains description and latlng[i][1] and latlng[i][2]
@@ -193,6 +198,7 @@ function allResidencesCallback(data) {
  */
 function filter() {
   let res;
+  deleteTable();
   if (typeof latlngStr == 'undefined') {
     for (let i = 0; i < latlng.length; i++) {
       console.log('latlng loop');
@@ -208,9 +214,7 @@ function filter() {
             populateTableRow(res);
           }
         }
-       }// else {
-      //   markers[i].setVisible(false);
-      // }
+      }
     }
   } else {
     for (let i = 0; i < latlngStr.length; i++) {
@@ -227,9 +231,7 @@ function filter() {
             populateTableRow(res);
           }
         }
-      } //else {
-        //markers[i].setVisible(false);
-      //}
+      }
     }
   }
 }
@@ -315,7 +317,8 @@ function updateMarkers(data) {
     });
     google.maps.event.addListener(marker, 'click', (function (marker, i) {
       return function () {
-        infowindow.setContent('Eircode : ' + latlngStr[i][0]);
+        infowindow.setContent('<div> Eircode : ' + latlngStr[i][0] + '</div>'
+            + '<div> Geolocation:' + latlngStr[i][1]  + '</div>');
         infowindow.open(map, marker);
       };
     })(marker, i));
